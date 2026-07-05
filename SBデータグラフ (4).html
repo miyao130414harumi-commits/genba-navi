@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBデータ グラフ</title>
+<style>
+:root{
+  --bg:#14121a; --panel:#1e1b26; --panel2:#26222f; --line:#37324a;
+  --text:#eae6f2; --sub:#9b93b3; --gold:#d9b96c; --gold-dim:#8a7440;
+  --ok:#7fc98f; --bad:#e06a7d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic UI","Meiryo",sans-serif;font-size:14px;min-height:100vh}
+header{display:flex;align-items:baseline;gap:16px;padding:20px 28px 0}
+header h1{font-size:20px;font-weight:600;letter-spacing:.12em}
+header h1 span{color:var(--gold);font-size:12px;letter-spacing:.3em;margin-left:10px}
+nav{display:flex;gap:4px;padding:14px 28px 0;border-bottom:1px solid var(--line)}
+nav button{background:none;border:none;color:var(--sub);padding:10px 18px;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;font-family:inherit}
+nav button.on{color:var(--gold);border-bottom-color:var(--gold)}
+nav button:hover{color:var(--text)}
+main{padding:22px 28px 60px;max-width:1180px}
+.tab{display:none}
+.tab.on{display:block}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.bar .sp{flex:1}
+label.f{color:var(--sub);font-size:12px}
+input,select,textarea{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:6px;padding:7px 10px;font-size:14px;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:1px solid var(--gold-dim)}
+textarea{width:100%;height:260px;resize:vertical;font-size:12px;line-height:1.5;white-space:pre}
+button.b{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:6px;padding:7px 14px;cursor:pointer;font-size:13px;font-family:inherit}
+button.b:hover{border-color:var(--gold-dim)}
+button.b.gold{background:var(--gold);color:#221c0e;border-color:var(--gold);font-weight:600}
+button.b.danger:hover{border-color:var(--bad);color:var(--bad)}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:6px 14px;cursor:pointer;user-select:none;font-size:13px}
+.chip.on{border-color:var(--gold);color:var(--gold)}
+.panelBox{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:18px}
+.panelBox h2{font-size:14px;color:var(--gold);font-weight:600;margin-bottom:14px;letter-spacing:.06em}
+.empty{text-align:center;color:var(--sub);padding:48px 20px;background:var(--panel);border:1px dashed var(--line);border-radius:8px}
+.note{color:var(--sub);font-size:12px;margin-top:10px;line-height:1.8}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:13px}
+th{color:var(--sub);font-size:12px;white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--gold);color:#221c0e;padding:10px 18px;border-radius:8px;font-weight:600;font-size:13px;opacity:0;transform:translateY(8px);transition:.25s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+svg text{font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font-size:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--sub)}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+
+<header><h1>SBデータ グラフ<span>CAST ANALYTICS</span></h1></header>
+
+<nav>
+  <button data-tab="paste" class="on">データ貼り付け</button>
+  <button data-tab="sync">スプシ連携</button>
+  <button data-tab="cast">キャスト別</button>
+  <button data-tab="data">保存データ</button>
+</nav>
+
+<main>
+
+<!-- ===== スプシ連携 ===== -->
+<div class="tab" id="tab-sync">
+  <div class="panelBox">
+    <h2>スプシから一括取り込み</h2>
+    <div class="bar">
+      <label class="f">GAS WebアプリURL</label>
+      <input type="text" id="sUrl" style="flex:1;min-width:320px" placeholder="https://script.google.com/macros/s/xxxx/exec">
+    </div>
+    <div class="bar">
+      <label class="f">トークン</label>
+      <input type="text" id="sToken" placeholder="GAS側で設定した文字列">
+      <label class="f">このスプシの年</label>
+      <select id="sYear"></select>
+      <div class="sp"></div>
+      <button class="b gold" id="sFetch">スプシから取得</button>
+    </div>
+    <p class="note" id="sStatus"></p>
+  </div>
+  <p class="note">
+    スプシに設置済みのGAS(SBデータ連携.gs)から、月シート(1月〜12月)を一括で取り込みます。<br>
+    普段の更新は「データ貼り付け」でOK。まとめて取り直したいときにこちらをどうぞ。URL・トークンはこのPCに記憶されます。
+  </p>
+</div>
+
+<!-- ===== 貼り付け ===== -->
+<div class="tab on" id="tab-paste">
+  <div class="bar">
+    <label class="f">この月のデータとして保存 →</label>
+    <select id="pMonth"></select>
+    <label class="f">年</label>
+    <select id="pYear"></select>
+  </div>
+  <textarea id="pText" placeholder="スプシで範囲選択 → コピー → ここに貼り付け&#10;&#10;例:&#10;のあ	18	0	18	0.0%	0	41	29	70	41.4%	1,245,000円&#10;さや	14	1	15	6.7%	0	8	45	53	84.9%	1,021,000円&#10;&#10;※ 見出し行(キャスト 実出勤 …)が混ざっていてもOK。自動でスキップします。"></textarea>
+  <div class="bar" style="margin-top:12px">
+    <button class="b gold" id="pSave">この月として保存</button>
+    <span class="note" id="pInfo"></span>
+  </div>
+  <p class="note">
+    列の並びはスプシ通り: キャスト / 実出勤 / 欠勤 / 出勤日数 / 欠勤率 / 遅刻 / 写真フリー / 本姫 / 総本数 / 指名率 / 委託費<br>
+    ・欠勤率・指名率は貼り付け値ではなく本数から再計算します(合算時に正しくするため)<br>
+    ・同じ月に再度保存すると上書きされます
+  </p>
+</div>
+
+<!-- ===== キャスト別 ===== -->
+<div class="tab" id="tab-cast">
+  <div class="bar" id="cMonths"></div>
+  <div class="bar">
+    <label class="f">キャスト</label>
+    <select id="cName"></select>
+    <label class="f">指標</label>
+    <select id="cMetric">
+      <option value="itaku">委託費</option>
+      <option value="total">総本数</option>
+      <option value="hon">本・姫 (指名)</option>
+      <option value="free">写真・フリー</option>
+      <option value="work">実出勤</option>
+      <option value="shimeiRate">指名率</option>
+      <option value="absRate">欠勤率</option>
+    </select>
+  </div>
+  <div id="cArea"></div>
+</div>
+
+<!-- ===== 保存データ ===== -->
+<div class="tab" id="tab-data">
+  <div id="dArea"></div>
+  <div class="bar" style="margin-top:16px">
+    <button class="b gold" id="expHtmlBtn">💾 データ入りHTMLを書き出す</button>
+    <button class="b" id="expBtn">JSONバックアップ書き出し</button>
+    <button class="b" id="impBtn">JSON読み込み</button>
+    <input type="file" id="impFile" accept=".json" style="display:none">
+  </div>
+  <p class="note">
+    <b>データ入りHTML</b>: 今のデータを埋め込んだアプリ本体を書き出します。別のPCに渡してもスタッフに送っても、開いた瞬間からデータ入りで表示されます。データを更新したら書き出し直して、常に最新のファイルを配ってください。
+  </p>
+</div>
+
+</main>
+<div class="toast" id="toast"></div>
+
+<script id="seed">/*SEED*/</script>
+<script>
+"use strict";
+// 起動直後のページソースを保持(データ入りHTML書き出し用)
+const PAGE_SRC = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+const KEY = "sbGraphData_v1";
+const METRIC_LABEL = {itaku:"委託費", total:"総本数", hon:"本・姫", free:"写真・フリー", work:"実出勤", shimeiRate:"指名率", absRate:"欠勤率"};
+const COLORS = ["#d9b96c","#7fc98f","#6ea8d9","#e08f6a","#b58fd9","#e06a7d","#8fd9cf","#d9d06e","#a3b56e","#d98fb5","#7f8fc9","#c9a37f"];
+
+let db = load(); // { "2026-01": {label:"2026年1月", rows:[{name,work,abs,days,late,free,hon,total,itaku}]} }
+// ファイルに埋め込まれたデータがあれば取り込む(同じ月は埋め込み側で上書き)
+if(window.SEED && window.SEED.db){
+  Object.assign(db, window.SEED.db);
+  localStorage.setItem(KEY, JSON.stringify(db));
+}
+function load(){
+  try{ const s = JSON.parse(localStorage.getItem(KEY)); if(s && typeof s==="object") return s; }catch(e){}
+  return {};
+}
+function save(){ localStorage.setItem(KEY, JSON.stringify(db)); }
+function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.classList.add("on"); clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove("on"),1800); }
+const fmt = n => Math.round(n).toLocaleString("ja-JP");
+const esc = s => String(s).replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const monthKeys = () => Object.keys(db).sort();
+
+/* ===== タブ ===== */
+document.querySelectorAll("nav button").forEach(b=>{
+  b.onclick = ()=>{
+    document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on"));
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    document.getElementById("tab-"+b.dataset.tab).classList.add("on");
+    renderAll();
+  };
+});
+
+/* ===== スプシ連携 ===== */
+const CFG_KEY = "sbGraphCfg_v1";
+const sUrl = document.getElementById("sUrl");
+const sToken = document.getElementById("sToken");
+const sYear = document.getElementById("sYear");
+const sStatus = document.getElementById("sStatus");
+{
+  const nowY = new Date().getFullYear();
+  for(let y=nowY-2;y<=nowY+1;y++) sYear.insertAdjacentHTML("beforeend",`<option value="${y}" ${y===nowY?"selected":""}>${y}年</option>`);
+  try{
+    const cfg = JSON.parse(localStorage.getItem(CFG_KEY));
+    if(cfg){ sUrl.value = cfg.url||""; sToken.value = cfg.token||""; if(cfg.year) sYear.value = cfg.year; }
+  }catch(e){}
+}
+document.getElementById("sFetch").onclick = async ()=>{
+  const url = sUrl.value.trim(), token = sToken.value.trim(), year = sYear.value;
+  if(!url){ toast("GASのURLを入力してください"); return; }
+  localStorage.setItem(CFG_KEY, JSON.stringify({url, token, year}));
+  sStatus.textContent = "取得中…";
+  try{
+    const res = await fetch(url + (url.includes("?")?"&":"?") + "token=" + encodeURIComponent(token));
+    const data = await res.json();
+    if(data.error) throw new Error(data.error === "unauthorized" ? "トークンが一致しません" : data.error);
+    if(!data.months || Object.keys(data.months).length===0) throw new Error("月シート(1月〜12月)が見つかりません");
+    let count = 0, casts = 0;
+    for(const [shName, values] of Object.entries(data.months)){
+      const m = shName.match(/^(\d{1,2})月$/);
+      if(!m) continue;
+      const rows = parseValues(values);
+      if(rows.length===0) continue;
+      const key = `${year}-${String(m[1]).padStart(2,"0")}`;
+      db[key] = {label:`${year}年${Number(m[1])}月`, rows};
+      count++; casts += rows.length;
+    }
+    if(count===0) throw new Error("取り込めるデータがありませんでした");
+    save(); renderAll();
+    sStatus.textContent = `✔ ${count}ヶ月分(のべ${casts}名)を取り込みました — ${new Date().toLocaleString("ja-JP")}`;
+    toast(`${count}ヶ月分を取り込みました`);
+  }catch(err){
+    sStatus.textContent = "✖ 取得に失敗: " + (err.message||err) + " — GASのデプロイ設定(アクセス: 全員)とURLを確認してください";
+    toast("取得に失敗しました");
+  }
+};
+// GASのgetValues()形式(2次元配列)をパース
+function parseValues(values){
+  const rows = [];
+  for(const cells of values){
+    const name = String(cells[0]||"").trim();
+    if(!name || name==="キャスト" || /^\d+月$/.test(name)) continue;
+    if(cells.slice(1).every(c=>c===""||c===null)) continue;
+    rows.push({
+      name,
+      work:num(cells[1]), abs:num(cells[2]), days:num(cells[3]),
+      late:num(cells[5]), free:num(cells[6]), hon:num(cells[7]),
+      total:num(cells[8]), itaku:num(cells[10])
+    });
+  }
+  return rows;
+}
+
+/* ===== 貼り付け ===== */
+const pMonth = document.getElementById("pMonth");
+const pYear = document.getElementById("pYear");
+const now = new Date();
+for(let m=1;m<=12;m++) pMonth.insertAdjacentHTML("beforeend",`<option value="${m}">${m}月</option>`);
+for(let y=now.getFullYear()-2;y<=now.getFullYear()+1;y++) pYear.insertAdjacentHTML("beforeend",`<option value="${y}" ${y===now.getFullYear()?"selected":""}>${y}</option>`);
+pMonth.value = now.getMonth()+1;
+
+function num(s){
+  if(s===undefined) return 0;
+  const v = parseFloat(String(s).replace(/[,，円%％\s]/g,""));
+  return isNaN(v) ? 0 : v;
+}
+function parsePaste(text){
+  const rows = [];
+  for(const line of text.split(/\r?\n/)){
+    if(!line.trim()) continue;
+    let cells = line.includes("\t") ? line.split("\t") : line.trim().split(/\s{2,}|\s/);
+    cells = cells.map(c=>c.trim());
+    const name = cells[0];
+    if(!name || name==="キャスト" || /^\d+月$/.test(name) || name.startsWith("#")) continue;
+    // 数値が1つも無い行はスキップ
+    if(cells.slice(1).every(c=>c==="")) continue;
+    rows.push({
+      name,
+      work:  num(cells[1]),  // 実出勤
+      abs:   num(cells[2]),  // 欠勤
+      days:  num(cells[3]),  // 出勤日数
+      late:  num(cells[5]),  // 遅刻
+      free:  num(cells[6]),  // 写真/フリー
+      hon:   num(cells[7]),  // 本/姫
+      total: num(cells[8]),  // 総本数
+      itaku: num(cells[10])  // 委託費
+    });
+  }
+  return rows;
+}
+document.getElementById("pText").oninput = ()=>{
+  const n = parsePaste(document.getElementById("pText").value).length;
+  document.getElementById("pInfo").textContent = n ? `${n}名分を認識中` : "";
+};
+document.getElementById("pSave").onclick = ()=>{
+  const rows = parsePaste(document.getElementById("pText").value);
+  if(rows.length===0){ toast("データを認識できませんでした"); return; }
+  const y = pYear.value, m = String(pMonth.value).padStart(2,"0");
+  const key = `${y}-${m}`;
+  if(db[key] && !confirm(`${y}年${Number(m)}月のデータは既にあります。上書きしますか?`)) return;
+  db[key] = {label:`${y}年${Number(m)}月`, rows};
+  save();
+  document.getElementById("pText").value = "";
+  document.getElementById("pInfo").textContent = "";
+  renderAll();
+  toast(`${y}年${Number(m)}月 / ${rows.length}名分を保存しました`);
+};
+
+/* ===== 集計 ===== */
+function combine(keys){
+  const map = new Map();
+  for(const k of keys){
+    if(!db[k]) continue;
+    for(const r of db[k].rows){
+      const a = map.get(r.name) || {name:r.name, work:0,abs:0,days:0,late:0,free:0,hon:0,total:0,itaku:0};
+      for(const f of ["work","abs","days","late","free","hon","total","itaku"]) a[f] += r[f];
+      map.set(r.name, a);
+    }
+  }
+  const rows = [...map.values()];
+  for(const r of rows){
+    r.shimeiRate = r.total>0 ? r.hon/r.total*100 : 0;
+    r.absRate = r.days>0 ? r.abs/r.days*100 : 0;
+  }
+  return rows;
+}
+function metricVal(r, m){ return r[m] || 0; }
+function metricFmt(v, m){
+  if(m==="itaku") return "¥"+fmt(v);
+  if(m==="shimeiRate"||m==="absRate") return v.toFixed(1)+"%";
+  return fmt(v);
+}
+
+function shortYen(v){
+  if(v>=100000000) return (v/100000000).toFixed(1)+"億";
+  if(v>=10000) return Math.round(v/10000)+"万";
+  return fmt(v);
+}
+// 汎用円グラフ: items=[{name,v,c}], fmtFn=値の表示形式
+function pie2(items, fmtFn){
+  items = items.filter(s=>s.v>0);
+  const totalAll = items.reduce((s,x)=>s+x.v,0);
+  if(totalAll<=0) return `<div class="empty">値が0のためグラフを表示できません</div>`;
+  const cx=110, cy=110, R=90;
+  let ang=-Math.PI/2, paths="", labels="";
+  for(const s of items){
+    const frac = s.v/totalAll;
+    const a2 = ang + frac*Math.PI*2;
+    const large = frac>0.5 ? 1 : 0;
+    const x1=cx+R*Math.cos(ang), y1=cy+R*Math.sin(ang);
+    const x2=cx+R*Math.cos(a2), y2=cy+R*Math.sin(a2);
+    if(frac >= 0.999){
+      paths += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="${s.c}"><title>${esc(s.name)} ${fmtFn(s.v)}</title></circle>`;
+    }else{
+      paths += `<path d="M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${R},${R} 0 ${large} 1 ${x2.toFixed(1)},${y2.toFixed(1)} Z" fill="${s.c}" stroke="var(--bg)" stroke-width="1.5"><title>${esc(s.name)} ${fmtFn(s.v)} (${(frac*100).toFixed(1)}%)</title></path>`;
+    }
+    if(frac >= 0.06){
+      const mid=(ang+a2)/2, lr=R*0.62;
+      labels += `<text x="${(cx+lr*Math.cos(mid)).toFixed(1)}" y="${(cy+lr*Math.sin(mid)).toFixed(1)}" font-size="11" fill="#14121a" text-anchor="middle" font-weight="600">${(frac*100).toFixed(0)}%</text>`;
+    }
+    ang = a2;
+  }
+  const legend = items.map(s=>`<span><i style="background:${s.c}"></i>${esc(s.name)} ${fmtFn(s.v)} (${(s.v/totalAll*100).toFixed(1)}%)</span>`).join("");
+  return `<div style="display:flex;justify-content:center"><svg viewBox="0 0 220 220" width="230" height="230" role="img">${paths}${labels}</svg></div><div class="legend">${legend}</div>`;
+}
+
+/* ===== キャスト別 ===== */
+let cSelMonths = new Set();
+function renderCastChips(){
+  const el = document.getElementById("cMonths");
+  const keys = monthKeys();
+  cSelMonths = new Set([...cSelMonths].filter(k=>db[k]));
+  if(cSelMonths.size===0) keys.forEach(k=>cSelMonths.add(k)); // 初期状態は全月
+  el.innerHTML = `<label class="f">対象月 (複数タップで合算)</label>` +
+    keys.map(k=>`<span class="chip ${cSelMonths.has(k)?"on":""}" data-k="${k}">${db[k].label}</span>`).join("") +
+    (keys.length>1 ? `<button class="b" id="cAllBtn">全選択</button>` : "");
+  el.querySelectorAll(".chip").forEach(c=>{
+    c.onclick = ()=>{
+      const k = c.dataset.k;
+      if(cSelMonths.has(k)){ if(cSelMonths.size>1) cSelMonths.delete(k); }
+      else cSelMonths.add(k);
+      renderCast();
+    };
+  });
+  const allBtn = document.getElementById("cAllBtn");
+  if(allBtn) allBtn.onclick = ()=>{ keys.forEach(k=>cSelMonths.add(k)); renderCast(); };
+}
+document.getElementById("cName").onchange = renderCast;
+document.getElementById("cMetric").onchange = renderCast;
+function renderCast(){
+  renderCastChips();
+  const sel = document.getElementById("cName");
+  const keys = [...cSelMonths].sort();
+  const names = [...new Set(monthKeys().flatMap(k=>db[k].rows.map(r=>r.name)))].sort((a,b)=>a.localeCompare(b,"ja"));
+  const cur = sel.value;
+  sel.innerHTML = names.map(n=>`<option ${n===cur?"selected":""}>${esc(n)}</option>`).join("");
+  const area = document.getElementById("cArea");
+  if(names.length===0){ area.innerHTML = `<div class="empty">まだデータがありません。</div>`; return; }
+  const name = sel.value || names[0];
+  const metric = document.getElementById("cMetric").value;
+
+  // 月別の値
+  const pts = keys.map(k=>{
+    const r = db[k].rows.find(x=>x.name===name);
+    if(!r) return {label:db[k].label, v:null, r:null};
+    const c = combine([k]).find(x=>x.name===name);
+    return {label:db[k].label, v:metricVal(c,metric), r:c};
+  });
+  const valid = pts.filter(p=>p.v!==null);
+  if(valid.length===0){ area.innerHTML = `<div class="empty">このキャストのデータがありません。</div>`; return; }
+
+  // 全期間合計
+  const sum = combine(keys).find(x=>x.name===name);
+
+  let html = `<div class="panelBox"><h2>${esc(name)} — ${METRIC_LABEL[metric]} 月別推移</h2>`;
+  html += castBar(pts, metric);
+  html += `</div>`;
+
+  // ===== 個人円グラフ =====
+  const pieMetric = metric.endsWith("Rate") ? "total" : metric; // 率系は円にできないので総本数で
+  const pieFmt = v => metricFmt(v, pieMetric);
+  const monthSlices = pts.filter(p=>p.r).map((p,i)=>({name:p.label, v:metricVal(p.r,pieMetric), c:COLORS[i%COLORS.length]}));
+  html += `<div class="grid2">`;
+  html += `<div class="panelBox"><h2>${esc(name)} — 接客内訳 (選択期間)</h2>
+    ${pie2([
+      {name:"本・姫 (指名)", v:sum.hon, c:"var(--gold)"},
+      {name:"写真・フリー", v:sum.free, c:"#6ea8d9"}
+    ], v=>fmt(v)+"本")}
+    <p class="note" style="text-align:center">指名率 ${sum.shimeiRate.toFixed(1)}%</p></div>`;
+  html += `<div class="panelBox"><h2>${esc(name)} — ${METRIC_LABEL[pieMetric]} 月別構成比</h2>${pie2(monthSlices, pieFmt)}</div>`;
+  html += `</div>`;
+
+  html += `<div class="panelBox"><h2>${esc(name)} — 選択期間合計 (${keys.length}ヶ月分)</h2>
+  <table><thead><tr><th class="num">実出勤</th><th class="num">欠勤</th><th class="num">欠勤率</th><th class="num">写真/フリー</th><th class="num">本/姫</th><th class="num">総本数</th><th class="num">指名率</th><th class="num">委託費</th></tr></thead>
+  <tbody><tr>
+    <td class="num">${sum.work}</td><td class="num">${sum.abs}</td><td class="num">${sum.absRate.toFixed(1)}%</td>
+    <td class="num">${sum.free}</td><td class="num">${sum.hon}</td><td class="num">${sum.total}</td>
+    <td class="num">${sum.shimeiRate.toFixed(1)}%</td><td class="num">¥${fmt(sum.itaku)}</td>
+  </tr></tbody></table></div>`;
+  area.innerHTML = html;
+}
+function castBar(pts, metric){
+  const vals = pts.map(p=>p.v??0);
+  const maxV = Math.max(...vals, 1);
+  const n = pts.length;
+  const barW = Math.max(30, Math.min(70, Math.floor(680/n)-14));
+  const gap = 20;
+  const W = Math.max(420, n*(barW+gap)+80), H = 260;
+  const padL=58, padB=36, padT=20;
+  const chartH = H-padB-padT;
+  let out="";
+  for(let i=0;i<=4;i++){
+    const v = maxV*i/4;
+    const y = padT + chartH - chartH*i/4;
+    out += `<line x1="${padL}" y1="${y}" x2="${W-8}" y2="${y}" stroke="var(--line)"/>`;
+    out += `<text x="${padL-6}" y="${y+4}" font-size="10" fill="var(--sub)" text-anchor="end">${metric==="itaku" ? shortYen(v) : (metric.endsWith("Rate") ? v.toFixed(0)+"%" : fmt(v))}</text>`;
+  }
+  pts.forEach((p,i)=>{
+    const x = padL + i*(barW+gap) + 10;
+    const yBase = padT + chartH;
+    if(p.v===null){
+      out += `<text x="${x+barW/2}" y="${yBase-6}" font-size="10" fill="var(--sub)" text-anchor="middle">記録なし</text>`;
+    }else{
+      const h = chartH*p.v/maxV;
+      out += `<rect x="${x}" y="${(yBase-h).toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" rx="4" fill="var(--gold)"><title>${p.label} ${metricFmt(p.v,metric)}</title></rect>`;
+      out += `<text x="${x+barW/2}" y="${(yBase-h-6).toFixed(1)}" font-size="11" fill="var(--text)" text-anchor="middle">${metricFmt(p.v,metric)}</text>`;
+    }
+    out += `<text x="${x+barW/2}" y="${H-12}" font-size="11" fill="var(--sub)" text-anchor="middle">${p.label}</text>`;
+  });
+  return `<div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img">${out}</svg></div>`;
+}
+
+/* ===== 保存データ ===== */
+function renderData(){
+  const area = document.getElementById("dArea");
+  const keys = monthKeys();
+  if(keys.length===0){ area.innerHTML = `<div class="empty">保存されている月データはありません。</div>`; return; }
+  let html = `<table><thead><tr><th>月</th><th class="num">人数</th><th class="num">委託費合計</th><th class="num">総本数合計</th><th></th></tr></thead><tbody>`;
+  for(const k of keys){
+    const rows = db[k].rows;
+    const itaku = rows.reduce((s,r)=>s+r.itaku,0);
+    const total = rows.reduce((s,r)=>s+r.total,0);
+    html += `<tr><td>${db[k].label}</td><td class="num">${rows.length}名</td><td class="num">¥${fmt(itaku)}</td><td class="num">${fmt(total)}</td>
+      <td style="text-align:right"><button class="b danger" data-k="${k}">削除</button></td></tr>`;
+  }
+  html += `</tbody></table>`;
+  area.innerHTML = html;
+  area.querySelectorAll("button[data-k]").forEach(b=>{
+    b.onclick = ()=>{
+      const k = b.dataset.k;
+      if(!confirm(`${db[k].label}のデータを削除しますか?`)) return;
+      delete db[k]; save(); renderAll(); toast("削除しました");
+    };
+  });
+}
+
+/* ===== バックアップ ===== */
+document.getElementById("expHtmlBtn").onclick = ()=>{
+  if(Object.keys(db).length===0){ toast("まだデータがありません"); return; }
+  const seedJs = "window.SEED=" + JSON.stringify({db}).replace(/</g,"\\u003c") + ";";
+  const seeded = PAGE_SRC.replace(/<script id="seed">[\s\S]*?<\/script>/, ()=>'<script id="seed">' + seedJs + '<\/script>');
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([seeded], {type:"text/html"}));
+  a.download = `SBデータグラフ_データ入り_${new Date().toLocaleDateString("sv-SE")}.html`;
+  a.click(); URL.revokeObjectURL(a.href);
+  toast("データ入りHTMLを書き出しました");
+};
+document.getElementById("expBtn").onclick = ()=>{
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:"application/json"}));
+  a.download = `SBデータ_バックアップ_${new Date().toLocaleDateString("sv-SE")}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+  toast("書き出しました");
+};
+document.getElementById("impBtn").onclick = ()=>document.getElementById("impFile").click();
+document.getElementById("impFile").onchange = e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const rd = new FileReader();
+  rd.onload = ()=>{
+    try{
+      const s = JSON.parse(rd.result);
+      if(typeof s!=="object") throw 0;
+      if(!confirm("現在のデータをこのファイルの内容で置き換えます。よろしいですか?")) return;
+      db = s; save(); renderAll(); toast("読み込みました");
+    }catch(_){ toast("読み込めないファイルです"); }
+  };
+  rd.readAsText(f); e.target.value="";
+};
+
+function renderAll(){ renderCast(); renderData(); }
+renderAll();
+</script>
+</body>
+</html>
