@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>施工管理 研修課題</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16324A;
+    --navy-deep:#0E2233;
+    --concrete:#F2F0EB;
+    --concrete-2:#E7E4DC;
+    --yellow:#F5B800;
+    --ink:#1F1F1F;
+    --ok:#2E7D4F;
+    --ng:#C0392B;
+    --pend:#B58600;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:"Noto Sans JP",-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;
+    background:var(--concrete);color:var(--ink);
+    min-height:100vh;display:flex;flex-direction:column;
+  }
+  header{
+    background:var(--navy);color:#fff;padding:16px 20px 12px;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:10px;
+  }
+  header .eyebrow{font-size:10px;letter-spacing:.25em;color:var(--yellow);font-weight:700}
+  header h1{font-size:18px;font-weight:900;letter-spacing:.04em}
+  .user-box{display:flex;align-items:center;gap:8px;font-size:12px}
+  .user-box button{
+    background:transparent;border:1px solid #4A6580;color:#B8C6D2;
+    border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;
+  }
+  .stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 14px,var(--ink) 14px 28px)}
+  main{flex:1;padding:20px 16px 40px;max-width:640px;width:100%;margin:0 auto}
+  .screen{display:none}
+  .screen.active{display:block;animation:fadein .25s ease}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .card{
+    background:#fff;border-radius:var(--radius);padding:20px;margin-bottom:16px;
+    box-shadow:0 1px 3px rgba(22,50,74,.10);
+  }
+  .card h2{
+    font-size:13px;font-weight:700;letter-spacing:.15em;color:var(--navy);
+    margin-bottom:12px;display:flex;align-items:center;gap:8px;
+  }
+  .card h2::before{
+    content:"";width:14px;height:14px;background:var(--yellow);
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    border:2px solid var(--navy);border-radius:999px;background:#fff;color:var(--navy);
+    padding:8px 16px;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit;
+  }
+  .chip.selected{background:var(--navy);color:#fff}
+  .chip.yellow.selected{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+  .btn-main{
+    display:block;width:100%;background:var(--yellow);color:var(--ink);
+    border:none;border-radius:var(--radius);padding:16px;font-size:17px;font-weight:900;
+    letter-spacing:.1em;cursor:pointer;font-family:inherit;box-shadow:0 3px 0 #C79600;
+  }
+  .btn-main:active{transform:translateY(2px);box-shadow:0 1px 0 #C79600}
+  .btn-main:disabled{opacity:.5;box-shadow:none}
+  .btn-sub{
+    display:block;width:100%;background:var(--navy);color:#fff;border:none;
+    border-radius:var(--radius);padding:14px;font-size:15px;font-weight:700;
+    cursor:pointer;font-family:inherit;margin-top:10px;
+  }
+  .btn-sub:disabled{opacity:.5}
+  .note{font-size:12px;color:#777;margin-top:10px;text-align:center}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .field input,.field textarea,.field select{
+    width:100%;border:2px solid var(--concrete-2);border-radius:10px;
+    padding:12px;font-size:16px;font-family:inherit;background:#fff;
+  }
+  .field textarea{min-height:80px;line-height:1.6}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--navy)}
+  .msg{display:none;margin-top:12px;padding:12px;border-radius:10px;font-size:13px;font-weight:700;line-height:1.6}
+  .msg.show{display:block;animation:fadein .2s ease}
+  .msg.ok{background:#EAF5EE;color:var(--ok)}
+  .msg.ng{background:#FBEDEA;color:var(--ng)}
+
+  /* 課題画面 */
+  .progress-wrap{margin-bottom:14px}
+  .progress-label{display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .progress-bar{height:12px;background:var(--concrete-2);border-radius:999px;overflow:hidden}
+  .progress-fill{
+    height:100%;width:0%;
+    background:repeating-linear-gradient(-45deg,var(--yellow) 0 10px,var(--ink) 10px 20px);
+    transition:width .3s ease;border-radius:999px;
+  }
+  .q-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
+  .badges{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .q-category{
+    display:inline-block;background:var(--navy);color:#fff;font-size:11px;
+    font-weight:700;letter-spacing:.1em;padding:4px 12px;border-radius:4px;
+  }
+  .q-type{
+    display:inline-block;font-size:11px;font-weight:900;letter-spacing:.1em;
+    padding:4px 12px;border-radius:4px;
+  }
+  .q-type.choice{background:#E3ECF3;color:var(--navy)}
+  .q-type.written{background:#FFF3D1;color:#8A6600}
+  .btn-fav{
+    background:#fff;border:2px solid var(--concrete-2);border-radius:999px;
+    padding:6px 14px;font-size:13px;font-weight:700;color:#999;
+    cursor:pointer;font-family:inherit;transition:.15s;flex-shrink:0;
+  }
+  .btn-fav.on{border-color:var(--yellow);background:#FFF7DF;color:#B58600}
+  .q-text{font-size:16px;font-weight:700;line-height:1.7;margin-bottom:18px;white-space:pre-wrap}
+  .choices{display:flex;flex-direction:column;gap:10px}
+  .choice{
+    display:flex;align-items:flex-start;gap:12px;background:#fff;
+    border:2px solid var(--concrete-2);border-radius:var(--radius);padding:14px;
+    font-size:15px;line-height:1.6;text-align:left;cursor:pointer;transition:.15s;
+    font-family:inherit;width:100%;
+  }
+  .choice .num{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    background:var(--concrete-2);color:var(--navy);font-weight:900;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .choice:not(:disabled):active{border-color:var(--navy)}
+  .choice.correct{border-color:var(--ok);background:#EAF5EE}
+  .choice.correct .num{background:var(--ok);color:#fff}
+  .choice.wrong{border-color:var(--ng);background:#FBEDEA}
+  .choice.wrong .num{background:var(--ng);color:#fff}
+  .choice:disabled{cursor:default;opacity:.92}
+  .written-area{display:none}
+  .written-area.show{display:block}
+  .judge{display:none;margin-top:16px;border-radius:var(--radius);padding:16px;font-size:14px;line-height:1.7}
+  .judge.show{display:block;animation:fadein .2s ease}
+  .judge.ok{background:#EAF5EE;border-left:6px solid var(--ok)}
+  .judge.ng{background:#FBEDEA;border-left:6px solid var(--ng)}
+  .judge.info{background:#FFF7DF;border-left:6px solid var(--yellow)}
+  .judge .mark{font-size:17px;font-weight:900;margin-bottom:6px}
+  .judge.ok .mark{color:var(--ok)}
+  .judge.ng .mark{color:var(--ng)}
+  .judge.info .mark{color:#8A6600}
+
+  /* 結果 */
+  .result-board{
+    background:var(--navy);color:#fff;border-radius:var(--radius);
+    padding:28px 20px;text-align:center;margin-bottom:16px;
+  }
+  .result-board .label{font-size:12px;letter-spacing:.25em;color:var(--yellow);font-weight:700}
+  .result-board .score{font-size:44px;font-weight:900;line-height:1.2}
+  .result-board .score small{font-size:18px;font-weight:700;color:#B8C6D2}
+  .result-board .msg2{font-size:14px;margin-top:6px;font-weight:700}
+  .wrong-item{
+    background:#fff;border-radius:var(--radius);padding:14px;margin-bottom:10px;
+    font-size:13px;line-height:1.7;border-left:5px solid var(--ng);
+  }
+  .wrong-item .wq{font-weight:700;margin-bottom:6px}
+  .wrong-item .wa{color:var(--ok);font-weight:700}
+
+  /* 提出状況・回答確認 */
+  .ans-item{
+    background:#fff;border-radius:var(--radius);padding:14px;margin-bottom:10px;
+    font-size:13px;line-height:1.7;border-left:5px solid var(--concrete-2);
+  }
+  .ans-item.st-pending{border-left-color:var(--yellow)}
+  .ans-item.st-pass{border-left-color:var(--ok)}
+  .ans-item.st-redo{border-left-color:var(--ng)}
+  .ans-item .meta{font-size:11px;color:#888;margin-bottom:4px}
+  .ans-item .tq{font-weight:700;margin-bottom:6px}
+  .ans-item .av{background:var(--concrete);border-radius:8px;padding:10px;margin:6px 0;white-space:pre-wrap}
+  .st-badge{display:inline-block;font-size:11px;font-weight:900;padding:2px 10px;border-radius:999px}
+  .st-badge.pending{background:#FFF3D1;color:var(--pend)}
+  .st-badge.pass{background:#EAF5EE;color:var(--ok)}
+  .st-badge.redo{background:#FBEDEA;color:var(--ng)}
+  .review-row{display:flex;gap:8px;margin-top:8px}
+  .review-row button{
+    flex:1;border:none;border-radius:10px;padding:10px;font-size:13px;
+    font-weight:900;cursor:pointer;font-family:inherit;
+  }
+  .btn-pass{background:var(--ok);color:#fff}
+  .btn-redo{background:var(--ng);color:#fff}
+
+  /* プレビュー */
+  .prev-item{
+    background:var(--concrete);border-radius:10px;padding:12px;margin-bottom:8px;
+    font-size:12px;line-height:1.6;
+  }
+  .prev-item .pt{font-weight:700}
+
+  /* ローディング */
+  .loading{display:none;text-align:center;padding:40px 0;color:var(--navy);font-size:14px;font-weight:700}
+  .loading.show{display:block}
+  .loading .helmet{
+    width:40px;height:40px;margin:0 auto 12px;border-radius:50%;
+    border:5px solid var(--concrete-2);border-top-color:var(--yellow);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="eyebrow">SAFETY FIRST — 研修用</div>
+    <h1>施工管理 研修課題</h1>
+  </div>
+  <div class="user-box" id="user-box" style="display:none">
+    <span id="user-name"></span>
+    <button id="btn-admin" style="display:none">管理</button>
+    <button id="btn-logout">ログアウト</button>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<main>
+
+  <div class="loading" id="loading">
+    <div class="helmet"></div>
+    <span id="loading-text">読み込み中…</span>
+  </div>
+
+  <!-- ===== ログイン ===== -->
+  <section id="screen-login" class="screen">
+    <div class="card">
+      <h2>ログイン</h2>
+      <div class="field">
+        <label>ユーザー名</label>
+        <input type="text" id="login-name" autocomplete="username" placeholder="例:miyao">
+      </div>
+      <div class="field">
+        <label>パスコード</label>
+        <input type="password" id="login-pass" autocomplete="current-password" inputmode="numeric" placeholder="数字4桁など">
+      </div>
+      <button class="btn-main" id="btn-login">ログイン</button>
+      <div class="msg" id="login-msg"></div>
+      <p class="note">アカウントは管理者に発行してもらってね</p>
+    </div>
+  </section>
+
+  <!-- ===== スタート ===== -->
+  <section id="screen-start" class="screen">
+    <div class="card">
+      <h2>分野を選ぶ</h2>
+      <div class="chips" id="category-chips"></div>
+    </div>
+    <div class="card">
+      <h2>出題数</h2>
+      <div class="chips" id="count-chips">
+        <button class="chip yellow selected" data-count="5">5問</button>
+        <button class="chip yellow" data-count="10">10問</button>
+        <button class="chip yellow" data-count="all">全問</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>出題範囲</h2>
+      <div class="chips" id="scope-chips">
+        <button class="chip selected" data-scope="all">すべて</button>
+        <button class="chip" data-scope="fav">★お気に入りだけ</button>
+        <button class="chip" data-scope="choice">選択問題だけ</button>
+        <button class="chip" data-scope="written">記述課題だけ</button>
+      </div>
+    </div>
+    <button class="btn-main" id="btn-start">課題を始める</button>
+    <button class="btn-sub" id="btn-mystatus">記述課題の提出状況を見る</button>
+    <p class="note" id="data-info"></p>
+  </section>
+
+  <!-- ===== 課題 ===== -->
+  <section id="screen-task" class="screen">
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="q-counter">1 / 10</span>
+        <span id="q-score">選択正解 0</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+    <div class="card">
+      <div class="q-top">
+        <div class="badges">
+          <span class="q-type" id="q-type"></span>
+          <span class="q-category" id="q-category"></span>
+        </div>
+        <button class="btn-fav" id="btn-fav">☆ お気に入り</button>
+      </div>
+      <p class="q-text" id="q-text"></p>
+
+      <!-- 選択問題 -->
+      <div class="choices" id="choices"></div>
+
+      <!-- 記述課題 -->
+      <div class="written-area" id="written-area">
+        <div class="field">
+          <textarea id="written-input" style="min-height:120px" placeholder="回答を入力してね"></textarea>
+        </div>
+        <button class="btn-main" id="btn-submit-written">回答を提出する</button>
+      </div>
+
+      <div class="judge" id="judge">
+        <div class="mark" id="judge-mark"></div>
+        <div id="judge-text" style="white-space:pre-wrap"></div>
+      </div>
+    </div>
+    <button class="btn-main" id="btn-next" style="display:none">次へ</button>
+  </section>
+
+  <!-- ===== 結果 ===== -->
+  <section id="screen-result" class="screen">
+    <div class="result-board">
+      <div class="label">RESULT — 本日の成果</div>
+      <div class="score"><span id="result-score">0</span><small> / <span id="result-total">0</span> 正解</small></div>
+      <div class="msg2" id="result-msg"></div>
+      <div class="msg2" id="result-written" style="color:#B8C6D2;font-size:12px"></div>
+    </div>
+    <button class="btn-main" id="btn-retry-wrong" style="display:none">間違えた問題だけ復習</button>
+    <button class="btn-sub" id="btn-home">最初に戻る</button>
+    <div class="card" id="wrong-card" style="display:none">
+      <h2>間違えた問題</h2>
+      <div id="wrong-list"></div>
+    </div>
+  </section>
+
+  <!-- ===== 提出状況(自分の記述課題) ===== -->
+  <section id="screen-mystatus" class="screen">
+    <div class="card">
+      <h2>記述課題の提出状況</h2>
+      <div id="mystatus-list"></div>
+      <p class="note" id="mystatus-empty" style="display:none">まだ記述課題の提出はないよ</p>
+    </div>
+    <button class="btn-sub" id="btn-mystatus-back">戻る</button>
+  </section>
+
+  <!-- ===== 管理者ページ ===== -->
+  <section id="screen-admin" class="screen">
+
+    <div class="card">
+      <h2>記述回答の確認(未確認のみ)</h2>
+      <div id="pending-list"></div>
+      <p class="note" id="pending-empty" style="display:none">未確認の回答はないよ</p>
+      <button class="btn-sub" id="btn-reload-pending" style="margin-top:6px">再読み込み</button>
+    </div>
+
+    <div class="card">
+      <h2>PDFから課題を作る(AI)</h2>
+      <div class="field">
+        <label>モード</label>
+        <div class="chips" id="pdf-mode-chips">
+          <button class="chip selected" data-mode="generate">資料から課題を生成</button>
+          <button class="chip" data-mode="extract">書いてある課題を読み取り</button>
+        </div>
+      </div>
+      <div class="field" id="pdf-count-field">
+        <label>作成する問題数(生成モードのみ・最大30)</label>
+        <input type="number" id="pdf-count" value="10" min="1" max="30" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label>カテゴリ(空欄なら自動)</label>
+        <input type="text" id="pdf-category" list="category-list" placeholder="例:安全">
+      </div>
+      <div class="field">
+        <label>PDFファイル(〜20MB推奨)</label>
+        <input type="file" id="pdf-file" accept="application/pdf">
+      </div>
+      <button class="btn-main" id="btn-generate">AIで課題を作る</button>
+      <div class="msg" id="pdf-msg"></div>
+      <div id="preview-area" style="display:none;margin-top:14px">
+        <p class="note" style="text-align:left;margin:0 0 8px" id="preview-info"></p>
+        <div id="preview-list"></div>
+        <button class="btn-main" id="btn-register">この内容で登録する</button>
+        <button class="btn-sub" id="btn-preview-cancel">やり直す</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>課題を1問追加</h2>
+      <div class="field">
+        <label>形式</label>
+        <div class="chips" id="add-type-chips">
+          <button class="chip selected" data-type="選択">選択(4択)</button>
+          <button class="chip" data-type="記述">記述</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>カテゴリ</label>
+        <input type="text" id="add-category" list="category-list" placeholder="例:安全">
+        <datalist id="category-list"></datalist>
+      </div>
+      <div class="field">
+        <label>問題文</label>
+        <textarea id="add-text" placeholder="問題文を入力"></textarea>
+      </div>
+      <div id="add-choice-fields">
+        <div class="field"><label>選択肢1</label><input type="text" id="add-c1"></div>
+        <div class="field"><label>選択肢2</label><input type="text" id="add-c2"></div>
+        <div class="field"><label>選択肢3</label><input type="text" id="add-c3"></div>
+        <div class="field"><label>選択肢4</label><input type="text" id="add-c4"></div>
+        <div class="field">
+          <label>正解番号</label>
+          <select id="add-answer">
+            <option value="1">1</option><option value="2">2</option>
+            <option value="3">3</option><option value="4">4</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label id="add-exp-label">解説(任意)</label>
+        <textarea id="add-exp" placeholder="解説を入力"></textarea>
+      </div>
+      <button class="btn-main" id="btn-add">この課題を追加</button>
+      <div class="msg" id="add-msg"></div>
+    </div>
+
+    <div class="card">
+      <h2>TSV一括インポート</h2>
+      <p class="note" style="text-align:left;margin:0 0 10px">
+        列の順番:形式(選択/記述) / カテゴリ / 問題 / 選択肢1〜4 / 正解番号 / 解説・模範解答<br>
+        ※タブ区切り。記述課題は選択肢と正解を空欄でOK。ヘッダー行は自動スキップ。
+      </p>
+      <div class="field">
+        <textarea id="import-tsv" style="min-height:120px" placeholder="ここにTSVを貼り付け"></textarea>
+      </div>
+      <button class="btn-main" id="btn-import">一括インポート</button>
+      <div class="msg" id="import-msg"></div>
+    </div>
+
+    <div class="card">
+      <h2>課題を削除</h2>
+      <div class="field">
+        <label>課題ID(例:K0012)</label>
+        <input type="text" id="del-id" placeholder="K0000">
+      </div>
+      <button class="btn-sub" id="btn-delete" style="margin-top:0;background:var(--ng)">この課題を削除</button>
+      <div class="msg" id="del-msg"></div>
+    </div>
+
+    <button class="btn-sub" id="btn-admin-back">課題ページに戻る</button>
+  </section>
+
+</main>
+
+<script>
+/* =========================================================
+   ▼▼▼ ここにGASのウェブアプリURLを貼る ▼▼▼
+========================================================= */
+const GAS_URL = "https://script.google.com/macros/s/AKfycbwjDvGFzz-GF55zGI7gvG2F4FgzWvdSWNSDaka2P_A0IkdvJ80c1PtVs-4swnZ9aEgA/exec";
+/* ========================================================= */
+
+// ---------- 状態 ----------
+let session = null;
+let ALL_TASKS = [];
+let favoriteIds = new Set();
+let selectedCategory = 'all';
+let selectedCount = 5;
+let selectedScope = 'all';
+let taskSet = [];
+let currentIndex = 0;
+let correctCount = 0;   // 選択問題の正解数
+let choiceTotal = 0;    // 出題された選択問題数
+let writtenCount = 0;   // 提出した記述数
+let wrongTasks = [];
+let answered = false;
+let previewItems = [];
+let addType = '選択';
+
+// ---------- セッション保存(端末に記憶。使えない環境では無視) ----------
+function saveSession(s){ try{ localStorage.setItem('kk_session', JSON.stringify(s)); }catch(e){} }
+function loadSessionSaved(){ try{ return JSON.parse(localStorage.getItem('kk_session')); }catch(e){ return null; } }
+function clearSession(){ try{ localStorage.removeItem('kk_session'); }catch(e){} }
+
+// ---------- API ----------
+async function api(action, data = {}) {
+  const body = JSON.stringify({
+    action,
+    ...data,
+    auth: session ? { name: session.name, pass: session.pass } : null
+  });
+  const res = await fetch(GAS_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' }, // preflight回避
+    body
+  });
+  return res.json();
+}
+
+// ---------- 共通UI ----------
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('loading').classList.remove('show');
+  if (id) document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+function showLoading(text){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('loading-text').textContent = text || '読み込み中…';
+  document.getElementById('loading').classList.add('show');
+}
+function flash(id, text, ok){
+  const el = document.getElementById(id);
+  el.textContent = text;
+  el.className = 'msg show ' + (ok ? 'ok' : 'ng');
+  setTimeout(() => el.classList.remove('show'), 5000);
+}
+function escapeHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ---------- ログイン ----------
+async function doLogin(name, pass, silent){
+  showLoading('ログイン中…');
+  try{
+    session = { name, pass, role: 'user' };
+    const r = await api('login', { name, pass });
+    if (!r.ok){
+      session = null;
+      showScreen('screen-login');
+      if (!silent) flash('login-msg', r.error || 'ログインに失敗しました', false);
+      return;
+    }
+    session = { name: r.name, pass, role: r.role };
+    saveSession(session);
+    updateHeader();
+    await loadData();
+  }catch(err){
+    session = null;
+    showScreen('screen-login');
+    flash('login-msg', '通信エラー:GAS_URLの設定を確認してね', false);
+  }
+}
+document.getElementById('btn-login').addEventListener('click', () => {
+  const name = document.getElementById('login-name').value.trim();
+  const pass = document.getElementById('login-pass').value.trim();
+  if (!name || !pass){ flash('login-msg', 'ユーザー名とパスコードを入力してね', false); return; }
+  doLogin(name, pass, false);
+});
+document.getElementById('btn-logout').addEventListener('click', () => {
+  session = null;
+  clearSession();
+  updateHeader();
+  showScreen('screen-login');
+});
+function updateHeader(){
+  const box = document.getElementById('user-box');
+  if (session){
+    box.style.display = 'flex';
+    document.getElementById('user-name').textContent = session.name;
+    document.getElementById('btn-admin').style.display = session.role === 'admin' ? 'inline-block' : 'none';
+  } else {
+    box.style.display = 'none';
+  }
+}
+
+// ---------- データ読み込み ----------
+async function loadData(){
+  showLoading('課題を読み込み中…');
+  const [rt, rf] = await Promise.all([api('getTasks'), api('getFavorites')]);
+  if (!rt.ok){ showScreen('screen-login'); flash('login-msg', rt.error || '読み込みに失敗しました', false); return; }
+  ALL_TASKS = rt.tasks;
+  favoriteIds = new Set(rf.ok ? rf.ids : []);
+  setupStart();
+  showScreen('screen-start');
+}
+
+// ---------- スタート画面 ----------
+function setupStart(){
+  const cats = [...new Set(ALL_TASKS.map(q => q.category))];
+  const wrap = document.getElementById('category-chips');
+  wrap.innerHTML = '';
+  wrap.appendChild(makeCatChip('すべて', 'all', selectedCategory === 'all'));
+  cats.forEach(c => wrap.appendChild(makeCatChip(c, c, selectedCategory === c)));
+  if (![...cats, 'all'].includes(selectedCategory)) selectedCategory = 'all';
+
+  const dl = document.getElementById('category-list');
+  dl.innerHTML = '';
+  cats.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c;
+    dl.appendChild(o);
+  });
+
+  const nChoice = ALL_TASKS.filter(t => t.type === '選択').length;
+  const nWritten = ALL_TASKS.length - nChoice;
+  document.getElementById('data-info').textContent =
+    `課題:${ALL_TASKS.length}問(選択${nChoice}・記述${nWritten})/ お気に入り:${favoriteIds.size}`;
+}
+function makeCatChip(label, value, selected){
+  const b = document.createElement('button');
+  b.className = 'chip' + (selected ? ' selected' : '');
+  b.textContent = label;
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#category-chips .chip').forEach(x => x.classList.remove('selected'));
+    b.classList.add('selected');
+    selectedCategory = value;
+  });
+  return b;
+}
+document.getElementById('count-chips').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  document.querySelectorAll('#count-chips .chip').forEach(x => x.classList.remove('selected'));
+  b.classList.add('selected');
+  selectedCount = b.dataset.count === 'all' ? 'all' : parseInt(b.dataset.count, 10);
+});
+document.getElementById('scope-chips').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  document.querySelectorAll('#scope-chips .chip').forEach(x => x.classList.remove('selected'));
+  b.classList.add('selected');
+  selectedScope = b.dataset.scope;
+});
+document.getElementById('btn-start').addEventListener('click', () => {
+  let pool = ALL_TASKS;
+  if (selectedScope === 'fav') pool = pool.filter(q => favoriteIds.has(q.id));
+  if (selectedScope === 'choice') pool = pool.filter(q => q.type === '選択');
+  if (selectedScope === 'written') pool = pool.filter(q => q.type === '記述');
+  if (selectedCategory !== 'all') pool = pool.filter(q => q.category === selectedCategory);
+  if (pool.length === 0){
+    alert(selectedScope === 'fav'
+      ? 'お気に入りに課題がまだないよ。課題中に☆を押して登録してね'
+      : 'この条件に合う課題がありません');
+    return;
+  }
+  taskSet = shuffle(pool);
+  if (selectedCount !== 'all') taskSet = taskSet.slice(0, selectedCount);
+  currentIndex = 0; correctCount = 0; choiceTotal = 0; writtenCount = 0; wrongTasks = [];
+  showScreen('screen-task');
+  renderTask();
+});
+
+// ---------- 課題表示 ----------
+function renderTask(){
+  answered = false;
+  const q = taskSet[currentIndex];
+  document.getElementById('q-counter').textContent = `${currentIndex + 1} / ${taskSet.length}`;
+  document.getElementById('q-score').textContent = `選択正解 ${correctCount}`;
+  document.getElementById('progress-fill').style.width = `${(currentIndex / taskSet.length) * 100}%`;
+  document.getElementById('q-category').textContent = q.category;
+  document.getElementById('q-text').textContent = q.text;
+
+  const typeBadge = document.getElementById('q-type');
+  typeBadge.textContent = q.type;
+  typeBadge.className = 'q-type ' + (q.type === '選択' ? 'choice' : 'written');
+  renderFavButton(q);
+
+  const choicesWrap = document.getElementById('choices');
+  const writtenArea = document.getElementById('written-area');
+  choicesWrap.innerHTML = '';
+
+  if (q.type === '選択'){
+    writtenArea.classList.remove('show');
+    q.choices.forEach((c, i) => {
+      const b = document.createElement('button');
+      b.className = 'choice';
+      b.innerHTML = `<span class="num">${i + 1}</span><span>${escapeHtml(c)}</span>`;
+      b.addEventListener('click', () => answerChoice(i, b));
+      choicesWrap.appendChild(b);
+    });
+  } else {
+    writtenArea.classList.add('show');
+    document.getElementById('written-input').value = '';
+    document.getElementById('btn-submit-written').disabled = false;
+  }
+
+  document.getElementById('judge').className = 'judge';
+  document.getElementById('btn-next').style.display = 'none';
+}
+function renderFavButton(q){
+  const btn = document.getElementById('btn-fav');
+  const on = favoriteIds.has(q.id);
+  btn.textContent = on ? '★ お気に入り済' : '☆ お気に入り';
+  btn.className = 'btn-fav' + (on ? ' on' : '');
+}
+document.getElementById('btn-fav').addEventListener('click', async () => {
+  const q = taskSet[currentIndex];
+  if (favoriteIds.has(q.id)) favoriteIds.delete(q.id); else favoriteIds.add(q.id);
+  renderFavButton(q);
+  try{
+    const r = await api('toggleFavorite', { id: q.id });
+    if (r.ok){
+      if (r.favorited) favoriteIds.add(q.id); else favoriteIds.delete(q.id);
+    } else {
+      if (favoriteIds.has(q.id)) favoriteIds.delete(q.id); else favoriteIds.add(q.id);
+    }
+  }catch(e){
+    if (favoriteIds.has(q.id)) favoriteIds.delete(q.id); else favoriteIds.add(q.id);
+  }
+  renderFavButton(q);
+});
+
+// ---------- 選択問題の解答 ----------
+function answerChoice(i, btn){
+  if (answered) return;
+  answered = true;
+  const q = taskSet[currentIndex];
+  choiceTotal++;
+  const buttons = document.querySelectorAll('#choices .choice');
+  buttons.forEach(b => b.disabled = true);
+  const correctIdx = q.answer - 1;
+  buttons[correctIdx].classList.add('correct');
+
+  const judge = document.getElementById('judge');
+  const mark = document.getElementById('judge-mark');
+
+  if (i === correctIdx){
+    correctCount++;
+    judge.classList.add('ok', 'show');
+    mark.textContent = '○ 正解!';
+  } else {
+    btn.classList.add('wrong');
+    wrongTasks.push(q);
+    judge.classList.add('ng', 'show');
+    mark.textContent = `× 不正解(正解は ${q.answer})`;
+  }
+  document.getElementById('judge-text').textContent = q.explanation || '';
+  document.getElementById('q-score').textContent = `選択正解 ${correctCount}`;
+
+  // 記録として送信(失敗しても続行)
+  api('submitAnswer', { taskId: q.id, value: i + 1 }).catch(() => {});
+
+  showNextButton();
+}
+
+// ---------- 記述課題の提出 ----------
+document.getElementById('btn-submit-written').addEventListener('click', async () => {
+  if (answered) return;
+  const q = taskSet[currentIndex];
+  const value = document.getElementById('written-input').value.trim();
+  if (!value){ alert('回答を入力してね'); return; }
+  const btn = document.getElementById('btn-submit-written');
+  btn.disabled = true;
+  try{
+    const r = await api('submitAnswer', { taskId: q.id, value });
+    if (!r.ok){
+      alert(r.error || '提出に失敗しました');
+      btn.disabled = false;
+      return;
+    }
+    answered = true;
+    writtenCount++;
+    const judge = document.getElementById('judge');
+    judge.classList.add('info', 'show');
+    document.getElementById('judge-mark').textContent = '📝 提出したよ!管理者が確認するね';
+    document.getElementById('judge-text').textContent =
+      q.explanation ? '【模範解答・ポイント】\n' + q.explanation : '';
+    showNextButton();
+  }catch(e){
+    alert('通信エラーが発生しました');
+    btn.disabled = false;
+  }
+});
+
+function showNextButton(){
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = currentIndex + 1 < taskSet.length ? '次へ' : '結果を見る';
+  nextBtn.style.display = 'block';
+}
+document.getElementById('btn-next').addEventListener('click', () => {
+  if (currentIndex + 1 < taskSet.length){
+    currentIndex++;
+    renderTask();
+  } else {
+    showResult();
+  }
+});
+
+// ---------- 結果 ----------
+function showResult(){
+  showScreen('screen-result');
+  document.getElementById('result-score').textContent = correctCount;
+  document.getElementById('result-total').textContent = choiceTotal;
+
+  let msg;
+  if (choiceTotal === 0) msg = '記述課題おつかれさま!';
+  else {
+    const rate = correctCount / choiceTotal;
+    if (rate === 1)       msg = '選択問題オール正解!安全大臣!🏆';
+    else if (rate >= 0.8) msg = '合格ライン突破!この調子!';
+    else if (rate >= 0.6) msg = 'あと一歩!間違いを復習しよう';
+    else                  msg = '焦らずコツコツ。復習が近道!';
+  }
+  document.getElementById('result-msg').textContent = msg;
+  document.getElementById('result-written').textContent =
+    writtenCount > 0 ? `記述課題 ${writtenCount}件を提出済み(管理者確認待ち)` : '';
+
+  const retryBtn = document.getElementById('btn-retry-wrong');
+  const wrongCard = document.getElementById('wrong-card');
+  const list = document.getElementById('wrong-list');
+  list.innerHTML = '';
+
+  if (wrongTasks.length > 0){
+    retryBtn.style.display = 'block';
+    retryBtn.textContent = `間違えた${wrongTasks.length}問だけ復習`;
+    wrongCard.style.display = 'block';
+    wrongTasks.forEach(q => {
+      const d = document.createElement('div');
+      d.className = 'wrong-item';
+      d.innerHTML =
+        `<div class="wq">【${escapeHtml(q.category)}】${escapeHtml(q.text)}</div>` +
+        `<div class="wa">正解:${q.answer}. ${escapeHtml(q.choices[q.answer - 1])}</div>` +
+        (q.explanation ? `<div>${escapeHtml(q.explanation)}</div>` : '');
+      list.appendChild(d);
+    });
+  } else {
+    retryBtn.style.display = 'none';
+    wrongCard.style.display = 'none';
+  }
+}
+document.getElementById('btn-retry-wrong').addEventListener('click', () => {
+  taskSet = shuffle(wrongTasks.slice());
+  currentIndex = 0; correctCount = 0; choiceTotal = 0; writtenCount = 0; wrongTasks = [];
+  showScreen('screen-task');
+  renderTask();
+});
+document.getElementById('btn-home').addEventListener('click', () => {
+  setupStart();
+  showScreen('screen-start');
+});
+
+// ---------- 提出状況(自分) ----------
+document.getElementById('btn-mystatus').addEventListener('click', async () => {
+  showLoading('提出状況を読み込み中…');
+  try{
+    const r = await api('getMyAnswers');
+    const list = document.getElementById('mystatus-list');
+    const empty = document.getElementById('mystatus-empty');
+    list.innerHTML = '';
+    if (!r.ok || r.answers.length === 0){
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      r.answers.forEach(a => {
+        const st = a.judgment === '合格' ? 'pass' : (a.judgment === '要再提出' ? 'redo' : 'pending');
+        const stLabel = a.judgment === '未確認' ? '確認待ち' : a.judgment;
+        const d = document.createElement('div');
+        d.className = 'ans-item st-' + st;
+        d.innerHTML =
+          `<div class="meta">${escapeHtml(a.date)} / ${escapeHtml(a.taskId)}</div>` +
+          `<div class="tq">${escapeHtml(a.taskText)}</div>` +
+          `<div class="av">${escapeHtml(a.value)}</div>` +
+          `<span class="st-badge ${st}">${escapeHtml(stLabel)}</span>` +
+          (a.comment ? `<div style="margin-top:6px">💬 ${escapeHtml(a.comment)}</div>` : '');
+        list.appendChild(d);
+      });
+    }
+    showScreen('screen-mystatus');
+  }catch(e){
+    setupStart();
+    showScreen('screen-start');
+    alert('通信エラーが発生しました');
+  }
+});
+document.getElementById('btn-mystatus-back').addEventListener('click', () => {
+  setupStart();
+  showScreen('screen-start');
+});
+
+// ---------- 管理者:回答確認 ----------
+async function loadPending(){
+  const list = document.getElementById('pending-list');
+  const empty = document.getElementById('pending-empty');
+  list.innerHTML = '';
+  empty.style.display = 'none';
+  try{
+    const r = await api('getPendingAnswers');
+    if (!r.ok || r.answers.length === 0){
+      empty.style.display = 'block';
+      return;
+    }
+    r.answers.forEach(a => {
+      const d = document.createElement('div');
+      d.className = 'ans-item st-pending';
+      d.innerHTML =
+        `<div class="meta">${escapeHtml(a.date)} / ${escapeHtml(a.user)} / ${escapeHtml(a.taskId)}</div>` +
+        `<div class="tq">${escapeHtml(a.taskText)}</div>` +
+        `<div class="av">${escapeHtml(a.value)}</div>`;
+      const cm = document.createElement('input');
+      cm.type = 'text';
+      cm.placeholder = 'コメント(任意)';
+      cm.style.cssText = 'width:100%;border:2px solid var(--concrete-2);border-radius:8px;padding:8px;font-size:14px;font-family:inherit;margin-top:6px';
+      const row = document.createElement('div');
+      row.className = 'review-row';
+      const bp = document.createElement('button');
+      bp.className = 'btn-pass'; bp.textContent = '合格';
+      const br = document.createElement('button');
+      br.className = 'btn-redo'; br.textContent = '要再提出';
+      const send = async (judgment) => {
+        bp.disabled = true; br.disabled = true;
+        try{
+          const rr = await api('reviewAnswer', { answerId: a.answerId, judgment, comment: cm.value.trim() });
+          if (rr.ok){ d.remove(); if (!document.querySelector('#pending-list .ans-item')) empty.style.display = 'block'; }
+          else { alert(rr.error || '更新に失敗しました'); bp.disabled = false; br.disabled = false; }
+        }catch(e){ alert('通信エラーが発生しました'); bp.disabled = false; br.disabled = false; }
+      };
+      bp.addEventListener('click', () => send('合格'));
+      br.addEventListener('click', () => send('要再提出'));
+      row.appendChild(bp); row.appendChild(br);
+      d.appendChild(cm); d.appendChild(row);
+      list.appendChild(d);
+    });
+  }catch(e){
+    empty.style.display = 'block';
+  }
+}
+document.getElementById('btn-reload-pending').addEventListener('click', loadPending);
+document.getElementById('btn-admin').addEventListener('click', () => {
+  showScreen('screen-admin');
+  loadPending();
+});
+document.getElementById('btn-admin-back').addEventListener('click', () => {
+  setupStart();
+  showScreen('screen-start');
+});
+
+// ---------- 管理者:PDF生成 ----------
+let pdfMode = 'generate';
+document.getElementById('pdf-mode-chips').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  document.querySelectorAll('#pdf-mode-chips .chip').forEach(x => x.classList.remove('selected'));
+  b.classList.add('selected');
+  pdfMode = b.dataset.mode;
+  document.getElementById('pdf-count-field').style.display = pdfMode === 'generate' ? 'block' : 'none';
+});
+document.getElementById('btn-generate').addEventListener('click', async () => {
+  const file = document.getElementById('pdf-file').files[0];
+  if (!file){ flash('pdf-msg', 'PDFファイルを選んでね', false); return; }
+  if (file.size > 20 * 1024 * 1024){ flash('pdf-msg', 'PDFが大きすぎるよ(20MBまで推奨)', false); return; }
+
+  const btn = document.getElementById('btn-generate');
+  btn.disabled = true;
+  btn.textContent = 'AIが作成中…(1〜2分かかることも)';
+  try{
+    const base64 = await new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = () => rej(new Error('読み込み失敗'));
+      r.readAsDataURL(file);
+    });
+    const r = await api('generateFromPdf', {
+      mode: pdfMode,
+      count: parseInt(document.getElementById('pdf-count').value, 10) || 10,
+      category: document.getElementById('pdf-category').value.trim(),
+      pdfBase64: base64
+    });
+    if (!r.ok){
+      flash('pdf-msg', r.error || '生成に失敗しました', false);
+    } else {
+      previewItems = r.items;
+      renderPreview();
+    }
+  }catch(e){
+    flash('pdf-msg', '通信エラーが発生しました', false);
+  }
+  btn.disabled = false;
+  btn.textContent = 'AIで課題を作る';
+});
+function renderPreview(){
+  const area = document.getElementById('preview-area');
+  const list = document.getElementById('preview-list');
+  const nChoice = previewItems.filter(t => t.type === '選択').length;
+  document.getElementById('preview-info').textContent =
+    `${previewItems.length}問できたよ(選択${nChoice}・記述${previewItems.length - nChoice})。内容を確認してね:`;
+  list.innerHTML = '';
+  previewItems.forEach((t, idx) => {
+    const d = document.createElement('div');
+    d.className = 'prev-item';
+    let html = `<div class="pt">${idx + 1}.【${escapeHtml(t.type)}/${escapeHtml(t.category || '未分類')}】${escapeHtml(t.text)}</div>`;
+    if (t.type === '選択' && t.choices){
+      html += t.choices.map((c, i) =>
+        `<div>${i + 1 === Number(t.answer) ? '◎' : '・'}${i + 1}. ${escapeHtml(c)}</div>`).join('');
+    }
+    if (t.explanation) html += `<div style="color:#666">→ ${escapeHtml(t.explanation)}</div>`;
+    d.innerHTML = html;
+    list.appendChild(d);
+  });
+  area.style.display = 'block';
+  area.scrollIntoView({ behavior: 'smooth' });
+}
+document.getElementById('btn-preview-cancel').addEventListener('click', () => {
+  previewItems = [];
+  document.getElementById('preview-area').style.display = 'none';
+});
+document.getElementById('btn-register').addEventListener('click', async () => {
+  if (previewItems.length === 0) return;
+  const btn = document.getElementById('btn-register');
+  btn.disabled = true;
+  try{
+    const r = await api('registerTasks', { items: previewItems });
+    if (r.ok){
+      flash('pdf-msg', `${r.added}問登録したよ!` + (r.skipped ? `(${r.skipped}問スキップ)` : ''), true);
+      previewItems = [];
+      document.getElementById('preview-area').style.display = 'none';
+      const rt = await api('getTasks');
+      if (rt.ok){ ALL_TASKS = rt.tasks; setupStart(); showScreen('screen-admin'); }
+    } else {
+      flash('pdf-msg', r.error || '登録に失敗しました', false);
+    }
+  }catch(e){
+    flash('pdf-msg', '通信エラーが発生しました', false);
+  }
+  btn.disabled = false;
+});
+
+// ---------- 管理者:1問追加 ----------
+document.getElementById('add-type-chips').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  document.querySelectorAll('#add-type-chips .chip').forEach(x => x.classList.remove('selected'));
+  b.classList.add('selected');
+  addType = b.dataset.type;
+  document.getElementById('add-choice-fields').style.display = addType === '選択' ? 'block' : 'none';
+  document.getElementById('add-exp-label').textContent = addType === '選択' ? '解説(任意)' : '模範解答(任意)';
+});
+document.getElementById('btn-add').addEventListener('click', async () => {
+  const t = {
+    type: addType,
+    category: document.getElementById('add-category').value.trim(),
+    text: document.getElementById('add-text').value.trim(),
+    choices: [
+      document.getElementById('add-c1').value.trim(),
+      document.getElementById('add-c2').value.trim(),
+      document.getElementById('add-c3').value.trim(),
+      document.getElementById('add-c4').value.trim()
+    ],
+    answer: parseInt(document.getElementById('add-answer').value, 10),
+    explanation: document.getElementById('add-exp').value.trim()
+  };
+  if (!t.text){ flash('add-msg', '問題文を入力してね', false); return; }
+  if (t.type === '選択' && t.choices.some(c => !c)){
+    flash('add-msg', '選択肢1〜4は全部入力してね', false);
+    return;
+  }
+  const btn = document.getElementById('btn-add');
+  btn.disabled = true;
+  try{
+    const r = await api('addTask', { task: t });
+    if (r.ok){
+      flash('add-msg', `追加したよ!(${r.id})`, true);
+      ['add-text','add-c1','add-c2','add-c3','add-c4','add-exp'].forEach(id => document.getElementById(id).value = '');
+      const rt = await api('getTasks');
+      if (rt.ok){ ALL_TASKS = rt.tasks; setupStart(); showScreen('screen-admin'); }
+    } else {
+      flash('add-msg', r.error || '追加に失敗しました', false);
+    }
+  }catch(e){
+    flash('add-msg', '通信エラーが発生しました', false);
+  }
+  btn.disabled = false;
+});
+
+// ---------- 管理者:TSVインポート ----------
+document.getElementById('btn-import').addEventListener('click', async () => {
+  const tsv = document.getElementById('import-tsv').value;
+  if (!tsv.trim()){ flash('import-msg', 'TSVを貼り付けてね', false); return; }
+  const btn = document.getElementById('btn-import');
+  btn.disabled = true;
+  try{
+    const r = await api('importTsv', { tsv });
+    if (r.ok){
+      flash('import-msg', `${r.added}問追加したよ!` + (r.skipped ? `(${r.skipped}行スキップ)` : ''), true);
+      document.getElementById('import-tsv').value = '';
+      const rt = await api('getTasks');
+      if (rt.ok){ ALL_TASKS = rt.tasks; setupStart(); showScreen('screen-admin'); }
+    } else {
+      flash('import-msg', r.error || 'インポートに失敗しました', false);
+    }
+  }catch(e){
+    flash('import-msg', '通信エラーが発生しました', false);
+  }
+  btn.disabled = false;
+});
+
+// ---------- 管理者:削除 ----------
+document.getElementById('btn-delete').addEventListener('click', async () => {
+  const id = document.getElementById('del-id').value.trim();
+  if (!id){ flash('del-msg', '課題IDを入力してね', false); return; }
+  if (!confirm(`${id} を削除する?この操作は戻せないよ`)) return;
+  try{
+    const r = await api('deleteTask', { id });
+    if (r.ok){
+      flash('del-msg', `${id} を削除したよ`, true);
+      document.getElementById('del-id').value = '';
+      const rt = await api('getTasks');
+      if (rt.ok){ ALL_TASKS = rt.tasks; setupStart(); showScreen('screen-admin'); }
+    } else {
+      flash('del-msg', r.error || '削除に失敗しました', false);
+    }
+  }catch(e){
+    flash('del-msg', '通信エラーが発生しました', false);
+  }
+});
+
+// ---------- 初期化 ----------
+(function init(){
+  const saved = loadSessionSaved();
+  if (saved && saved.name && saved.pass){
+    doLogin(saved.name, saved.pass, true);
+  } else {
+    showScreen('screen-login');
+  }
+})();
+</script>
+</body>
+</html>
