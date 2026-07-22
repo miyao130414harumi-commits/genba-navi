@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>現場資料ビューア</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://script.google.com/macros/s/AKfycby1Wpbmef082kQGinFLL2QA_8wccqi-1HVr5hqX4sDR3ABs5ugWzeh9ZPyomb1c7HY7WQ/exec" allow="camera"></iframe>
+</body>
+</html>
