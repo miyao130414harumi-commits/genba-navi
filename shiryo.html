@@ -210,7 +210,7 @@
     <div class="login-box">
       <div class="login-logo"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="width:62%;height:62%;display:block;"><g fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"><path d="M104 158 C152 132 200 132 248 158 L248 372 C200 346 152 346 104 372 Z" fill="rgba(255,255,255,0.15)"/><path d="M392 158 C344 132 296 132 248 158 L248 372 C296 346 344 346 392 372 Z" fill="rgba(255,255,255,0.15)"/></g><g stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity="0.9"><line x1="140" y1="208" x2="208" y2="196"/><line x1="140" y1="254" x2="208" y2="242"/></g><g stroke="#ffffff" stroke-linecap="round" fill="none"><circle cx="318" cy="258" r="80" stroke-width="34" fill="rgba(67,56,202,0.45)"/><line x1="376" y1="316" x2="436" y2="376" stroke-width="42"/></g></svg></div>
       <div class="login-title">&#x793E;&#x5185;&#x8CC7;&#x6599;&#x30CA;&#x30EC;&#x30C3;&#x30B8;&#x691C;&#x7D22;&#x30B7;&#x30B9;&#x30C6;&#x30E0;</div>
-      <div class="login-sub">&#x793E;&#x54E1;&#x30ED;&#x30B0;&#x30A4;&#x30F3; <span style="color:#cbd5e1;">v10-Pages&#x7248;</span></div>
+      <div class="login-sub">&#x793E;&#x54E1;&#x30ED;&#x30B0;&#x30A4;&#x30F3; <span style="color:#cbd5e1;">v11-Pages&#x7248;</span></div>
       <div class="card">
         <div id="loginStatus"></div>
         <div class="field">
@@ -248,6 +248,7 @@
         <button class="nav-btn active" id="nav-listView" onclick="navTo('listView')">&#x8CC7;&#x6599;&#x691C;&#x7D22;</button>
         <button class="nav-btn hidden adminOnly" id="nav-editView" onclick="navToNew()">&#x8CC7;&#x6599;&#x767B;&#x9332;</button>
         <button class="nav-btn hidden adminOnly" id="nav-masterView" onclick="navTo('masterView')">&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x30FB;&#x30BF;&#x30B0;&#x7BA1;&#x7406;</button>
+        <button class="nav-btn hidden adminOnly" id="nav-memberView" onclick="navTo('memberView')">&#x30E1;&#x30F3;&#x30D0;&#x30FC;&#x7BA1;&#x7406;</button>
         <div class="sidebar-footer">
           <button class="nav-btn" onclick="doLogout()">&#x30ED;&#x30B0;&#x30A2;&#x30A6;&#x30C8;</button>
         </div>
@@ -388,6 +389,33 @@
               <button class="btn small" onclick="addMaster('tags')">&#x8FFD;&#x52A0;</button>
             </div>
             <div id="tagList" style="margin-top:10px;"></div>
+          </div>
+        </div>
+
+        <!-- ============ &#x30E1;&#x30F3;&#x30D0;&#x30FC;&#x7BA1;&#x7406;(&#x7BA1;&#x7406;&#x8005;&#x306E;&#x307F;) ============ -->
+        <div id="memberView" class="hidden">
+          <div class="page-head">
+            <div>
+              <h1>&#x30E1;&#x30F3;&#x30D0;&#x30FC;&#x7BA1;&#x7406;</h1>
+              <div class="subtitle">&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3067;&#x304D;&#x308B;&#x4EBA;&#x306E;&#x8FFD;&#x52A0;&#x30FB;&#x524A;&#x9664;&#x30FB;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x518D;&#x8A2D;&#x5B9A;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;</div>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom:16px;">
+            <div class="filter-title" style="margin-bottom:12px;">&#x65B0;&#x3057;&#x3044;&#x30E1;&#x30F3;&#x30D0;&#x30FC;&#x3092;&#x8FFD;&#x52A0;</div>
+            <div class="field"><label>&#x30ED;&#x30B0;&#x30A4;&#x30F3;ID(&#x534A;&#x89D2;)</label><input id="newMemId" placeholder="&#x4F8B;: tanaka"></div>
+            <div class="field"><label>&#x540D;&#x524D;</label><input id="newMemName" placeholder="&#x4F8B;: &#x7530;&#x4E2D;"></div>
+            <div class="field"><label>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;</label><input id="newMemPw" placeholder="&#x672C;&#x4EBA;&#x306B;&#x4F1D;&#x3048;&#x308B;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;"></div>
+            <div class="field"><label>&#x6A29;&#x9650;</label>
+              <select id="newMemRole">
+                <option value="staff">&#x793E;&#x54E1;(&#x691C;&#x7D22;&#x30FB;&#x95B2;&#x89A7;&#x306E;&#x307F;)</option>
+                <option value="admin">&#x7BA1;&#x7406;&#x8005;(&#x767B;&#x9332;&#x30FB;&#x7BA1;&#x7406;&#x3082;&#x3067;&#x304D;&#x308B;)</option>
+              </select>
+            </div>
+            <button class="btn wide" id="addMemBtn" onclick="addMemberUi()">&#x8FFD;&#x52A0;&#x3059;&#x308B;</button>
+          </div>
+          <div class="card">
+            <div class="filter-title" style="margin-bottom:12px;">&#x30E1;&#x30F3;&#x30D0;&#x30FC;&#x4E00;&#x89A7;</div>
+            <div id="memList"><span class="muted">&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x4E2D;...</span></div>
           </div>
         </div>
       </main>
@@ -560,20 +588,21 @@
 
     function navTo(id) {
       // \u7BA1\u7406\u8005\u5C02\u7528\u753B\u9762\u306E\u30AC\u30FC\u30C9(UI\u975E\u8868\u793A\u306B\u52A0\u3048\u3066\u30EB\u30FC\u30C8\u5074\u3067\u3082\u5F3E\u304F)
-      if ((id === 'editView' || id === 'masterView') && (!session || session.role !== 'admin')) {
+      if ((id === 'editView' || id === 'masterView' || id === 'memberView') && (!session || session.role !== 'admin')) {
         id = 'listView';
         setStatus('\u3053\u306E\u753B\u9762\u306F\u7BA1\u7406\u8005\u3060\u3051\u3060\u3088', false);
       }
-      ['listView', 'detailView', 'editView', 'masterView'].forEach(v => {
+      ['listView', 'detailView', 'editView', 'masterView', 'memberView'].forEach(v => {
         document.getElementById(v).classList.toggle('hidden', v !== id);
       });
-      ['listView', 'editView', 'masterView'].forEach(v => {
+      ['listView', 'editView', 'masterView', 'memberView'].forEach(v => {
         const btn = document.getElementById('nav-' + v);
         if (btn) btn.classList.toggle('active', v === id || (id === 'detailView' && v === 'listView'));
       });
       toggleSidebar(false);
       window.scrollTo(0, 0);
       if (id === 'masterView') renderMaster();
+      if (id === 'memberView') loadMembers();
     }
 
     function navToNew() { openEdit(null); }
@@ -999,6 +1028,87 @@
         render();
         setStatus('\u524A\u9664\u3057\u305F\u3088', true);
       }).catch(err => setStatus('\u30A8\u30E9\u30FC: ' + err.message, false));
+    }
+
+    // ============================================
+    // \u30E1\u30F3\u30D0\u30FC\u7BA1\u7406(\u7BA1\u7406\u8005\u306E\u307F)
+    // ============================================
+    let members = [];
+
+    function loadMembers() {
+      document.getElementById('memList').innerHTML = '<span class="muted">\u8AAD\u307F\u8FBC\u307F\u4E2D...</span>';
+      callApi({ action: 'listMembers' }).then(res => {
+        members = res.members || [];
+        renderMembers();
+      }).catch(err => {
+        document.getElementById('memList').innerHTML = '<span class="ng">\u8AAD\u307F\u8FBC\u307F\u5931\u6557: ' + esc(err.message) + '</span>';
+      });
+    }
+
+    function renderMembers() {
+      document.getElementById('memList').innerHTML = members.map((m, i) => `
+        <div class="list-item">
+          <span>
+            <span style="font-weight:600;">${esc(m.name)}</span>
+            <span class="muted" style="margin-left:6px;">${esc(m.id)}</span>
+            <span class="badge ${m.role === 'admin' ? '' : 'tag'}" style="margin-left:8px;">${m.role === 'admin' ? '\u7BA1\u7406\u8005' : '\u793E\u54E1'}</span>
+          </span>
+          <span class="row" style="gap:6px;">
+            <button class="btn secondary small" onclick="resetMemberPw(${i})">PW\u518D\u8A2D\u5B9A</button>
+            <button class="btn secondary small" onclick="toggleMemberRole(${i})">\u6A29\u9650\u5207\u66FF</button>
+            <button class="btn danger small" onclick="delMemberUi(${i})">\u524A\u9664</button>
+          </span>
+        </div>`).join('') || '<div class="muted">\u30E1\u30F3\u30D0\u30FC\u304C\u3044\u306A\u3044\u3088</div>';
+    }
+
+    function addMemberUi() {
+      const id = document.getElementById('newMemId').value.trim();
+      const name = document.getElementById('newMemName').value.trim();
+      const pw = document.getElementById('newMemPw').value;
+      const role = document.getElementById('newMemRole').value;
+      if (!id || !name || !pw) { setStatus('ID\u30FB\u540D\u524D\u30FB\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5165\u308C\u3066\u306D', false); return; }
+      const btn = document.getElementById('addMemBtn');
+      btn.disabled = true;
+      callApi({ action: 'addMember', data: { id: id, name: name, password: pw, role: role } }).then(() => {
+        btn.disabled = false;
+        document.getElementById('newMemId').value = '';
+        document.getElementById('newMemName').value = '';
+        document.getElementById('newMemPw').value = '';
+        setStatus(name + '\u3055\u3093\u3092\u8FFD\u52A0\u3057\u305F\u3088', true);
+        loadMembers();
+      }).catch(err => { btn.disabled = false; setStatus('\u8FFD\u52A0\u5931\u6557: ' + err.message, false); });
+    }
+
+    function resetMemberPw(i) {
+      const m = members[i];
+      if (!m) return;
+      const pw = prompt(m.name + '\u3055\u3093\u306E\u65B0\u3057\u3044\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\u306D');
+      if (!pw) return;
+      callApi({ action: 'updateMember', data: { id: m.id, password: pw } }).then(() => {
+        setStatus(m.name + '\u3055\u3093\u306E\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5909\u66F4\u3057\u305F\u3088\u3002\u672C\u4EBA\u306B\u4F1D\u3048\u3066\u306D', true);
+      }).catch(err => setStatus('\u5909\u66F4\u5931\u6557: ' + err.message, false));
+    }
+
+    function toggleMemberRole(i) {
+      const m = members[i];
+      if (!m) return;
+      const next = m.role === 'admin' ? 'staff' : 'admin';
+      const label = next === 'admin' ? '\u7BA1\u7406\u8005' : '\u793E\u54E1';
+      if (!confirm(m.name + '\u3055\u3093\u3092\u300C' + label + '\u300D\u306B\u5909\u66F4\u3059\u308B\uFF1F')) return;
+      callApi({ action: 'updateMember', data: { id: m.id, role: next } }).then(() => {
+        setStatus(m.name + '\u3055\u3093\u3092' + label + '\u306B\u3057\u305F\u3088', true);
+        loadMembers();
+      }).catch(err => setStatus('\u5909\u66F4\u5931\u6557: ' + err.message, false));
+    }
+
+    function delMemberUi(i) {
+      const m = members[i];
+      if (!m) return;
+      if (!confirm(m.name + '\u3055\u3093(' + m.id + ')\u3092\u524A\u9664\u3059\u308B\uFF1F\u30ED\u30B0\u30A4\u30F3\u3067\u304D\u306A\u304F\u306A\u308B\u3088')) return;
+      callApi({ action: 'delMember', data: { id: m.id } }).then(() => {
+        setStatus(m.name + '\u3055\u3093\u3092\u524A\u9664\u3057\u305F\u3088', true);
+        loadMembers();
+      }).catch(err => setStatus('\u524A\u9664\u5931\u6557: ' + err.message, false));
     }
 
     // ============================================
