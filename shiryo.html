@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>社内資料ナレッジ検索システム</title>
+  <title>&#x793E;&#x5185;&#x8CC7;&#x6599;&#x30CA;&#x30EC;&#x30C3;&#x30B8;&#x691C;&#x7D22;&#x30B7;&#x30B9;&#x30C6;&#x30E0;</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -19,7 +19,7 @@
     button:active { opacity: .85; }
     button:disabled { opacity: .5; cursor: default; }
 
-    /* ============ ログイン画面 ============ */
+    /* ============ &#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x753B;&#x9762; ============ */
     .login-wrap {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       padding: 24px 16px;
@@ -33,7 +33,7 @@
     .login-title { text-align: center; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
     .login-sub { text-align: center; font-size: 13px; color: var(--slate-500); margin: 6px 0 24px; }
 
-    /* ============ ヘッダー ============ */
+    /* ============ &#x30D8;&#x30C3;&#x30C0;&#x30FC; ============ */
     .topbar {
       position: sticky; top: 0; z-index: 20;
       background: #fff; border-bottom: 1px solid var(--slate-200);
@@ -60,7 +60,7 @@
     }
     .menu-btn:hover { background: var(--slate-100); }
 
-    /* ============ レイアウト ============ */
+    /* ============ &#x30EC;&#x30A4;&#x30A2;&#x30A6;&#x30C8; ============ */
     .layout { display: flex; min-height: calc(100vh - 60px); }
     .sidebar {
       width: 232px; background: #fff; border-right: 1px solid var(--slate-200);
@@ -79,7 +79,7 @@
 
     main { flex: 1; padding: 28px 24px; max-width: 1120px; margin: 0 auto; width: 100%; min-width: 0; }
 
-    /* ============ 共通パーツ ============ */
+    /* ============ &#x5171;&#x901A;&#x30D1;&#x30FC;&#x30C4; ============ */
     .page-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
     h1 { font-size: 24px; letter-spacing: -0.02em; }
     .subtitle { font-size: 13px; color: var(--slate-500); margin-top: 4px; }
@@ -102,7 +102,7 @@
       padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
     }
     input, select, textarea {
-      width: 100%; padding: 12px 14px; font-size: 16px; /* 16px以上でiOSのズーム暴発を防ぐ */
+      width: 100%; padding: 12px 14px; font-size: 16px; /* 16px&#x4EE5;&#x4E0A;&#x3067;iOS&#x306E;&#x30BA;&#x30FC;&#x30E0;&#x66B4;&#x767A;&#x3092;&#x9632;&#x3050; */
       border: 1px solid var(--slate-300); border-radius: 10px;
       background: #fff; color: var(--slate-900); font-family: inherit;
     }
@@ -111,7 +111,7 @@
     .field { margin-bottom: 16px; }
 
     .search-wrap { position: relative; margin-bottom: 16px; max-width: 640px; }
-    .search-wrap input { padding-left: 38px; }
+    .search-wrap input { padding-left: 14px; }
     .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--slate-500); font-size: 15px; }
 
     .filter-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
@@ -131,7 +131,7 @@
     }
     .chip.active { background: var(--indigo); color: #fff; border-color: var(--indigo); }
 
-    /* ============ 資料グリッド ============ */
+    /* ============ &#x8CC7;&#x6599;&#x30B0;&#x30EA;&#x30C3;&#x30C9; ============ */
     .grid {
       display: grid; gap: 16px; margin-top: 20px;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -147,7 +147,7 @@
     .doc-icon {
       width: 36px; height: 36px; border-radius: 10px; background: var(--indigo-bg);
       color: var(--indigo); display: flex; align-items: center; justify-content: center;
-      font-size: 17px; flex-shrink: 0;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
     }
     .doc-title { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .doc-desc { font-size: 13px; color: var(--slate-600); line-height: 1.7; }
@@ -185,7 +185,7 @@
     .mode-tab.active { background: var(--indigo-bg); color: var(--indigo-dark); border-color: var(--indigo); }
     .detail-title { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
 
-    /* ============ レスポンシブ ============ */
+    /* ============ &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B7;&#x30D6; ============ */
     @media (max-width: 900px) {
       .menu-btn { display: flex; align-items: center; justify-content: center; }
       .sidebar {
@@ -203,39 +203,39 @@
 </head>
 <body>
 
-  <!-- ============ ログイン画面(デフォルト表示。JSエラー時も白画面にならない) ============ -->
+  <!-- ============ &#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x753B;&#x9762;(&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x8868;&#x793A;&#x3002;JS&#x30A8;&#x30E9;&#x30FC;&#x6642;&#x3082;&#x767D;&#x753B;&#x9762;&#x306B;&#x306A;&#x3089;&#x306A;&#x3044;) ============ -->
   <div id="loginView" class="login-wrap">
     <div class="login-box">
-      <div class="login-logo">📚</div>
-      <div class="login-title">社内資料ナレッジ検索システム</div>
-      <div class="login-sub">社員ログイン <span style="color:#cbd5e1;">v3-Pages版</span></div>
+      <div class="login-logo">&#x8CC7;</div>
+      <div class="login-title">&#x793E;&#x5185;&#x8CC7;&#x6599;&#x30CA;&#x30EC;&#x30C3;&#x30B8;&#x691C;&#x7D22;&#x30B7;&#x30B9;&#x30C6;&#x30E0;</div>
+      <div class="login-sub">&#x793E;&#x54E1;&#x30ED;&#x30B0;&#x30A4;&#x30F3; <span style="color:#cbd5e1;">v5-Pages&#x7248;</span></div>
       <div class="card">
         <div id="loginStatus"></div>
         <div class="field">
-          <label>ログインID</label>
-          <input id="loginId" placeholder="IDを入力" autocomplete="username">
+          <label>&#x30ED;&#x30B0;&#x30A4;&#x30F3;ID</label>
+          <input id="loginId" placeholder="ID&#x3092;&#x5165;&#x529B;" autocomplete="username">
         </div>
         <div class="field">
-          <label>パスワード</label>
-          <input id="loginPw" type="password" placeholder="パスワードを入力" autocomplete="current-password">
+          <label>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;</label>
+          <input id="loginPw" type="password" placeholder="&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x5165;&#x529B;" autocomplete="current-password">
         </div>
-        <button class="btn wide" id="loginBtn" onclick="doLogin()">ログイン</button>
+        <button class="btn wide" id="loginBtn" onclick="doLogin()">&#x30ED;&#x30B0;&#x30A4;&#x30F3;</button>
       </div>
     </div>
   </div>
 
-  <!-- ============ アプリ本体 ============ -->
+  <!-- ============ &#x30A2;&#x30D7;&#x30EA;&#x672C;&#x4F53; ============ -->
   <div id="appShell" class="hidden">
     <div class="topbar">
       <div class="brand">
-        <button class="menu-btn" onclick="toggleSidebar(true)">☰</button>
-        <div class="brand-icon">📚</div>
-        <div class="brand-title">社内資料ナレッジ検索システム</div>
+        <button class="menu-btn" onclick="toggleSidebar(true)">&#x2630;</button>
+        <div class="brand-icon">&#x8CC7;</div>
+        <div class="brand-title">&#x793E;&#x5185;&#x8CC7;&#x6599;&#x30CA;&#x30EC;&#x30C3;&#x30B8;&#x691C;&#x7D22;&#x30B7;&#x30B9;&#x30C6;&#x30E0;</div>
       </div>
       <div class="topbar-right">
         <span class="user-name" id="userName"></span>
         <span class="role-badge" id="roleBadge"></span>
-        <button class="btn ghost small" onclick="doLogout()">ログアウト</button>
+        <button class="btn ghost small" onclick="doLogout()">&#x30ED;&#x30B0;&#x30A2;&#x30A6;&#x30C8;</button>
       </div>
     </div>
 
@@ -243,132 +243,131 @@
 
     <div class="layout">
       <nav class="sidebar" id="sidebar">
-        <button class="nav-btn active" id="nav-listView" onclick="navTo('listView')">🔍 資料検索</button>
-        <button class="nav-btn hidden adminOnly" id="nav-editView" onclick="navToNew()">⬆ 資料登録</button>
-        <button class="nav-btn hidden adminOnly" id="nav-masterView" onclick="navTo('masterView')">🗂 カテゴリ・タグ管理</button>
+        <button class="nav-btn active" id="nav-listView" onclick="navTo('listView')">&#x8CC7;&#x6599;&#x691C;&#x7D22;</button>
+        <button class="nav-btn hidden adminOnly" id="nav-editView" onclick="navToNew()">&#x8CC7;&#x6599;&#x767B;&#x9332;</button>
+        <button class="nav-btn hidden adminOnly" id="nav-masterView" onclick="navTo('masterView')">&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x30FB;&#x30BF;&#x30B0;&#x7BA1;&#x7406;</button>
         <div class="sidebar-footer">
-          <button class="nav-btn" onclick="doLogout()">🚪 ログアウト</button>
+          <button class="nav-btn" onclick="doLogout()">&#x30ED;&#x30B0;&#x30A2;&#x30A6;&#x30C8;</button>
         </div>
       </nav>
 
       <main>
         <div id="status"></div>
 
-        <!-- ============ 検索・一覧 ============ -->
+        <!-- ============ &#x691C;&#x7D22;&#x30FB;&#x4E00;&#x89A7; ============ -->
         <div id="listView">
           <div class="page-head">
             <div>
-              <h1>資料検索</h1>
-              <div class="subtitle">キーワード・カテゴリ・タグで社内資料を探せます</div>
+              <h1>&#x8CC7;&#x6599;&#x691C;&#x7D22;</h1>
+              <div class="subtitle">&#x30AD;&#x30FC;&#x30EF;&#x30FC;&#x30C9;&#x30FB;&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x30FB;&#x30BF;&#x30B0;&#x3067;&#x793E;&#x5185;&#x8CC7;&#x6599;&#x3092;&#x63A2;&#x305B;&#x307E;&#x3059;</div>
             </div>
-            <button class="btn hidden adminOnly" onclick="navToNew()">＋ 新規登録</button>
+            <button class="btn hidden adminOnly" onclick="navToNew()">&#xFF0B; &#x65B0;&#x898F;&#x767B;&#x9332;</button>
           </div>
 
           <div class="search-wrap">
-            <span class="search-icon">🔍</span>
-            <input id="keyword" placeholder="タイトル・説明・ファイル名で検索" oninput="onKeywordInput()">
+            <input id="keyword" placeholder="&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x30FB;&#x8AAC;&#x660E;&#x30FB;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3067;&#x691C;&#x7D22;" oninput="onKeywordInput()">
           </div>
 
           <div class="card">
             <div class="filter-head">
-              <div class="filter-title">🔽 絞り込み</div>
-              <button class="btn ghost small hidden" id="clearBtn" onclick="clearFilters()">✕ 条件をクリア</button>
+              <div class="filter-title">&#x7D5E;&#x308A;&#x8FBC;&#x307F;</div>
+              <button class="btn ghost small hidden" id="clearBtn" onclick="clearFilters()">&#x2715; &#x6761;&#x4EF6;&#x3092;&#x30AF;&#x30EA;&#x30A2;</button>
             </div>
-            <div class="filter-label">カテゴリ</div>
+            <div class="filter-label">&#x30AB;&#x30C6;&#x30B4;&#x30EA;</div>
             <select id="catFilter" onchange="render()"></select>
-            <div class="filter-label">🏷 タグ</div>
+            <div class="filter-label">&#x30BF;&#x30B0;</div>
             <div id="tagChips"></div>
           </div>
 
           <div id="docList" class="grid"></div>
-          <div id="emptyBox" class="empty hidden">📭 該当する資料が見つからなかったよ</div>
+          <div id="emptyBox" class="empty hidden">&#x8A72;&#x5F53;&#x3059;&#x308B;&#x8CC7;&#x6599;&#x304C;&#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x304B;&#x3063;&#x305F;&#x3088;</div>
         </div>
 
-        <!-- ============ 詳細 ============ -->
+        <!-- ============ &#x8A73;&#x7D30; ============ -->
         <div id="detailView" class="hidden">
           <div class="page-head">
-            <button class="btn secondary small" onclick="navTo('listView')">← 資料検索へ戻る</button>
+            <button class="btn secondary small" onclick="navTo('listView')">&#x2190; &#x8CC7;&#x6599;&#x691C;&#x7D22;&#x3078;&#x623B;&#x308B;</button>
             <div class="row hidden adminOnly">
-              <button class="btn secondary small" onclick="editCurrent()">✏ 編集</button>
-              <button class="btn danger small" onclick="deleteCurrent()">🗑 削除</button>
+              <button class="btn secondary small" onclick="editCurrent()">&#x7DE8;&#x96C6;</button>
+              <button class="btn danger small" onclick="deleteCurrent()">&#x524A;&#x9664;</button>
             </div>
           </div>
           <div class="card">
             <div id="detailBody"></div>
             <div style="margin-top:16px;">
-              <button class="btn" id="downloadBtn" onclick="openFile()">⬇ ダウンロード / 開く</button>
+              <button class="btn" id="downloadBtn" onclick="openFile()">&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9; / &#x958B;&#x304F;</button>
             </div>
           </div>
         </div>
 
-        <!-- ============ 登録・編集(管理者のみ) ============ -->
+        <!-- ============ &#x767B;&#x9332;&#x30FB;&#x7DE8;&#x96C6;(&#x7BA1;&#x7406;&#x8005;&#x306E;&#x307F;) ============ -->
         <div id="editView" class="hidden">
           <div class="page-head">
-            <button class="btn secondary small" onclick="navTo('listView')">← 資料検索へ戻る</button>
+            <button class="btn secondary small" onclick="navTo('listView')">&#x2190; &#x8CC7;&#x6599;&#x691C;&#x7D22;&#x3078;&#x623B;&#x308B;</button>
           </div>
           <div class="card" style="max-width:680px;">
-            <h1 id="editTitle" style="font-size:20px; margin-bottom:16px;">資料の新規登録</h1>
+            <h1 id="editTitle" style="font-size:20px; margin-bottom:16px;">&#x8CC7;&#x6599;&#x306E;&#x65B0;&#x898F;&#x767B;&#x9332;</h1>
 
             <div class="mode-tabs">
-              <button class="mode-tab active" id="modeFile" onclick="setMode('file')">📎 ファイルを登録</button>
-              <button class="mode-tab" id="modeUrl" onclick="setMode('url')">🔗 外部URLを登録</button>
+              <button class="mode-tab active" id="modeFile" onclick="setMode('file')">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x767B;&#x9332;</button>
+              <button class="mode-tab" id="modeUrl" onclick="setMode('url')">&#x5916;&#x90E8;URL&#x3092;&#x767B;&#x9332;</button>
             </div>
 
             <div id="fileMode">
               <div class="file-drop" id="fileDrop" onclick="document.getElementById('fileInput').click()">
-                タップしてPDF・画像を選択
+                &#x30BF;&#x30C3;&#x30D7;&#x3057;&#x3066;PDF&#x30FB;&#x753B;&#x50CF;&#x3092;&#x9078;&#x629E;
               </div>
               <input type="file" id="fileInput" accept="application/pdf,image/*" class="hidden" onchange="onFilePicked(this.files[0])">
             </div>
 
             <div id="urlMode" class="hidden">
               <div class="field">
-                <label>資料のURL(PDF直リンクや公開ページ)</label>
+                <label>&#x8CC7;&#x6599;&#x306E;URL(PDF&#x76F4;&#x30EA;&#x30F3;&#x30AF;&#x3084;&#x516C;&#x958B;&#x30DA;&#x30FC;&#x30B8;)</label>
                 <input id="fUrl" placeholder="https://example.go.jp/xxx.pdf" inputmode="url">
               </div>
             </div>
 
             <div class="field">
-              <label>タイトル</label>
-              <input id="fTitle" placeholder="例: 新人研修マニュアル2026">
+              <label>&#x30BF;&#x30A4;&#x30C8;&#x30EB;</label>
+              <input id="fTitle" placeholder="&#x4F8B;: &#x65B0;&#x4EBA;&#x7814;&#x4FEE;&#x30DE;&#x30CB;&#x30E5;&#x30A2;&#x30EB;2026">
             </div>
             <div class="field">
-              <label>説明文</label>
-              <textarea id="fDesc" rows="3" placeholder="資料の概要"></textarea>
+              <label>&#x8AAC;&#x660E;&#x6587;</label>
+              <textarea id="fDesc" rows="3" placeholder="&#x8CC7;&#x6599;&#x306E;&#x6982;&#x8981;"></textarea>
             </div>
             <div class="field">
-              <label>カテゴリ</label>
+              <label>&#x30AB;&#x30C6;&#x30B4;&#x30EA;</label>
               <select id="fCat"></select>
             </div>
             <div class="field">
-              <label>タグ(タップで選択)</label>
+              <label>&#x30BF;&#x30B0;(&#x30BF;&#x30C3;&#x30D7;&#x3067;&#x9078;&#x629E;)</label>
               <div id="fTags"></div>
             </div>
-            <button class="btn wide" id="saveBtn" onclick="saveDoc()">保存する</button>
+            <button class="btn wide" id="saveBtn" onclick="saveDoc()">&#x4FDD;&#x5B58;&#x3059;&#x308B;</button>
           </div>
         </div>
 
-        <!-- ============ マスタ管理(管理者のみ) ============ -->
+        <!-- ============ &#x30DE;&#x30B9;&#x30BF;&#x7BA1;&#x7406;(&#x7BA1;&#x7406;&#x8005;&#x306E;&#x307F;) ============ -->
         <div id="masterView" class="hidden">
           <div class="page-head">
             <div>
-              <h1>カテゴリ・タグ管理</h1>
-              <div class="subtitle">資料のカテゴリとタグを追加・削除できます</div>
+              <h1>&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x30FB;&#x30BF;&#x30B0;&#x7BA1;&#x7406;</h1>
+              <div class="subtitle">&#x8CC7;&#x6599;&#x306E;&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x3068;&#x30BF;&#x30B0;&#x3092;&#x8FFD;&#x52A0;&#x30FB;&#x524A;&#x9664;&#x3067;&#x304D;&#x307E;&#x3059;</div>
             </div>
           </div>
           <div class="card" style="margin-bottom:16px;">
-            <div class="filter-title" style="margin-bottom:12px;">🗂 カテゴリ</div>
+            <div class="filter-title" style="margin-bottom:12px;">&#x30AB;&#x30C6;&#x30B4;&#x30EA;</div>
             <div class="row">
-              <input id="newCat" placeholder="例: 営業マニュアル">
-              <button class="btn small" onclick="addMaster('cats')">追加</button>
+              <input id="newCat" placeholder="&#x4F8B;: &#x55B6;&#x696D;&#x30DE;&#x30CB;&#x30E5;&#x30A2;&#x30EB;">
+              <button class="btn small" onclick="addMaster('cats')">&#x8FFD;&#x52A0;</button>
             </div>
             <div id="catList" style="margin-top:10px;"></div>
           </div>
           <div class="card">
-            <div class="filter-title" style="margin-bottom:12px;">🏷 タグ</div>
+            <div class="filter-title" style="margin-bottom:12px;">&#x30BF;&#x30B0;</div>
             <div class="row">
-              <input id="newTag" placeholder="例: 新人向け">
-              <button class="btn small" onclick="addMaster('tags')">追加</button>
+              <input id="newTag" placeholder="&#x4F8B;: &#x65B0;&#x4EBA;&#x5411;&#x3051;">
+              <button class="btn small" onclick="addMaster('tags')">&#x8FFD;&#x52A0;</button>
             </div>
             <div id="tagList" style="margin-top:10px;"></div>
           </div>
@@ -379,17 +378,15 @@
 
   <script>
     // ============================================
-    // GAS直デプロイなら空のまま。
-    // GitHub Pages側から使うならWebアプリURLを入れる
+    // GAS\u76F4\u30C7\u30D7\u30ED\u30A4\u306A\u3089\u7A7A\u306E\u307E\u307E\u3002
+    // GitHub Pages\u5074\u304B\u3089\u4F7F\u3046\u306A\u3089Web\u30A2\u30D7\u30EAURL\u3092\u5165\u308C\u308B
     // ============================================
-    // ★GitHub Pages用: ここにGASのWebアプリURL(…/exec)を入れる
-    // ※「資料ナレッジ検索システム」のコードを貼った方のプロジェクトのURLだよ
     const GAS_URL = 'https://script.google.com/macros/s/AKfycbzPd0Ijfy7mm8N78_yHC5cpp-3KK_Sf0RX3O3aWOvqalYkDgwf5LilGWIUMsYt_i_INJw/exec';
 
-    // JSエラーが起きたら白画面にせず内容を表示する
+    // JS\u30A8\u30E9\u30FC\u304C\u8D77\u304D\u305F\u3089\u767D\u753B\u9762\u306B\u305B\u305A\u5185\u5BB9\u3092\u8868\u793A\u3059\u308B
     window.onerror = function (msg, src, line) {
       const el = document.getElementById('loginStatus');
-      if (el) { el.textContent = 'エラー: ' + msg + ' (行' + line + ')'; el.className = 'ng'; }
+      if (el) { el.textContent = '\u30A8\u30E9\u30FC: ' + msg + ' (\u884C' + line + ')'; el.className = 'ng'; }
     };
 
     function storageSet(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
@@ -408,7 +405,7 @@
     try { session = JSON.parse(sessionStorage.getItem('session') || 'null'); } catch (e) { session = null; }
 
     // ============================================
-    // API呼び出し(GAS直 / fetch 両対応)
+    // API\u547C\u3073\u51FA\u3057(GAS\u76F4 / fetch \u4E21\u5BFE\u5FDC)
     // ============================================
     function callApi(req) {
       if (session && session.token) req.token = session.token;
@@ -424,7 +421,7 @@
         });
       } else {
         if (typeof google === 'undefined') {
-          return Promise.reject(new Error('GAS_URLが未設定だよ。GitHub Pagesから使うときはファイル冒頭のGAS_URLにWebアプリURLを入れてね'));
+          return Promise.reject(new Error('GAS_URL\u304C\u672A\u8A2D\u5B9A\u3060\u3088\u3002GitHub Pages\u304B\u3089\u4F7F\u3046\u3068\u304D\u306F\u30D5\u30A1\u30A4\u30EB\u5192\u982D\u306EGAS_URL\u306BWeb\u30A2\u30D7\u30EAURL\u3092\u5165\u308C\u3066\u306D'));
         }
         p = new Promise((resolve, reject) => {
           google.script.run
@@ -434,10 +431,10 @@
         });
       }
       return p.catch(err => {
-        // セッション切れなら強制ログアウト
-        if (/セッション|ログインが必要/.test(err.message)) {
+        // \u30BB\u30C3\u30B7\u30E7\u30F3\u5207\u308C\u306A\u3089\u5F37\u5236\u30ED\u30B0\u30A2\u30A6\u30C8
+        if (/\u30BB\u30C3\u30B7\u30E7\u30F3|\u30ED\u30B0\u30A4\u30F3\u304C\u5FC5\u8981/.test(err.message)) {
           clearSession();
-          showLogin('セッションが切れたよ。ログインしなおしてね');
+          showLogin('\u30BB\u30C3\u30B7\u30E7\u30F3\u304C\u5207\u308C\u305F\u3088\u3002\u30ED\u30B0\u30A4\u30F3\u3057\u306A\u304A\u3057\u3066\u306D');
         }
         throw err;
       });
@@ -465,13 +462,13 @@
     }
 
     function docIcon(d) {
-      if (d.fileType === 'pdf') return '📄';
-      if (d.fileType === 'image') return '🖼';
-      return '🔗';
+      if (d.fileType === 'pdf') return 'PDF';
+      if (d.fileType === 'image') return '\u753B\u50CF';
+      return 'URL';
     }
 
     // ============================================
-    // ログイン・ログアウト
+    // \u30ED\u30B0\u30A4\u30F3\u30FB\u30ED\u30B0\u30A2\u30A6\u30C8
     // ============================================
     function showLogin(msg) {
       document.getElementById('loginView').classList.remove('hidden');
@@ -487,7 +484,7 @@
       document.getElementById('userName').textContent = session.name;
       const badge = document.getElementById('roleBadge');
       const isAdmin = session.role === 'admin';
-      badge.textContent = isAdmin ? '管理者' : '社員';
+      badge.textContent = isAdmin ? '\u7BA1\u7406\u8005' : '\u793E\u54E1';
       badge.classList.toggle('staff', !isAdmin);
       document.querySelectorAll('.adminOnly').forEach(el => el.classList.toggle('hidden', !isAdmin));
       navTo('listView');
@@ -503,11 +500,11 @@
       const id = document.getElementById('loginId').value.trim();
       const pw = document.getElementById('loginPw').value;
       const st = document.getElementById('loginStatus');
-      if (!id || !pw) { st.textContent = 'IDとパスワードを入力してね'; st.className = 'ng'; return; }
+      if (!id || !pw) { st.textContent = 'ID\u3068\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5165\u529B\u3057\u3066\u306D'; st.className = 'ng'; return; }
 
       const btn = document.getElementById('loginBtn');
       btn.disabled = true;
-      st.textContent = 'ログイン中...';
+      st.textContent = '\u30ED\u30B0\u30A4\u30F3\u4E2D...';
       st.className = 'ok';
 
       callApi({ action: 'login', data: { id: id, password: pw } }).then(res => {
@@ -534,7 +531,7 @@
     }
 
     // ============================================
-    // 画面切替・サイドバー
+    // \u753B\u9762\u5207\u66FF\u30FB\u30B5\u30A4\u30C9\u30D0\u30FC
     // ============================================
     function toggleSidebar(open) {
       document.getElementById('sidebar').classList.toggle('open', open);
@@ -542,10 +539,10 @@
     }
 
     function navTo(id) {
-      // 管理者専用画面のガード(UI非表示に加えてルート側でも弾く)
+      // \u7BA1\u7406\u8005\u5C02\u7528\u753B\u9762\u306E\u30AC\u30FC\u30C9(UI\u975E\u8868\u793A\u306B\u52A0\u3048\u3066\u30EB\u30FC\u30C8\u5074\u3067\u3082\u5F3E\u304F)
       if ((id === 'editView' || id === 'masterView') && (!session || session.role !== 'admin')) {
         id = 'listView';
-        setStatus('この画面は管理者だけだよ', false);
+        setStatus('\u3053\u306E\u753B\u9762\u306F\u7BA1\u7406\u8005\u3060\u3051\u3060\u3088', false);
       }
       ['listView', 'detailView', 'editView', 'masterView'].forEach(v => {
         document.getElementById(v).classList.toggle('hidden', v !== id);
@@ -562,28 +559,28 @@
     function navToNew() { openEdit(null); }
 
     // ============================================
-    // データ読み込み・一覧描画
+    // \u30C7\u30FC\u30BF\u8AAD\u307F\u8FBC\u307F\u30FB\u4E00\u89A7\u63CF\u753B
     // ============================================
     function load() {
-      setStatus('読み込み中...', true);
+      setStatus('\u8AAD\u307F\u8FBC\u307F\u4E2D...', true);
       callApi({ action: 'listAll' }).then(res => {
         all = res;
         setStatus('', true);
         renderFilters();
         render();
-      }).catch(err => setStatus('読み込み失敗: ' + err.message, false));
+      }).catch(err => setStatus('\u8AAD\u307F\u8FBC\u307F\u5931\u6557: ' + err.message, false));
     }
 
     function renderFilters() {
       const catSel = document.getElementById('catFilter');
       const cur = catSel.value;
-      catSel.innerHTML = '<option value="">すべてのカテゴリ</option>' +
+      catSel.innerHTML = '<option value="">\u3059\u3079\u3066\u306E\u30AB\u30C6\u30B4\u30EA</option>' +
         all.cats.map(c => `<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');
       catSel.value = cur;
 
       document.getElementById('tagChips').innerHTML = all.tags.map(t =>
         `<span class="chip ${selTagIds.has(t.id) ? 'active' : ''}" onclick="toggleTag('${esc(t.id)}')">${esc(t.name)}</span>`
-      ).join('') || '<span class="muted">タグはまだないよ</span>';
+      ).join('') || '<span class="muted">\u30BF\u30B0\u306F\u307E\u3060\u306A\u3044\u3088</span>';
     }
 
     function toggleTag(id) {
@@ -637,20 +634,20 @@
         <button class="doc-card" onclick="openDetail('${esc(d.id)}')">
           <div class="doc-head">
             <div class="doc-icon">${docIcon(d)}</div>
-            <div class="doc-title">${esc(d.title) || '無題の資料'}</div>
+            <div class="doc-title">${esc(d.title) || '\u7121\u984C\u306E\u8CC7\u6599'}</div>
           </div>
           <div>
             ${d.categoryId && catName(d.categoryId) ? `<span class="badge">${esc(catName(d.categoryId))}</span>` : ''}
             ${d.tagIds.map(tid => tagName(tid) ? ` <span class="badge tag">${esc(tagName(tid))}</span>` : '').join('')}
-            ${!d.fileId && d.url ? ' <span class="badge link">外部リンク</span>' : ''}
+            ${!d.fileId && d.url ? ' <span class="badge link">\u5916\u90E8\u30EA\u30F3\u30AF</span>' : ''}
           </div>
-          ${d.description ? `<div class="doc-desc">${esc(d.description.length > 80 ? d.description.slice(0, 80) + '…' : d.description)}</div>` : ''}
-          <div class="doc-meta">📅 ${fmtDate(d.registeredAt)}</div>
+          ${d.description ? `<div class="doc-desc">${esc(d.description.length > 80 ? d.description.slice(0, 80) + '\u2026' : d.description)}</div>` : ''}
+          <div class="doc-meta">${fmtDate(d.registeredAt)}</div>
         </button>`).join('');
     }
 
     // ============================================
-    // 詳細
+    // \u8A73\u7D30
     // ============================================
     function previewHtml(d) {
       if (d.fileId) {
@@ -662,9 +659,9 @@
           ? 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(d.url)
           : d.url;
         return `<iframe class="preview-frame" src="${esc(src)}"></iframe>
-          <div class="muted" style="margin-top:6px;">※サイト側の設定によっては埋め込み表示できないことがあるよ。その場合は下のボタンから開いてね。</div>`;
+          <div class="muted" style="margin-top:6px;">\u203B\u30B5\u30A4\u30C8\u5074\u306E\u8A2D\u5B9A\u306B\u3088\u3063\u3066\u306F\u57CB\u3081\u8FBC\u307F\u8868\u793A\u3067\u304D\u306A\u3044\u3053\u3068\u304C\u3042\u308B\u3088\u3002\u305D\u306E\u5834\u5408\u306F\u4E0B\u306E\u30DC\u30BF\u30F3\u304B\u3089\u958B\u3044\u3066\u306D\u3002</div>`;
       }
-      return '<div class="empty" style="margin-top:12px;">プレビューできるファイルがないよ</div>';
+      return '<div class="empty" style="margin-top:12px;">\u30D7\u30EC\u30D3\u30E5\u30FC\u3067\u304D\u308B\u30D5\u30A1\u30A4\u30EB\u304C\u306A\u3044\u3088</div>';
     }
 
     function openDetail(id) {
@@ -679,12 +676,12 @@
         <div style="margin-bottom:8px;">
           ${d.categoryId && catName(d.categoryId) ? `<span class="badge">${esc(catName(d.categoryId))}</span>` : ''}
           ${d.tagIds.map(tid => tagName(tid) ? ` <span class="badge tag">${esc(tagName(tid))}</span>` : '').join('')}
-          ${!d.fileId && d.url ? ' <span class="badge link">外部リンク</span>' : ''}
+          ${!d.fileId && d.url ? ' <span class="badge link">\u5916\u90E8\u30EA\u30F3\u30AF</span>' : ''}
         </div>
         <div class="doc-meta" style="margin-bottom:12px;">
-          📅 登録日: ${fmtDate(d.registeredAt)}
-          ${d.fileName ? ' &nbsp;📎 ' + esc(d.fileName) : ''}
-          ${!d.fileId && d.url ? ' &nbsp;🔗 ' + esc(d.url) : ''}
+          \u767B\u9332\u65E5: ${fmtDate(d.registeredAt)}
+          ${d.fileName ? ' &nbsp;\u6DFB\u4ED8: ' + esc(d.fileName) : ''}
+          ${!d.fileId && d.url ? ' &nbsp;URL: ' + esc(d.url) : ''}
         </div>
         ${d.description ? `<div class="doc-desc" style="white-space:pre-wrap; margin-bottom:14px;">${esc(d.description)}</div>` : ''}
         ${previewHtml(d)}
@@ -706,17 +703,17 @@
 
     function deleteCurrent() {
       if (!currentDoc) return;
-      if (!confirm('「' + currentDoc.title + '」を削除する？(アップロード済みファイルはドライブのゴミ箱に移動)')) return;
-      setStatus('削除中...', true);
+      if (!confirm('\u300C' + currentDoc.title + '\u300D\u3092\u524A\u9664\u3059\u308B\uFF1F(\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u6E08\u307F\u30D5\u30A1\u30A4\u30EB\u306F\u30C9\u30E9\u30A4\u30D6\u306E\u30B4\u30DF\u7BB1\u306B\u79FB\u52D5)')) return;
+      setStatus('\u524A\u9664\u4E2D...', true);
       callApi({ action: 'deleteDoc', data: { id: currentDoc.id } }).then(() => {
-        setStatus('削除したよ', true);
+        setStatus('\u524A\u9664\u3057\u305F\u3088', true);
         navTo('listView');
         load();
-      }).catch(err => setStatus('エラー: ' + err.message, false));
+      }).catch(err => setStatus('\u30A8\u30E9\u30FC: ' + err.message, false));
     }
 
     // ============================================
-    // 登録・編集
+    // \u767B\u9332\u30FB\u7DE8\u96C6
     // ============================================
     function setMode(mode) {
       editMode = mode;
@@ -730,29 +727,29 @@
       editingId = id;
       uploadedFile = null;
       const doc = id ? all.docs.find(d => d.id === id) : null;
-      document.getElementById('editTitle').textContent = doc ? '資料の編集' : '資料の新規登録';
+      document.getElementById('editTitle').textContent = doc ? '\u8CC7\u6599\u306E\u7DE8\u96C6' : '\u8CC7\u6599\u306E\u65B0\u898F\u767B\u9332';
       document.getElementById('fTitle').value = doc ? doc.title : '';
       document.getElementById('fDesc').value = doc ? doc.description : '';
       document.getElementById('fUrl').value = doc ? doc.url : '';
 
-      document.getElementById('fCat').innerHTML = '<option value="">カテゴリを選択</option>' +
+      document.getElementById('fCat').innerHTML = '<option value="">\u30AB\u30C6\u30B4\u30EA\u3092\u9078\u629E</option>' +
         all.cats.map(c => `<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');
       document.getElementById('fCat').value = doc ? doc.categoryId : '';
 
       const selected = new Set(doc ? doc.tagIds : []);
       document.getElementById('fTags').innerHTML = all.tags.map(t =>
         `<span class="chip ${selected.has(t.id) ? 'active' : ''}" data-tid="${esc(t.id)}" onclick="this.classList.toggle('active')">${esc(t.name)}</span>`
-      ).join('') || '<span class="muted">タグはマスタ管理から追加してね</span>';
+      ).join('') || '<span class="muted">\u30BF\u30B0\u306F\u30DE\u30B9\u30BF\u7BA1\u7406\u304B\u3089\u8FFD\u52A0\u3057\u3066\u306D</span>';
 
       if (doc && doc.fileId) {
         uploadedFile = { fileId: doc.fileId, fileName: doc.fileName, fileType: doc.fileType };
-        setDropLabel('📎 ' + doc.fileName + '(タップで差し替え)', true);
+        setDropLabel(doc.fileName + ' (\u30BF\u30C3\u30D7\u3067\u5DEE\u3057\u66FF\u3048)', true);
         setMode('file');
       } else if (doc && doc.url) {
-        setDropLabel('タップしてPDF・画像を選択', false);
+        setDropLabel('\u30BF\u30C3\u30D7\u3057\u3066PDF\u30FB\u753B\u50CF\u3092\u9078\u629E', false);
         setMode('url');
       } else {
-        setDropLabel('タップしてPDF・画像を選択', false);
+        setDropLabel('\u30BF\u30C3\u30D7\u3057\u3066PDF\u30FB\u753B\u50CF\u3092\u9078\u629E', false);
         setMode('file');
       }
       navTo('editView');
@@ -769,49 +766,49 @@
       const name = (file.name || '').toLowerCase();
       if (mime.includes('pdf') || name.endsWith('.pdf')) return 'pdf';
       if (mime.startsWith('image/') || /\.(png|jpe?g|gif|webp)$/.test(name)) return 'image';
-      return null; // 対応外は弾く
+      return null; // \u5BFE\u5FDC\u5916\u306F\u5F3E\u304F
     }
 
     function onFilePicked(file) {
       if (!file) return;
       const type = detectFileType(file);
-      if (!type) { setStatus('PDFか画像だけ登録できるよ', false); return; }
-      if (file.size > 15 * 1024 * 1024) { setStatus('15MBまでにしてね', false); return; }
+      if (!type) { setStatus('PDF\u304B\u753B\u50CF\u3060\u3051\u767B\u9332\u3067\u304D\u308B\u3088', false); return; }
+      if (file.size > 15 * 1024 * 1024) { setStatus('15MB\u307E\u3067\u306B\u3057\u3066\u306D', false); return; }
 
-      setDropLabel('⏳ アップロード中...', false);
+      setDropLabel('\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u4E2D...', false);
       const reader = new FileReader();
       reader.onload = () => {
         const base64 = reader.result.split(',')[1];
         callApi({ action: 'upload', data: { base64: base64, mimeType: file.type || 'application/octet-stream', fileName: file.name } })
           .then(res => {
             uploadedFile = { fileId: res.fileId, fileName: res.fileName, fileType: type };
-            setDropLabel('📎 ' + res.fileName + '(タップで差し替え)', true);
-            setStatus('アップロードしたよ', true);
+            setDropLabel(res.fileName + ' (\u30BF\u30C3\u30D7\u3067\u5DEE\u3057\u66FF\u3048)', true);
+            setStatus('\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u3057\u305F\u3088', true);
           })
           .catch(err => {
-            setDropLabel('タップしてPDF・画像を選択', false);
-            setStatus('アップロード失敗: ' + err.message, false);
+            setDropLabel('\u30BF\u30C3\u30D7\u3057\u3066PDF\u30FB\u753B\u50CF\u3092\u9078\u629E', false);
+            setStatus('\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u5931\u6557: ' + err.message, false);
           });
       };
-      reader.onerror = () => setStatus('ファイルの読み込みに失敗したよ', false);
+      reader.onerror = () => setStatus('\u30D5\u30A1\u30A4\u30EB\u306E\u8AAD\u307F\u8FBC\u307F\u306B\u5931\u6557\u3057\u305F\u3088', false);
       reader.readAsDataURL(file);
     }
 
     function saveDoc() {
       const title = document.getElementById('fTitle').value.trim();
-      if (!title) { setStatus('タイトルを入れてね', false); return; }
+      if (!title) { setStatus('\u30BF\u30A4\u30C8\u30EB\u3092\u5165\u308C\u3066\u306D', false); return; }
 
       let data;
       if (editMode === 'url') {
         const url = document.getElementById('fUrl').value.trim();
-        if (!url) { setStatus('URLを入れてね', false); return; }
-        if (!/^https?:\/\//i.test(url)) { setStatus('URLは https:// から入れてね', false); return; }
+        if (!url) { setStatus('URL\u3092\u5165\u308C\u3066\u306D', false); return; }
+        if (!/^https?:\/\//i.test(url)) { setStatus('URL\u306F https:// \u304B\u3089\u5165\u308C\u3066\u306D', false); return; }
         data = {
           fileType: /\.pdf($|\?)/i.test(url) ? 'pdf' : 'link',
           fileId: '', fileName: '', url: url,
         };
       } else {
-        if (!uploadedFile) { setStatus('ファイルをアップロードしてね', false); return; }
+        if (!uploadedFile) { setStatus('\u30D5\u30A1\u30A4\u30EB\u3092\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u3057\u3066\u306D', false); return; }
         data = {
           fileType: uploadedFile.fileType,
           fileId: uploadedFile.fileId,
@@ -831,20 +828,20 @@
 
       const btn = document.getElementById('saveBtn');
       btn.disabled = true;
-      setStatus('保存中...', true);
+      setStatus('\u4FDD\u5B58\u4E2D...', true);
       callApi({ action: editingId ? 'updateDoc' : 'addDoc', data: data }).then(() => {
         btn.disabled = false;
-        setStatus(editingId ? '更新したよ' : '登録したよ', true);
+        setStatus(editingId ? '\u66F4\u65B0\u3057\u305F\u3088' : '\u767B\u9332\u3057\u305F\u3088', true);
         navTo('listView');
         load();
       }).catch(err => {
         btn.disabled = false;
-        setStatus('保存失敗: ' + err.message, false);
+        setStatus('\u4FDD\u5B58\u5931\u6557: ' + err.message, false);
       });
     }
 
     // ============================================
-    // マスタ管理
+    // \u30DE\u30B9\u30BF\u7BA1\u7406
     // ============================================
     function renderMaster() {
       const catUsage = id => all.docs.filter(d => d.categoryId === id).length;
@@ -852,34 +849,34 @@
 
       document.getElementById('catList').innerHTML = all.cats.map(c => `
         <div class="list-item">
-          <span><span class="badge">${esc(c.name)}</span> <span class="muted">${catUsage(c.id)}件で使用中</span></span>
-          <button class="btn danger small" onclick="delMaster('cats','${esc(c.id)}','${esc(c.name)}',${catUsage(c.id)})">削除</button>
-        </div>`).join('') || '<div class="muted">カテゴリはまだないよ</div>';
+          <span><span class="badge">${esc(c.name)}</span> <span class="muted">${catUsage(c.id)}\u4EF6\u3067\u4F7F\u7528\u4E2D</span></span>
+          <button class="btn danger small" onclick="delMaster('cats','${esc(c.id)}','${esc(c.name)}',${catUsage(c.id)})">\u524A\u9664</button>
+        </div>`).join('') || '<div class="muted">\u30AB\u30C6\u30B4\u30EA\u306F\u307E\u3060\u306A\u3044\u3088</div>';
 
       document.getElementById('tagList').innerHTML = all.tags.map(t => `
         <div class="list-item">
-          <span><span class="badge tag">${esc(t.name)}</span> <span class="muted">${tagUsage(t.id)}件で使用中</span></span>
-          <button class="btn danger small" onclick="delMaster('tags','${esc(t.id)}','${esc(t.name)}',${tagUsage(t.id)})">削除</button>
-        </div>`).join('') || '<div class="muted">タグはまだないよ</div>';
+          <span><span class="badge tag">${esc(t.name)}</span> <span class="muted">${tagUsage(t.id)}\u4EF6\u3067\u4F7F\u7528\u4E2D</span></span>
+          <button class="btn danger small" onclick="delMaster('tags','${esc(t.id)}','${esc(t.name)}',${tagUsage(t.id)})">\u524A\u9664</button>
+        </div>`).join('') || '<div class="muted">\u30BF\u30B0\u306F\u307E\u3060\u306A\u3044\u3088</div>';
     }
 
     function addMaster(kind) {
       const inputId = kind === 'cats' ? 'newCat' : 'newTag';
       const name = document.getElementById(inputId).value.trim();
-      if (!name) { setStatus('名前を入れてね', false); return; }
+      if (!name) { setStatus('\u540D\u524D\u3092\u5165\u308C\u3066\u306D', false); return; }
       callApi({ action: 'addMaster', data: { kind: kind, name: name } }).then(res => {
         (kind === 'cats' ? all.cats : all.tags).push(res);
         document.getElementById(inputId).value = '';
         renderMaster();
         renderFilters();
-        setStatus('追加したよ', true);
-      }).catch(err => setStatus('エラー: ' + err.message, false));
+        setStatus('\u8FFD\u52A0\u3057\u305F\u3088', true);
+      }).catch(err => setStatus('\u30A8\u30E9\u30FC: ' + err.message, false));
     }
 
     function delMaster(kind, id, name, usage) {
       const warn = usage > 0
-        ? `「${name}」は${usage}件の資料で使われてるよ。それでも削除する？`
-        : `「${name}」を削除する？`;
+        ? `\u300C${name}\u300D\u306F${usage}\u4EF6\u306E\u8CC7\u6599\u3067\u4F7F\u308F\u308C\u3066\u308B\u3088\u3002\u305D\u308C\u3067\u3082\u524A\u9664\u3059\u308B\uFF1F`
+        : `\u300C${name}\u300D\u3092\u524A\u9664\u3059\u308B\uFF1F`;
       if (!confirm(warn)) return;
       callApi({ action: 'delMaster', data: { kind: kind, id: id } }).then(() => {
         if (kind === 'cats') all.cats = all.cats.filter(c => c.id !== id);
@@ -887,12 +884,12 @@
         renderMaster();
         renderFilters();
         render();
-        setStatus('削除したよ', true);
-      }).catch(err => setStatus('エラー: ' + err.message, false));
+        setStatus('\u524A\u9664\u3057\u305F\u3088', true);
+      }).catch(err => setStatus('\u30A8\u30E9\u30FC: ' + err.message, false));
     }
 
     // ============================================
-    // 起動: 保存済みセッションがあれば検証してからアプリ表示
+    // \u8D77\u52D5: \u4FDD\u5B58\u6E08\u307F\u30BB\u30C3\u30B7\u30E7\u30F3\u304C\u3042\u308C\u3070\u691C\u8A3C\u3057\u3066\u304B\u3089\u30A2\u30D7\u30EA\u8868\u793A
     // ============================================
     document.getElementById('loginPw').addEventListener('keydown', e => {
       if (e.key === 'Enter') doLogin();
