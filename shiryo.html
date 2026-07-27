@@ -210,7 +210,7 @@
     <div class="login-box">
       <div class="login-logo"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="width:62%;height:62%;display:block;"><g fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"><path d="M104 158 C152 132 200 132 248 158 L248 372 C200 346 152 346 104 372 Z" fill="rgba(255,255,255,0.15)"/><path d="M392 158 C344 132 296 132 248 158 L248 372 C296 346 344 346 392 372 Z" fill="rgba(255,255,255,0.15)"/></g><g stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity="0.9"><line x1="140" y1="208" x2="208" y2="196"/><line x1="140" y1="254" x2="208" y2="242"/></g><g stroke="#ffffff" stroke-linecap="round" fill="none"><circle cx="318" cy="258" r="80" stroke-width="34" fill="rgba(67,56,202,0.45)"/><line x1="376" y1="316" x2="436" y2="376" stroke-width="42"/></g></svg></div>
       <div class="login-title">&#x793E;&#x5185;&#x8CC7;&#x6599;&#x30CA;&#x30EC;&#x30C3;&#x30B8;&#x691C;&#x7D22;&#x30B7;&#x30B9;&#x30C6;&#x30E0;</div>
-      <div class="login-sub">&#x793E;&#x54E1;&#x30ED;&#x30B0;&#x30A4;&#x30F3; <span style="color:#cbd5e1;">v11-Pages&#x7248;</span></div>
+      <div class="login-sub">&#x793E;&#x54E1;&#x30ED;&#x30B0;&#x30A4;&#x30F3; <span style="color:#cbd5e1;">v12-Pages&#x7248;</span></div>
       <div class="card">
         <div id="loginStatus"></div>
         <div class="field">
@@ -362,6 +362,17 @@
               <label>&#x30BF;&#x30B0;(&#x30BF;&#x30C3;&#x30D7;&#x3067;&#x9078;&#x629E;)</label>
               <div id="fTags"></div>
             </div>
+            <div class="field">
+              <label>&#x516C;&#x958B;&#x7BC4;&#x56F2;</label>
+              <select id="fScope" onchange="onScopeChange()">
+                <option value="internal">&#x793E;&#x5185;&#x306E;&#x307F;(&#x7BA1;&#x7406;&#x8005;&#x30FB;&#x793E;&#x54E1;&#x3060;&#x3051;)</option>
+                <option value="external">&#x5916;&#x90E8;&#x306B;&#x3082;&#x516C;&#x958B;</option>
+              </select>
+            </div>
+            <div class="field hidden" id="fScopeCompaniesWrap">
+              <label>&#x516C;&#x958B;&#x3059;&#x308B;&#x4F1A;&#x793E;(&#x30AB;&#x30F3;&#x30DE;&#x533A;&#x5207;&#x308A;&#x3002;&#x7A7A;&#x6B04;&#x306A;&#x3089;&#x5916;&#x90E8;&#x306E;&#x5168;&#x54E1;&#x306B;&#x516C;&#x958B;)</label>
+              <input id="fScopeCompanies" placeholder="&#x4F8B;: &#x25CB;&#x25CB;&#x5EFA;&#x8A2D;,&#x25B3;&#x25B3;&#x5DE5;&#x696D;">
+            </div>
             <button class="btn wide" id="saveBtn" onclick="saveDoc()">&#x4FDD;&#x5B58;&#x3059;&#x308B;</button>
           </div>
         </div>
@@ -406,10 +417,15 @@
             <div class="field"><label>&#x540D;&#x524D;</label><input id="newMemName" placeholder="&#x4F8B;: &#x7530;&#x4E2D;"></div>
             <div class="field"><label>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;</label><input id="newMemPw" placeholder="&#x672C;&#x4EBA;&#x306B;&#x4F1D;&#x3048;&#x308B;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;"></div>
             <div class="field"><label>&#x6A29;&#x9650;</label>
-              <select id="newMemRole">
+              <select id="newMemRole" onchange="onMemRoleChange()">
                 <option value="staff">&#x793E;&#x54E1;(&#x691C;&#x7D22;&#x30FB;&#x95B2;&#x89A7;&#x306E;&#x307F;)</option>
                 <option value="admin">&#x7BA1;&#x7406;&#x8005;(&#x767B;&#x9332;&#x30FB;&#x7BA1;&#x7406;&#x3082;&#x3067;&#x304D;&#x308B;)</option>
+                <option value="guest">&#x5916;&#x90E8;(&#x516C;&#x958B;&#x8CC7;&#x6599;&#x306E;&#x95B2;&#x89A7;&#x306E;&#x307F;)</option>
               </select>
+            </div>
+            <div class="field hidden" id="newMemCompanyWrap">
+              <label>&#x6240;&#x5C5E;&#x4F1A;&#x793E;&#x540D;</label>
+              <input id="newMemCompany" placeholder="&#x4F8B;: &#x25CB;&#x25CB;&#x5EFA;&#x8A2D;">
             </div>
             <button class="btn wide" id="addMemBtn" onclick="addMemberUi()">&#x8FFD;&#x52A0;&#x3059;&#x308B;</button>
           </div>
@@ -532,7 +548,7 @@
       document.getElementById('userName').textContent = session.name;
       const badge = document.getElementById('roleBadge');
       const isAdmin = session.role === 'admin';
-      badge.textContent = isAdmin ? '\u7BA1\u7406\u8005' : '\u793E\u54E1';
+      badge.textContent = isAdmin ? '\u7BA1\u7406\u8005' : (session.role === 'guest' ? '\u5916\u90E8' : '\u793E\u54E1');
       badge.classList.toggle('staff', !isAdmin);
       document.querySelectorAll('.adminOnly').forEach(el => el.classList.toggle('hidden', !isAdmin));
       navTo('listView');
@@ -773,6 +789,7 @@
             ${d.categoryId && catName(d.categoryId) ? `<span class="badge">${esc(catName(d.categoryId))}</span>` : ''}
             ${d.tagIds.map(tid => tagName(tid) ? ` <span class="badge tag">${esc(tagName(tid))}</span>` : '').join('')}
             ${!d.fileId && d.url ? ' <span class="badge link">\u5916\u90E8\u30EA\u30F3\u30AF</span>' : ''}
+            ${d.scope && session.role !== 'guest' ? ' <span class="badge link">\u5916\u90E8\u516C\u958B</span>' : ''}
           </div>
           ${d.description ? `<div class="doc-desc">${esc(d.description.length > 80 ? d.description.slice(0, 80) + '\u2026' : d.description)}</div>` : ''}
           <div class="doc-meta">${fmtDate(d.registeredAt)}</div>
@@ -810,6 +827,7 @@
           ${d.categoryId && catName(d.categoryId) ? `<span class="badge">${esc(catName(d.categoryId))}</span>` : ''}
           ${d.tagIds.map(tid => tagName(tid) ? ` <span class="badge tag">${esc(tagName(tid))}</span>` : '').join('')}
           ${!d.fileId && d.url ? ' <span class="badge link">\u5916\u90E8\u30EA\u30F3\u30AF</span>' : ''}
+          ${d.scope && session.role !== 'guest' ? ` <span class="badge link">${esc(d.scope === '\u5168\u54E1' ? '\u5916\u90E8\u516C\u958B' : '\u516C\u958B: ' + d.scope)}</span>` : ''}
         </div>
         <div class="doc-meta" style="margin-bottom:12px;">
           \u767B\u9332\u65E5: ${fmtDate(d.registeredAt)}
@@ -857,6 +875,16 @@
     // ============================================
     // \u767B\u9332\u30FB\u7DE8\u96C6
     // ============================================
+    function onScopeChange() {
+      const ext = document.getElementById('fScope').value === 'external';
+      document.getElementById('fScopeCompaniesWrap').classList.toggle('hidden', !ext);
+    }
+
+    function onMemRoleChange() {
+      const g = document.getElementById('newMemRole').value === 'guest';
+      document.getElementById('newMemCompanyWrap').classList.toggle('hidden', !g);
+    }
+
     function setMode(mode) {
       editMode = mode;
       document.getElementById('modeFile').classList.toggle('active', mode === 'file');
@@ -882,6 +910,11 @@
       document.getElementById('fTags').innerHTML = all.tags.map(t =>
         `<span class="chip ${selected.has(t.id) ? 'active' : ''}" data-tid="${esc(t.id)}" onclick="this.classList.toggle('active')">${esc(t.name)}</span>`
       ).join('') || '<span class="muted">\u30BF\u30B0\u306F\u30DE\u30B9\u30BF\u7BA1\u7406\u304B\u3089\u8FFD\u52A0\u3057\u3066\u306D</span>';
+
+      const sc = doc ? (doc.scope || '') : '';
+      document.getElementById('fScope').value = sc ? 'external' : 'internal';
+      document.getElementById('fScopeCompanies').value = (sc && sc !== '\u5168\u54E1') ? sc : '';
+      onScopeChange();
 
       if (doc && doc.fileId) {
         uploadedFile = { fileId: doc.fileId, fileName: doc.fileName, fileType: doc.fileType };
@@ -960,12 +993,18 @@
       }
 
       const tagIds = [...document.querySelectorAll('#fTags .chip.active')].map(el => el.dataset.tid);
+      let scope = '';
+      if (document.getElementById('fScope').value === 'external') {
+        const comps = document.getElementById('fScopeCompanies').value.trim();
+        scope = comps || '\u5168\u54E1';
+      }
       Object.assign(data, {
         id: editingId,
         title: title,
         description: document.getElementById('fDesc').value.trim(),
         categoryId: document.getElementById('fCat').value,
         tagIds: tagIds,
+        scope: scope,
       });
 
       const btn = document.getElementById('saveBtn');
@@ -1051,7 +1090,8 @@
           <span>
             <span style="font-weight:600;">${esc(m.name)}</span>
             <span class="muted" style="margin-left:6px;">${esc(m.id)}</span>
-            <span class="badge ${m.role === 'admin' ? '' : 'tag'}" style="margin-left:8px;">${m.role === 'admin' ? '\u7BA1\u7406\u8005' : '\u793E\u54E1'}</span>
+            <span class="badge ${m.role === 'admin' ? '' : 'tag'}" style="margin-left:8px;">${m.role === 'admin' ? '\u7BA1\u7406\u8005' : (m.role === 'guest' ? '\u5916\u90E8' : '\u793E\u54E1')}</span>
+            ${m.company ? `<span class="muted" style="margin-left:6px;">${esc(m.company)}</span>` : ''}
           </span>
           <span class="row" style="gap:6px;">
             <button class="btn secondary small" onclick="resetMemberPw(${i})">PW\u518D\u8A2D\u5B9A</button>
@@ -1066,14 +1106,17 @@
       const name = document.getElementById('newMemName').value.trim();
       const pw = document.getElementById('newMemPw').value;
       const role = document.getElementById('newMemRole').value;
+      const company = document.getElementById('newMemCompany').value.trim();
       if (!id || !name || !pw) { setStatus('ID\u30FB\u540D\u524D\u30FB\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5165\u308C\u3066\u306D', false); return; }
+      if (role === 'guest' && !company) { setStatus('\u5916\u90E8\u306E\u4EBA\u306F\u6240\u5C5E\u4F1A\u793E\u540D\u3082\u5165\u308C\u3066\u306D', false); return; }
       const btn = document.getElementById('addMemBtn');
       btn.disabled = true;
-      callApi({ action: 'addMember', data: { id: id, name: name, password: pw, role: role } }).then(() => {
+      callApi({ action: 'addMember', data: { id: id, name: name, password: pw, role: role, company: company } }).then(() => {
         btn.disabled = false;
         document.getElementById('newMemId').value = '';
         document.getElementById('newMemName').value = '';
         document.getElementById('newMemPw').value = '';
+        document.getElementById('newMemCompany').value = '';
         setStatus(name + '\u3055\u3093\u3092\u8FFD\u52A0\u3057\u305F\u3088', true);
         loadMembers();
       }).catch(err => { btn.disabled = false; setStatus('\u8FFD\u52A0\u5931\u6557: ' + err.message, false); });
@@ -1092,10 +1135,16 @@
     function toggleMemberRole(i) {
       const m = members[i];
       if (!m) return;
-      const next = m.role === 'admin' ? 'staff' : 'admin';
-      const label = next === 'admin' ? '\u7BA1\u7406\u8005' : '\u793E\u54E1';
+      const order = ['staff', 'admin', 'guest'];
+      const next = order[(order.indexOf(m.role) + 1) % 3];
+      const label = next === 'admin' ? '\u7BA1\u7406\u8005' : (next === 'guest' ? '\u5916\u90E8' : '\u793E\u54E1');
       if (!confirm(m.name + '\u3055\u3093\u3092\u300C' + label + '\u300D\u306B\u5909\u66F4\u3059\u308B\uFF1F')) return;
-      callApi({ action: 'updateMember', data: { id: m.id, role: next } }).then(() => {
+      let company = '';
+      if (next === 'guest') {
+        company = (prompt('\u6240\u5C5E\u4F1A\u793E\u540D\u3092\u5165\u308C\u3066\u306D', m.company || '') || '').trim();
+        if (!company) { setStatus('\u5916\u90E8\u306B\u3059\u308B\u306B\u306F\u4F1A\u793E\u540D\u304C\u5FC5\u8981\u3060\u3088', false); return; }
+      }
+      callApi({ action: 'updateMember', data: { id: m.id, role: next, company: company } }).then(() => {
         setStatus(m.name + '\u3055\u3093\u3092' + label + '\u306B\u3057\u305F\u3088', true);
         loadMembers();
       }).catch(err => setStatus('\u5909\u66F4\u5931\u6557: ' + err.message, false));
