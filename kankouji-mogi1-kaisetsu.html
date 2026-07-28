@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2級管工事 模擬1回目 徹底解説(イラスト入り)</title>
+<style>
+  body { font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; font-size: 16.5px; line-height: 1.95; color: #222; background: #faf9f6; margin: 0; padding: 16px; }
+  main { max-width: 680px; margin: 0 auto; }
+  h1 { font-size: 22px; border-bottom: 3px solid #c0392b; padding-bottom: 8px; line-height: 1.6; }
+  h2 { font-size: 18px; background: #2c3e50; color: #fff; padding: 8px 14px; border-radius: 8px; margin-top: 44px; line-height: 1.6; }
+  h1 + p, h2 + p { margin-top: 14px; }
+  strong { color: #c0392b; }
+  blockquote { background: #fdf3d8; border-left: 4px solid #a5691b; margin: 12px 0; padding: 8px 14px; border-radius: 0 8px 8px 0; }
+  ul, ol { padding-left: 1.4em; }
+  li { margin: 4px 0; }
+  hr { border: none; border-top: 1px dashed #ccc; margin: 32px 0; }
+  .ill { text-align: center; margin: 14px 0; background: #fff; border: 1px solid #e5e2da; border-radius: 10px; padding: 8px 0; }
+  .ill svg { max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<main>
+<h1>2級管工事 模擬1回目 徹底解説</h1>
+<p>チャットでやったNo.3・No.7・No.11の掘り下げスタイルで全52問。各問「仕組み → 引っかけ → 他の選択肢 → つながり」の流れで書いてある。</p>
+<hr />
+<h2>No.1 湿り空気 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 122" width="320"><rect x="15" y="15" width="100" height="70" rx="8" fill="#e6f1fb" stroke="#2b6cb0"/><circle cx="45" cy="40" r="6" fill="#2b6cb0"/><circle cx="70" cy="58" r="6" fill="#2b6cb0"/><circle cx="90" cy="35" r="6" fill="#2b6cb0"/><text x="65" y="100" font-size="12" fill="#444" text-anchor="middle">つめたい空気</text><line x1="125" y1="50" x2="182" y2="50" stroke="#c0392b" stroke-width="3"/><polygon points="192,50 180,44 180,56" fill="#c0392b"/><text x="157" y="38" font-size="13" fill="#c0392b" text-anchor="middle">加熱</text><rect x="200" y="15" width="100" height="70" rx="8" fill="#fdecea" stroke="#c0392b"/><circle cx="230" cy="40" r="6" fill="#2b6cb0"/><circle cx="255" cy="58" r="6" fill="#2b6cb0"/><circle cx="275" cy="35" r="6" fill="#2b6cb0"/><text x="250" y="100" font-size="12" fill="#444" text-anchor="middle">あたたかい空気</text><text x="160" y="118" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">水分(●)の数は変わらない!</text></svg></div>
+<p>空気をあたためても、中の水分の量は1グラムも変わらない。この一点がわかれば解ける。</p>
+<p><strong>まず3つの言葉を整理</strong></p>
+<p><strong>絶対湿度</strong> = 空気の中に実際に入ってる水分の量(乾き空気1kgあたり何kg)。水そのものの量。<br />
+<strong>相対湿度</strong> = 「その温度で持てる水分の上限」に対して今何%か。コップの水位みたいな割合の話。<br />
+<strong>飽和</strong> = 上限いっぱい=相対湿度100%。もうこれ以上水蒸気を持てない状態。</p>
+<p><strong>加熱すると何が起きるか</strong></p>
+<p>温度が上がると「持てる上限」だけが増える。コップが大きくなるイメージ。中の水の量(絶対湿度)はそのままだから、割合(相対湿度)だけが下がる。ドライヤーで髪が乾くのは、温風の相対湿度が低くて水分を吸いやすいからで、空気の水分が減ったわけじゃない。</p>
+<p><strong>問題文の引っかけ</strong><br />
+(4)は「加熱すると絶対湿度は下がる」。下がるのは相対湿度。用語のすり替え。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 飽和=100%。定義そのまま<br />
+- (2)○ 絶対湿度の定義そのまま<br />
+- (3)○ 飽和状態では蒸発が起きない→気化熱で温度が下がらない→乾球=湿球</p>
+<p><strong>つながり</strong>:No.8の空気線図で「加熱=真横に移動」なのは、まさに絶対湿度が変わらないから。この2問はセット。</p>
+<hr />
+<h2>No.2 空気環境 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><circle cx="70" cy="55" r="14" fill="#f0d9b5" stroke="#888"/><rect x="58" y="70" width="24" height="25" rx="6" fill="#ccc"/><text x="110" y="40" font-size="13" fill="#2b6cb0">CO₂</text><text x="125" y="60" font-size="13" fill="#2b6cb0">CO₂</text><circle cx="102" cy="36" r="2" fill="#2b6cb0"/><circle cx="117" cy="56" r="2" fill="#2b6cb0"/><text x="115" y="98" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">人がいる → CO₂が基準 ○</text><rect x="215" y="30" width="80" height="40" rx="8" fill="#fdecea" stroke="#c0392b"/><text x="255" y="50" font-size="14" fill="#c0392b" text-anchor="middle">CO</text><text x="255" y="64" font-size="10" fill="#c0392b" text-anchor="middle">(不完全燃焼)</text><text x="255" y="90" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">別物 ✕</text></svg></div>
+<p>居室の必要換気量の基準はCO₂(二酸化炭素)。これを一酸化炭素(CO)にすり替えるのが定番の引っかけ。</p>
+<p><strong>なぜCO₂が基準なのか</strong></p>
+<p>人がいれば呼吸で必ずCO₂が出る。つまりCO₂濃度は「この部屋、人の割にどれだけ空気を入れ替えてるか」のバロメーターとして使える。許容値は1,000ppm。学校やオフィスのCO₂モニターもこの発想。</p>
+<p><strong>COは何者か</strong><br />
+一酸化炭素は不完全燃焼で出る毒ガス。基準値は10ppmと別にあるけど、「換気量を算出する基準」ではない。人がいるだけでは発生しないから、部屋の混み具合の指標にならない。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 浮遊粉じんは呼吸器系に影響<br />
+- (2)○ 臭気は臭気強度・臭気指数で表す<br />
+- (4)○ ホルムアルデヒド=シックハウスの原因物質。目や呼吸器を刺激</p>
+<p><strong>覚え方</strong>:「居室の換気=CO₂=1,000ppm」。CO₂とCOは字面が似てるだけの他人。</p>
+<hr />
+<h2>No.3 流体 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><circle cx="55" cy="48" r="24" fill="#fdecea" stroke="#c0392b"/><line x1="55" y1="20" x2="55" y2="8" stroke="#c0392b" stroke-width="2"/><line x1="55" y1="76" x2="55" y2="88" stroke="#c0392b" stroke-width="2"/><line x1="27" y1="48" x2="15" y2="48" stroke="#c0392b" stroke-width="2"/><line x1="83" y1="48" x2="95" y2="48" stroke="#c0392b" stroke-width="2"/><text x="55" y="108" font-size="13" fill="#444" text-anchor="middle">静圧(押す力)</text><text x="112" y="55" font-size="20" fill="#444" text-anchor="middle">+</text><line x1="130" y1="35" x2="180" y2="35" stroke="#2b6cb0" stroke-width="2"/><polygon points="188,35 178,30 178,40" fill="#2b6cb0"/><line x1="130" y1="52" x2="180" y2="52" stroke="#2b6cb0" stroke-width="2"/><polygon points="188,52 178,47 178,57" fill="#2b6cb0"/><line x1="130" y1="69" x2="180" y2="69" stroke="#2b6cb0" stroke-width="2"/><polygon points="188,69 178,64 178,74" fill="#2b6cb0"/><text x="160" y="108" font-size="13" fill="#444" text-anchor="middle">動圧(いきおい)</text><text x="212" y="55" font-size="20" fill="#444" text-anchor="middle">=</text><rect x="232" y="30" width="72" height="38" rx="8" fill="#fdf3d8" stroke="#a5691b"/><text x="268" y="54" font-size="15" fill="#a5691b" text-anchor="middle" font-weight="bold">全圧</text></svg></div>
+<p><strong>登場する3つの圧力</strong></p>
+<p><strong>静圧</strong> = 流れに関係なく、四方八方に押す圧力。風船の中の空気が内側から壁を押してるあの力。ダクトや配管の中なら「壁を押してる圧力」。止まってる流体でも持ってる。</p>
+<p><strong>動圧</strong> = 流れの勢いそのものの圧力。扇風機の前に手をかざすと押される感じ、あれが動圧。流れが速いほど大きい(速度の2乗に比例)。止まってたらゼロ。</p>
+<p><strong>全圧</strong> = この2つの合計。</p>
+<blockquote>
+<p><strong>全圧 = 静圧 + 動圧</strong></p>
+</blockquote>
+<p>つまり「壁を押す力」+「進む勢い」=その流体が持ってる圧力の全部、ってこと。</p>
+<p><strong>問題文の引っかけ</strong><br />
+選択肢(1)は「全圧=静圧+位置圧」って言ってる。位置圧(高さのエネルギー)はベルヌーイの定理に出てくる別のメンバーで、全圧の式には入らない。もっともらしい言葉のすり替え。</p>
+<p><strong>選択肢(3)のピトー管とセットで覚えると強い</strong><br />
+ピトー管は流速を測る器具だけど、仕組みはこう:<br />
+1. 流れの正面に向けた穴で「全圧」を測る<br />
+2. 流れと平行な穴で「静圧」を測る<br />
+3. 引き算すると → 全圧−静圧=動圧<br />
+4. 動圧がわかれば流速が計算できる</p>
+<p>つまりピトー管は「全圧=静圧+動圧」の式をそのまま道具にしたもの。(1)と(3)は同じ知識で解ける仲良し選択肢。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 水は空気よりネバい(粘性係数大)<br />
+- (4)○ レイノルズ数大=乱流</p>
+<p><strong>つながり</strong>:No.38「ダクト内の風量は風速を測定して求める」の測定器がまさにピトー管。</p>
+<hr />
+<h2>No.4 伝熱 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="20" y="20" width="50" height="35" rx="6" fill="#c0392b"/><text x="45" y="42" font-size="12" fill="#fff" text-anchor="middle">80℃</text><rect x="115" y="20" width="50" height="35" rx="6" fill="#e6f1fb" stroke="#2b6cb0"/><text x="140" y="42" font-size="12" fill="#2b6cb0" text-anchor="middle">10℃</text><line x1="75" y1="37" x2="105" y2="37" stroke="#c0392b" stroke-width="6"/><polygon points="112,37 100,29 100,45" fill="#c0392b"/><text x="92" y="70" font-size="12" fill="#c0392b" text-anchor="middle">差が大=ドバドバ</text><rect x="185" y="20" width="50" height="35" rx="6" fill="#f0997b"/><text x="210" y="42" font-size="12" fill="#fff" text-anchor="middle">30℃</text><rect x="270" y="20" width="45" height="35" rx="6" fill="#e6f1fb" stroke="#2b6cb0"/><text x="292" y="42" font-size="12" fill="#2b6cb0" text-anchor="middle">25℃</text><line x1="240" y1="37" x2="260" y2="37" stroke="#f0997b" stroke-width="2"/><polygon points="266,37 257,32 257,42" fill="#f0997b"/><text x="250" y="70" font-size="12" fill="#a5691b" text-anchor="middle">差が小=ちょろちょろ</text><text x="160" y="98" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">温度差に比例!</text></svg></div>
+<p>熱の移動量は温度差に比例する。式で書くと q=α×A×Δt。αが熱伝達率、Aが面積、Δtが温度差。</p>
+<p><strong>直感で考える</strong></p>
+<p>アツアツのお風呂(80℃)と冷たい水(10℃)を隣り合わせたら、熱はドバドバ移動する。30℃と25℃ならちょろちょろ。温度差が大きいほど熱が流れる勢いが強い。冬に窓を触ると冷たく感じるのも、体温と窓の温度差が大きくて熱がガンガン奪われるから。</p>
+<p><strong>問題文の引っかけ</strong><br />
+(2)は「温度差に反比例」。真逆。伝熱の式は熱伝導も熱伝達もぜんぶ「温度差に比例」なので、「反比例」と書いてあったらほぼ誤り選択肢と思っていい。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 熱伝導=物体の内部で高温→低温へ伝わる現象。定義通り<br />
+- (3)○ 熱伝導率は材料固有の値。銅は伝わりやすい、グラスウールは伝わりにくい(だから保温材)<br />
+- (4)○ 熱力学第二法則。冷たい方から熱い方へ勝手には移らない。移せるのはヒートポンプみたいに仕事を加えたときだけ</p>
+<p><strong>つながり</strong>:(3)の「熱伝導率は材料固有」はNo.25の保温材の話の土台。伝導率が小さい材料=保温材。</p>
+<hr />
+<h2>No.5 電気設備の記号 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 105" width="320"><rect x="25" y="15" width="130" height="30" rx="15" fill="#e1f5ee" stroke="#1d9e75"/><text x="90" y="35" font-size="13" fill="#0f6e56" text-anchor="middle">SC = コンデンサ ○</text><rect x="165" y="15" width="130" height="30" rx="15" fill="#e1f5ee" stroke="#1d9e75"/><text x="230" y="35" font-size="13" fill="#0f6e56" text-anchor="middle">2E = 過負荷欠相 ○</text><rect x="70" y="60" width="180" height="30" rx="15" fill="#fdecea" stroke="#c0392b"/><text x="160" y="80" font-size="13" fill="#c0392b" text-anchor="middle">SC = 過負荷欠相 ✕</text></svg></div>
+<p><strong>正しい対応表</strong></p>
+<ul>
+<li>F = ヒューズ(Fuse)</li>
+<li>FEP = 波付硬質合成樹脂管(地中埋設用の電線管。ジャバラのやつ)</li>
+<li>VT = 計器用変圧器(Voltage Transformer。高圧を計器で測れる電圧に落とす)</li>
+<li>SC = 電力用コンデンサ(Static Capacitor。力率改善に使う)</li>
+<li>2E = 過負荷欠相継電器(モーター保護のリレー)</li>
+</ul>
+<p><strong>問題文の引っかけ</strong><br />
+(4)は「SC=過負荷欠相継電器」。SCはコンデンサで、過負荷欠相は「2E」。記号と名称のペア入れ替え。</p>
+<p><strong>覚えるコツ</strong><br />
+SCのCはCapacitor(コンデンサ)のC、と英語の頭文字で紐付けると忘れない。2Eは「2つのError(過負荷Overloadと欠相Open-phase)を見る」と覚える人が多い。</p>
+<p><strong>つながり</strong>:2級電気施工の勉強とモロ被りの知識。管工事の試験に電気記号が出るのは、現場で電気屋さんと図面をやりとりするから。両方の資格を狙うなら二度おいしい問題。</p>
+<hr />
+<h2>No.6 コンクリート工事 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><rect x="52" y="42" width="66" height="46" fill="#b3591f"/><rect x="50" y="20" width="70" height="70" fill="none" stroke="#666" stroke-width="2"/><text x="85" y="106" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">こい → 強い ○</text><rect x="202" y="42" width="66" height="46" fill="#ecd4bd"/><rect x="200" y="20" width="70" height="70" fill="none" stroke="#666" stroke-width="2"/><text x="235" y="106" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">水多い → よわい ✕</text><text x="160" y="14" font-size="12" fill="#666" text-anchor="middle">カルピスと同じ</text></svg></div>
+<p><strong>水セメント比(W/C)とは</strong></p>
+<p>コンクリートに入れる水÷セメントの重さ。この数字が大きい=水が多い=シャバシャバの薄いコンクリ。</p>
+<p><strong>なぜ水が多いと弱いのか</strong><br />
+カルピスと同じで、薄めるほど「濃さ」が下がる。しかも余分な水は固まったあと蒸発して、その跡が細かい空隙(スカスカの穴)になる。だからW/Cが大きいほど圧縮強度も耐久性も落ちる。強いコンクリが欲しければW/Cを小さくする。</p>
+<p><strong>問題文の引っかけ</strong><br />
+(1)は「W/Cが大きくなると圧縮強度も大きくなる」。真逆。「大きく」つながりで直感を騙しにきてる。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ コンクリは水和反応(化学反応)で固まる。気温が高い=反応が速い=早く固まる<br />
+- (3)○ 打継ぎは構造の弱点になるので、せん断力が小さい梁中央付近に設ける(端部はせん断力が大きい)<br />
+- (4)○ 横流しすると重い砂利が沈んで材料分離するのでNG。打ちたい場所に直接落とす</p>
+<p><strong>つながり</strong>:2級建築施工の勉強と共通の頻出論点。「W/C大→強度小」は建築でも管でも毎年出るレベル。</p>
+<hr />
+<h2>No.7 空調の省エネ計画 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 132" width="320"><line x1="90" y1="20" x2="290" y2="20" stroke="#666" stroke-width="2"/><line x1="290" y1="20" x2="290" y2="110" stroke="#666" stroke-width="2"/><line x1="90" y1="110" x2="290" y2="110" stroke="#666" stroke-width="2"/><line x1="90" y1="20" x2="90" y2="45" stroke="#666" stroke-width="2"/><line x1="90" y1="85" x2="90" y2="110" stroke="#666" stroke-width="2"/><rect x="225" y="72" width="52" height="32" rx="4" fill="#fdecea" stroke="#c0392b"/><text x="251" y="93" font-size="13" fill="#c0392b" text-anchor="middle">暖房</text><line x1="35" y1="58" x2="80" y2="58" stroke="#2b6cb0" stroke-width="2"/><polygon points="88,58 78,53 78,63" fill="#2b6cb0"/><line x1="35" y1="72" x2="80" y2="72" stroke="#2b6cb0" stroke-width="2"/><polygon points="88,72 78,67 78,77" fill="#2b6cb0"/><text x="45" y="46" font-size="12" fill="#2b6cb0">冷たい外気</text><text x="160" y="128" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">ドア開けっぱなしで暖房 = ムダ ✕</text></svg></div>
+<p><strong>まず大前提:外気は"熱のコスト"</strong></p>
+<p>空調は室内の空気をぐるぐる回して温度調整するのが一番ラク。でも人がいる部屋はCO₂が溜まるから、外気を入れなきゃいけない。ここで問題なのが、外気は空調的には"招かれざる客"ってこと。</p>
+<ul>
+<li>夏:35℃の熱風を26℃まで冷やさなきゃいけない</li>
+<li>冬:5℃の冷気を22℃まで温めなきゃいけない</li>
+</ul>
+<p>つまり外気を入れるほどエネルギーを食う。しゃぼんで例えるなら、店のドア開けっ放しで冷暖房ガンガンかけてる状態。</p>
+<p><strong>選択肢を見ていくと</strong></p>
+<ul>
+<li>(1)○ <strong>全熱交換器</strong> = 捨てる排気の熱を、入ってくる外気に乗せ換える装置。冬なら「暖かい排気」で「冷たい外気」を予熱してから入れる。熱のリサイクル</li>
+<li>(2)○ 高効率機器 = 燃費のいい機械を使う。そのまんま</li>
+<li>(3)○ <strong>熱源の複数台分割</strong> = デカい1台だと軽負荷の春秋も大出力機を低効率で回すハメになる。小分けなら「今日は1台だけ運転」ができる。コンビニに大型トラックで行くか軽で行くかの違い</li>
+<li>(4)✕ <strong>暖房時に外気導入を多く</strong> = 冷たい外気をたくさん入れたら、その分よけいに加熱が必要。省エネと真逆</li>
+</ul>
+<p><strong>応用の一歩先</strong><br />
+例外として、中間期(春秋)の冷房だけは外気を多く入れるのが省エネになる(外気冷房=涼しい外気でタダで冷やす)。「暖房時に多く」は✕、「涼しい時期の冷房に多く」は○。ここまで押さえると応用問題でも崩れない。</p>
+<hr />
+<h2>No.8 空気線図とシステム図の対応 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 135" width="320"><line x1="30" y1="110" x2="300" y2="110" stroke="#999" stroke-width="1.5"/><line x1="30" y1="110" x2="30" y2="18" stroke="#999" stroke-width="1.5"/><text x="290" y="126" font-size="11" fill="#666" text-anchor="end">温度 →</text><text x="36" y="16" font-size="11" fill="#666">水分 ↑</text><line x1="88" y1="85" x2="218" y2="85" stroke="#c0392b" stroke-width="2.5"/><polygon points="226,85 215,79 215,91" fill="#c0392b"/><text x="155" y="74" font-size="13" fill="#c0392b" text-anchor="middle">加熱=真横</text><line x1="232" y1="76" x2="232" y2="48" stroke="#2b6cb0" stroke-width="2.5"/><polygon points="232,40 226,50 238,50" fill="#2b6cb0"/><text x="248" y="62" font-size="13" fill="#2b6cb0">加湿=真上</text><circle cx="80" cy="85" r="4" fill="#666"/><text x="70" y="102" font-size="12" fill="#444">c 混合</text><circle cx="232" cy="85" r="6" fill="#c0392b"/><text x="240" y="102" font-size="13" fill="#c0392b" font-weight="bold">d = ③</text><circle cx="232" cy="35" r="4" fill="#666"/><text x="242" y="32" font-size="12" fill="#444">e 給気</text></svg></div>
+<p><strong>線図の読み方(これだけ覚える)</strong></p>
+<ul>
+<li>横軸=温度(右ほど暖かい)、縦軸=絶対湿度(上ほど水分が多い)</li>
+<li><strong>加熱</strong> → 水分は増えないから<strong>真横に右</strong>(No.1の知識そのまま)</li>
+<li><strong>蒸気加湿</strong> → 温度ほぼそのままで水分だけ増える→<strong>真上</strong></li>
+<li><strong>混合</strong> → 2つの空気を混ぜると、2点を結んだ線の途中に落ちる</li>
+</ul>
+<p><strong>暖房の流れを追う</strong></p>
+<ol>
+<li>外気(b)と部屋からの還気(a)を混ぜる → 線上の点c(混合点)</li>
+<li>加熱コイルで温める → cから真横に右へ移動 → d</li>
+<li>加湿器で蒸気を足す → dから真上へ → e</li>
+<li>eが給気(SA)として部屋へ</li>
+</ol>
+<p>つまり<strong>dは「加熱が終わって、加湿がまだの空気」</strong>。システム図で言えば加熱コイルの出口・加湿器の入口=③。</p>
+<p><strong>解き方の手順(毎年これで解ける)</strong><br />
+1. 線図の矢印の向きで「何をしたか」判定(真横=加熱、真上=加湿、線上=混合)<br />
+2. 聞かれてる点が「何の後・何の前」かを言葉にする<br />
+3. システム図の機器の並び順に当てはめる</p>
+<p><strong>引っかけポイント</strong><br />
+④(加湿後=e)と間違えやすい。dとeは縦に並んでて、「dは下(乾いてる方)=まだ加湿してない」という位置関係を見る。冷房バージョン(冷却=左へ、除湿=左下へ)でも手順は同じ。</p>
+<hr />
+<h2>No.9 熱負荷 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><circle cx="55" cy="40" r="18" fill="#fac775"/><line x1="55" y1="12" x2="55" y2="4" stroke="#ef9f27" stroke-width="2"/><line x1="30" y1="40" x2="22" y2="40" stroke="#ef9f27" stroke-width="2"/><line x1="37" y1="22" x2="31" y2="16" stroke="#ef9f27" stroke-width="2"/><line x1="73" y1="22" x2="79" y2="16" stroke="#ef9f27" stroke-width="2"/><text x="55" y="78" font-size="12" fill="#444" text-anchor="middle">太陽(日射)</text><line x1="85" y1="45" x2="145" y2="45" stroke="#ef9f27" stroke-width="3"/><polygon points="153,45 143,40 143,50" fill="#ef9f27"/><text x="118" y="34" font-size="12" fill="#a5691b">熱だけ</text><text x="215" y="42" font-size="13" fill="#1d9e75" font-weight="bold">→ 顕熱のみ ○</text><path d="M 200 70 Q 194 82 200 88 Q 206 82 200 70" fill="#2b6cb0"/><line x1="188" y1="66" x2="212" y2="92" stroke="#c0392b" stroke-width="2.5"/><text x="222" y="85" font-size="12" fill="#c0392b">水蒸気ははこばない</text></svg></div>
+<p><strong>顕熱と潜熱の見分け方は「水蒸気を運ぶか?」</strong></p>
+<p><strong>顕熱</strong> = 温度を変える熱。温度計に出る。<br />
+<strong>潜熱</strong> = 水蒸気が持ってる熱。湿度に効く。</p>
+<p>だから判定はシンプルで、「その負荷は部屋に水蒸気を持ち込むか?」を考えるだけ。</p>
+<ul>
+<li>日射 → 太陽の光と熱がガラス越しに入るだけ。水蒸気ゼロ → <strong>顕熱のみ</strong></li>
+<li>照明・OA機器 → 乾いた発熱 → 顕熱のみ</li>
+<li>人体 → 汗と呼気で水蒸気を出す → 顕熱+潜熱</li>
+<li>外気・隙間風 → 湿った空気そのものが入る → 顕熱+潜熱</li>
+</ul>
+<p><strong>問題文の引っかけ</strong><br />
+(1)は「日射負荷には顕熱と潜熱がある」。日射は水蒸気を運ばないので潜熱はない。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 外気負荷は顕熱+潜熱(上の通り)<br />
+- (3)○ SHF(顕熱比)=顕熱負荷÷全熱負荷。定義そのまま<br />
+- (4)○ 冷房負荷・暖房負荷はそれぞれ顕熱と潜熱を持つ</p>
+<p><strong>つながり</strong>:潜熱の正体は「水の蒸発・凝縮の熱」。No.1の湿り空気、No.8の加湿(=潜熱を足す操作)と全部同じ世界の話。</p>
+<hr />
+<h2>No.10 空気清浄装置 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><line x1="160" y1="12" x2="160" y2="105" stroke="#888" stroke-width="4" stroke-dasharray="6 4"/><text x="160" y="118" font-size="11" fill="#666" text-anchor="middle">フィルタ</text><line x1="40" y1="38" x2="120" y2="38" stroke="#1d9e75" stroke-width="2"/><polygon points="128,38 118,33 118,43" fill="#1d9e75"/><circle cx="152" cy="38" r="6" fill="#666"/><text x="70" y="26" font-size="12" fill="#1d9e75">ゆっくり → とまる ○</text><line x1="40" y1="82" x2="150" y2="82" stroke="#c0392b" stroke-width="3"/><polygon points="158,82 148,77 148,87" fill="#c0392b"/><circle cx="230" cy="82" r="6" fill="#666"/><line x1="168" y1="82" x2="215" y2="82" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/><text x="230" y="106" font-size="12" fill="#c0392b" text-anchor="middle">速い → すりぬける ✕</text></svg></div>
+<p><strong>フィルタの大原則:空気はゆっくり通す</strong></p>
+<p>フィルタでゴミを捕まえる仕組みを想像すると、通過速度を速くするのがなぜダメか見えてくる。</p>
+<ol>
+<li><strong>圧力損失が増える</strong>:狭いところを速く通そうとするほど抵抗は大きくなる。ストローを勢いよく吸うほど苦しいのと同じ</li>
+<li><strong>捕集効率が落ちる</strong>:粒子が繊維に捕まる前に、勢いで突き抜けてしまう</li>
+</ol>
+<p>つまり(4)「通過速度を速くすることで圧力損失を小さくしている」は二重にウソ。実際のフィルタ設計は逆で、ろ材の面積を広く取って(ジグザグに折って)通過速度を遅くしている。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 静電式(電気集じん機)は一般空調用。タバコの煙とかに強い<br />
+- (2)○ ろ過式は粗じん用〜中性能〜HEPA(クリーンルーム用)まで幅広い<br />
+- (3)○ 粒子捕集の原理:遮り・慣性・拡散・静電気。「遮り、静電気等」は正しい</p>
+<p><strong>現場イメージ</strong>:フィルタが目詰まりすると圧損が増えてファンの電気代が上がる。だから定期交換する。「速度と圧損はトレードの関係」という感覚は実務でもそのまま使う。</p>
+<hr />
+<h2>No.11 コールドドラフトの防止 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 145" width="320"><rect x="230" y="15" width="14" height="80" fill="#e6f1fb" stroke="#2b6cb0"/><text x="258" y="30" font-size="12" fill="#2b6cb0">窓</text><line x1="222" y1="25" x2="222" y2="60" stroke="#2b6cb0" stroke-width="2"/><polygon points="222,68 217,58 227,58" fill="#2b6cb0"/><text x="180" y="45" font-size="12" fill="#2b6cb0" text-anchor="end">冷気がおちる</text><rect x="200" y="100" width="48" height="26" rx="4" fill="#fdecea" stroke="#c0392b"/><text x="224" y="118" font-size="12" fill="#c0392b" text-anchor="middle">放熱器</text><line x1="212" y1="96" x2="212" y2="78" stroke="#c0392b" stroke-width="2"/><polygon points="212,70 207,80 217,80" fill="#c0392b"/><line x1="236" y1="96" x2="236" y2="78" stroke="#c0392b" stroke-width="2"/><polygon points="236,70 231,80 241,80" fill="#c0392b"/><line x1="20" y1="130" x2="300" y2="130" stroke="#666" stroke-width="2"/><text x="90" y="90" font-size="13" fill="#1d9e75" font-weight="bold">窓の下で</text><text x="90" y="108" font-size="13" fill="#1d9e75" font-weight="bold">待ちぶせ ○</text></svg></div>
+<p><strong>まずコールドドラフトって何?</strong></p>
+<p>冬、暖房してる部屋でも窓際に立つとスースー寒いことあるでしょ。あれ。</p>
+<ol>
+<li>窓ガラスは断熱が弱いから、内側の表面がキンキンに冷えてる</li>
+<li>窓際の空気がガラスに冷やされる</li>
+<li>冷えた空気は重いから、窓に沿って下に滑り落ちる</li>
+<li>冷気が床を這って足元に流れてくる → 「暖房してるのに足元だけ寒い」</li>
+</ol>
+<p>隙間風がなくても起きる。窓が"冷気の滝"になるイメージ。</p>
+<p><strong>選択肢を見ていくと</strong></p>
+<ul>
+<li>(1)○ 自然対流形の放熱器は、表面がアツアツすぎると急激な上昇気流→どこかで強い下降流も生まれる。温度差をマイルドにして空気をゆるやかに動かす</li>
+<li>(2)✕ <strong>放熱器は内壁側に設置</strong> = 冷気の発生源は窓=外壁側。内側の壁に置いたら冷気の滝は野放し。正解は<strong>外壁側の窓下</strong>に置いて、放熱器の上昇気流で落ちてくる冷気を真下で迎え撃つ。昔の学校や病院で窓の下にヒーターが並んでたのはこれが理由</li>
+<li>(3)○ エアフローウィンドウ=二重ガラスの間に室内空気を流す窓。ガラス面が冷えにくい=冷気の滝がそもそも発生しにくい</li>
+<li>(4)○ 気密を上げて隙間風(冷気の直接侵入)を減らす</li>
+</ul>
+<p><strong>整理:対策は2系統</strong><br />
+「発生させない」(窓の断熱・気密=(3)(4))と「発生した冷気を打ち消す」(窓下に放熱器=(1)と(2)の正しい姿)。(2)だけが打ち消す装置を関係ない場所に置いてる。</p>
+<p><strong>引っかけの型</strong>:場所の入れ替え(外壁側⇔内壁側)。No.20の上流⇔下流と同じパターン。</p>
+<hr />
+<h2>No.12 空冷ヒートポンプパッケージ — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 130" width="320"><rect x="60" y="15" width="75" height="30" rx="6" fill="#e6f1fb" stroke="#2b6cb0"/><text x="97" y="35" font-size="12" fill="#2b6cb0" text-anchor="middle">屋内機</text><rect x="60" y="90" width="75" height="30" rx="6" fill="#eee" stroke="#666"/><text x="97" y="110" font-size="12" fill="#444" text-anchor="middle">屋外機</text><line x1="150" y1="45" x2="150" y2="90" stroke="#c0392b" stroke-width="2"/><line x1="143" y1="45" x2="157" y2="45" stroke="#c0392b" stroke-width="1.5"/><line x1="143" y1="90" x2="157" y2="90" stroke="#c0392b" stroke-width="1.5"/><text x="162" y="62" font-size="13" fill="#c0392b" font-weight="bold">高低差には</text><text x="162" y="78" font-size="13" fill="#c0392b" font-weight="bold">制限あり!</text><text x="162" y="100" font-size="11" fill="#666">はなれすぎるとオイルが</text><text x="162" y="114" font-size="11" fill="#666">もどらない・能力ダウン</text></svg></div>
+<p><strong>冷媒配管には物理的な限界がある</strong></p>
+<p>屋内機と屋外機は冷媒配管でつながってて、この配管の長さ・高低差には制限がある。理由は2つ。</p>
+<ol>
+<li><strong>能力低下</strong>:配管が長い・高低差が大きいほど、冷媒を運ぶのに圧力を食われて冷暖房能力が落ちる</li>
+<li><strong>オイル戻り</strong>:圧縮機の潤滑オイルは冷媒と一緒に配管を旅する。高低差がありすぎるとオイルが圧縮機に帰ってこられず、焼き付きの原因になる</li>
+</ol>
+<p>だから(3)「高低差には制限がない」は言い過ぎで誤り。機種ごとにカタログに「最大配管長○m、最大高低差○m」と必ず書いてある。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 冷房時、外気温が高いほど屋外機が熱を捨てにくい→運転効率低下。猛暑日にエアコンの効きが悪いのはこれ<br />
+- (2)○ 冷暖同時型=冷房してる部屋から回収した熱を、暖房したい部屋に回すマルチ。実在する<br />
+- (4)○ 暖房時は屋外機コイルが冷たくなる→外気の水分が霜になる。だからデフロスト(霜取り)運転がある</p>
+<p><strong>試験テクニック</strong>:「制限がない」「〜によらず」「影響しない」みたいな断定表現は疑ってかかる。No.22・No.50(4)も同じ型。</p>
+<hr />
+<h2>No.13 換気の対象室と要因 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="50" y="20" width="150" height="75" fill="none" stroke="#666" stroke-width="2"/><text x="72" y="14" font-size="12" fill="#444">電気室</text><rect x="75" y="55" width="55" height="35" fill="#eee" stroke="#888"/><text x="102" y="77" font-size="11" fill="#444" text-anchor="middle">変圧器</text><path d="M 90 50 Q 86 42 90 34 Q 94 26 90 18" fill="none" stroke="#c0392b" stroke-width="2"/><path d="M 108 50 Q 104 42 108 34 Q 112 26 108 18" fill="none" stroke="#c0392b" stroke-width="2"/><text x="140" y="42" font-size="12" fill="#c0392b">熱がこもる</text><line x1="205" y1="50" x2="250" y2="50" stroke="#1d9e75" stroke-width="3"/><polygon points="258,50 248,45 248,55" fill="#1d9e75"/><text x="265" y="55" font-size="12" fill="#1d9e75">外へ</text><text x="160" y="107" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">目的は「熱をにがす」こと ○</text></svg></div>
+<p><strong>部屋ごとに「何のために換気するか」が違う</strong></p>
+<ul>
+<li>電気室 → 変圧器などの機器が発熱する → <strong>熱の除去</strong></li>
+<li>ボイラー室 → 燃やすには酸素が要る → <strong>燃焼空気の供給</strong></li>
+<li>シャワー室 → 湯気だらけ → <strong>湿気</strong>(カビ・結露防止)</li>
+<li>書庫 → 古い紙の臭いや保存環境 → <strong>臭気</strong></li>
+<li>駐車場 → 排気ガス → <strong>汚染物質</strong></li>
+</ul>
+<p><strong>問題文の引っかけ</strong><br />
+(1)は「電気室—汚染物質」。電気室で問題になるのは機器の発熱で、熱がこもると変圧器の寿命が縮む・故障する。汚染物質は駐車場や作業場の話。</p>
+<p><strong>覚え方</strong><br />
+部屋の中で何が起きてるか想像すればいい。電気室に入ると機械がブーンと唸ってムワッと暑い。あの暑さを逃がすのが換気の仕事。丸暗記じゃなく「その部屋の困りごとは何?」で考えると、初見の組合せでも対応できる。</p>
+<hr />
+<h2>No.14 換気 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><rect x="25" y="20" width="110" height="70" fill="none" stroke="#666" stroke-width="2"/><path d="M 80 40 A 22 18 0 1 1 79 40" fill="none" stroke="#c0392b" stroke-width="2.5"/><polygon points="79,40 71,34 71,46" fill="#c0392b"/><text x="80" y="108" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">中でぐるぐる ✕</text><rect x="185" y="20" width="110" height="70" fill="none" stroke="#666" stroke-width="2"/><line x1="150" y1="40" x2="192" y2="40" stroke="#1d9e75" stroke-width="3"/><polygon points="200,40 190,35 190,45" fill="#1d9e75"/><text x="163" y="30" font-size="11" fill="#1d9e75">外気IN</text><line x1="288" y1="70" x2="313" y2="70" stroke="#888" stroke-width="3"/><polygon points="318,70 308,65 308,75" fill="#888"/><text x="240" y="108" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">外気と入れかえ ○</text></svg></div>
+<p><strong>必要換気量=外気の量。ここがすべて</strong></p>
+<p>換気の目的はCO₂や汚染物質を薄めること。薄めるには外の新鮮な空気と入れ替えるしかない。部屋の中の空気をいくらぐるぐる循環させても、CO₂の総量は1ミリも減らない。サーキュレーターを何台回しても換気にならないのと同じ理屈。</p>
+<p>だから「必要換気量」と言ったら、それは<strong>取り入れる外気の量そのもの</strong>。(3)の「室内を循環する空気量で、外気は含まれない」は定義の真逆。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 自然換気=温度差による浮力(暖かい空気は上に抜ける)や風力で動かす<br />
+- (2)○ 機械換気=送風機で強制的に入れ替える<br />
+- (4)○ 局所換気=汚染発生源(コンロの上のレンジフードとか)をピンポイントで換気する方法</p>
+<p><strong>つながり</strong>:No.2(換気量の基準はCO₂)とセット。「CO₂を薄める→外気で薄めるしかない→換気量=外気量」と一本の線でつながってる。</p>
+<hr />
+<h2>No.15 上水道 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 105" width="320"><rect x="20" y="55" width="280" height="26" fill="#e6f1fb" stroke="#2b6cb0"/><text x="45" y="73" font-size="11" fill="#2b6cb0">配水管</text><rect x="110" y="25" width="16" height="30" fill="#ccc" stroke="#888"/><rect x="215" y="25" width="16" height="30" fill="#ccc" stroke="#888"/><line x1="130" y1="18" x2="211" y2="18" stroke="#c0392b" stroke-width="2"/><line x1="130" y1="12" x2="130" y2="24" stroke="#c0392b" stroke-width="1.5"/><line x1="211" y1="12" x2="211" y2="24" stroke="#c0392b" stroke-width="1.5"/><text x="170" y="12" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">30cm以上あける</text><text x="160" y="99" font-size="11" fill="#666" text-anchor="middle">近すぎるとおたがいの水圧に影響する</text></svg></div>
+<p><strong>配水管への取付口は30cm以上離す</strong></p>
+<p>配水管(道路の下の水道本管)から各家庭へ分岐する穴=取付口。これを他の給水装置の取付口から<strong>30cm以上</strong>離すのがルール。</p>
+<p><strong>なぜ離すのか</strong><br />
+1. 近すぎるとお互いの水圧・水量に影響する(隣で水を使うとこっちが弱くなる)<br />
+2. 本管に穴を開ける箇所が一点に集中すると、管の強度が落ちる</p>
+<p>(1)の「15cm以上」は正解の半分の数字を出す典型的な引っかけ。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 軟弱地盤や構造物との取り合い部=不同沈下しそうな場所には、可とう性のある伸縮継手(地震や沈下で管が折れないように"逃げ"を作る)<br />
+- (3)○ 給水装置の定義=配水管から分岐した給水管+直結する給水用具。条文そのまま<br />
+- (4)○ 80mm以上の配水管には管理者名・布設年次の明示テープ(掘削工事で誤って壊さないため)</p>
+<p><strong>引っかけの型</strong>:数字の半分・倍。30cm→15cm、後で出るNo.33(1000mm→600mm)、No.39(18%→15%)も同じ手口。</p>
+<hr />
+<h2>No.16 下水道 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 140" width="320"><circle cx="160" cy="80" r="38" fill="#eee" stroke="#666" stroke-width="2"/><text x="160" y="85" font-size="12" fill="#444" text-anchor="middle">本管</text><rect x="150" y="12" width="20" height="28" fill="#e6f1fb" stroke="#2b6cb0"/><text x="200" y="30" font-size="13" fill="#1d9e75" font-weight="bold">上(管頂)○</text><rect x="150" y="120" width="20" height="16" fill="#fdecea" stroke="#c0392b" stroke-dasharray="4 3"/><text x="200" y="133" font-size="13" fill="#c0392b" font-weight="bold">下(管底)✕</text><text x="65" y="30" font-size="11" fill="#666" text-anchor="middle">取付管</text><line x1="80" y1="35" x2="140" y2="22" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/></svg></div>
+<p><strong>取付管は本管の「上」につなぐ</strong></p>
+<p>取付管=建物からの排水を道路下の下水本管につなぐ管。接続位置は本管の<strong>管頂部</strong>(中心から上側)。</p>
+<p><strong>なぜ下(管底)はダメなのか</strong><br />
+1. 本管は大雨時など満水気味に流れることがある。下につないでたら本管の水が取付管へ<strong>逆流</strong>する<br />
+2. 管底は汚物や土砂が流れる場所。そこに合流させると流れを乱して<strong>詰まり</strong>の原因になる</p>
+<p>イメージは「上からそっと合流」。高速道路の合流も本線の流れを乱さないように入るのと同じ。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 下水の定義(生活・事業に起因する廃水+雨水。耕作の事業を除く)。条文通り<br />
+- (2)○ 分流式=汚水と雨水を別々の管で流す方式。雨水はそのまま公共用水域へ放流(汚水は処理場へ)<br />
+- (3)○ 公共下水道の設置・管理は市町村</p>
+<p><strong>引っかけの型</strong>:上下の反転。No.17(上方⇔下方)、No.20(上流⇔下流)、No.26(上⇔下に引き抜く)と、この試験は位置関係の反転が大好き。</p>
+<hr />
+<h2>No.17 給水設備 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 145" width="320"><rect x="70" y="35" width="150" height="95" fill="none" stroke="#666" stroke-width="2"/><rect x="72" y="85" width="146" height="43" fill="#e6f1fb"/><rect x="100" y="10" width="14" height="35" fill="#ccc" stroke="#888"/><text x="128" y="24" font-size="12" fill="#444">給水管(吐水口)</text><rect x="150" y="68" width="70" height="12" fill="#ddd" stroke="#888"/><rect x="212" y="68" width="30" height="12" fill="#ddd" stroke="#888"/><text x="248" y="79" font-size="12" fill="#444">オーバーフロー管</text><line x1="107" y1="48" x2="107" y2="65" stroke="#1d9e75" stroke-width="2"/><line x1="100" y1="48" x2="114" y2="48" stroke="#1d9e75" stroke-width="1.5"/><line x1="100" y1="65" x2="114" y2="65" stroke="#1d9e75" stroke-width="1.5"/><text x="60" y="60" font-size="11" fill="#1d9e75" text-anchor="end">吐水口空間</text><text x="145" y="141" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">オーバーフローは吐水口より下 ○</text></svg></div>
+<p><strong>キーワードは「吐水口空間」</strong></p>
+<p>受水タンクの上から給水管がニョキッと出てて、その先端(吐水口)から水がタンクに落ちる。このとき<strong>吐水口とタンク水面の間に必ず空間を確保する</strong>のがルール。これが吐水口空間。</p>
+<p><strong>なぜ空間が要るのか</strong><br />
+断水などで給水管内が負圧になると、管が「吸い込む」状態になる。もし吐水口が水に浸かってたら、タンクの水が給水管へ逆サイホンで吸い戻される=飲み水の系統が汚染される。空間さえあれば物理的に吸い戻せない。</p>
+<p><strong>オーバーフロー位置との関係</strong><br />
+オーバーフロー管はタンクの最高水位を決める。この取り出しが吐水口より<strong>上</strong>にあったら、水面が吐水口の高さまで上がれてしまい、空間が消える。だから<strong>吐水口端より下方</strong>から取り出す。(1)は「上方から」なので誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 揚程30m超のポンプ吐出側逆止め弁は衝撃吸収式(ウォーターハンマー対策)<br />
+- (3)○ ボールタップ・定水位弁で水位を自動維持<br />
+- (4)○ クロスコネクション=飲料水系統と他系統の直接接続。絶対禁止事項の定義</p>
+<p><strong>つながり</strong>:「飲み水は逆流させない」思想はNo.24(オーバーフロー管の間接排水)、No.42(3)(水栓の吐水口空間)、No.51(冷水器の間接排水)と全部同じ。この試験の裏テーマ。</p>
+<hr />
+<h2>No.18 給湯設備 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 130" width="320"><rect x="35" y="55" width="90" height="60" fill="none" stroke="#666" stroke-width="2"/><rect x="55" y="20" width="50" height="28" fill="#e6f1fb" stroke="#2b6cb0"/><text x="80" y="38" font-size="10" fill="#2b6cb0" text-anchor="middle">開放式</text><text x="80" y="126" font-size="12" fill="#444" text-anchor="middle">てっぺんより上に必須</text><rect x="195" y="55" width="90" height="60" fill="none" stroke="#666" stroke-width="2"/><rect x="215" y="80" width="50" height="28" fill="#e1f5ee" stroke="#1d9e75"/><text x="240" y="98" font-size="10" fill="#0f6e56" text-anchor="middle">密閉式</text><text x="240" y="126" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">どこでもOK(機械室も○)</text><text x="240" y="45" font-size="11" fill="#666" text-anchor="middle">圧力をかけてるから</text></svg></div>
+<p><strong>膨張タンクは2種類。性格が正反対</strong></p>
+<p>湯を沸かすと体積が膨らむ。その逃げ場が膨張タンク。</p>
+<p><strong>開放式</strong> = 大気に開放されたただのタンク。水は高いところから低いところへ流れるので、配管系のいちばん高い位置より<strong>上</strong>に置かないと湯が溢れ出す。設置場所に強い縛りがある。</p>
+<p><strong>密閉式</strong> = 中に空気やガスの袋が入った密閉容器。圧力で膨張を受け止めるから、重力と無関係に<strong>どこにでも置ける</strong>。地下の機械室でもOK。むしろ「屋上に置きたくないから密閉式にする」というのが実務の発想。</p>
+<p>(3)「密閉式膨張タンクは機械室には設置できない」は真逆。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 瞬間式湯沸器は「その瞬間の最大流量」を温める能力が必要(貯めておけないから)<br />
+- (2)○ 貯湯式給湯器には開放型と密閉型がある<br />
+- (4)○ さや管ヘッダー方式=集合住宅の定番。さや管の中に樹脂管を通すので、将来の更新が抜き差しでできる</p>
+<p><strong>覚え方</strong>:「開放式=てっぺんより上に必須/密閉式=どこでも自由」。性格の対比で覚える。</p>
+<hr />
+<h2>No.19 排水・通気設備 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><circle cx="90" cy="50" r="18" fill="#fdecea" stroke="#c0392b" stroke-width="2"/><text x="90" y="55" font-size="11" fill="#c0392b" text-anchor="middle">25</text><text x="90" y="92" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">25mm ✕ 細すぎ</text><circle cx="225" cy="50" r="24" fill="#e1f5ee" stroke="#1d9e75" stroke-width="2"/><text x="225" y="55" font-size="12" fill="#0f6e56" text-anchor="middle">30</text><text x="225" y="92" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">最小30mm ○</text></svg></div>
+<p><strong>通気管の最小管径は30mm</strong></p>
+<p>通気管は排水管に空気の通り道を作って、トラップの封水を守る管。細すぎると空気抵抗が大きくて役目を果たせないので、最小でも<strong>30mm</strong>(かつ、接続する排水管径の1/2以上)と決まってる。(1)の25mmは誤り。</p>
+<p><strong>この問題は数字暗記ゾーン。セットで覚える</strong></p>
+<ul>
+<li>通気管の最小管径:<strong>30mm</strong></li>
+<li>トラップの封水深:<strong>50〜100mm</strong>(浅い=蒸発や吸い出しで破封しやすい/深い=底に固形物が溜まる)</li>
+<li>飲料用タンク間接排水の排水口空間:<strong>最小150mm</strong></li>
+<li>掃除口の間隔:管径100mm以下→<strong>15m以内</strong>、100mm超→<strong>30m以内</strong></li>
+</ul>
+<p><strong>他の選択肢はすべてこの数字たちの正しい記述</strong><br />
+- (2)○ 封水深50〜100mmの理由込みで正しい<br />
+- (3)○ 排水口空間は最小150mm<br />
+- (4)○ 掃除口の間隔15m/30m</p>
+<p><strong>語呂の提案</strong>:「通気30・封水50-100・空間150」をワンフレーズで唱える。試験直前に見るのはこの1行だけでいい。</p>
+<hr />
+<h2>No.20 排水・通気設備 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 135" width="320"><line x1="30" y1="95" x2="300" y2="95" stroke="#666" stroke-width="3"/><polygon points="300,95 290,90 290,100" fill="#666"/><text x="290" y="112" font-size="11" fill="#666" text-anchor="end">流れる向き →</text><line x1="90" y1="55" x2="90" y2="95" stroke="#888" stroke-width="2"/><line x1="160" y1="55" x2="160" y2="95" stroke="#888" stroke-width="2"/><line x1="230" y1="55" x2="230" y2="95" stroke="#888" stroke-width="2"/><text x="90" y="48" font-size="11" fill="#444" text-anchor="middle">器具1</text><text x="160" y="48" font-size="11" fill="#444" text-anchor="middle">器具2</text><text x="230" y="48" font-size="11" fill="#444" text-anchor="middle">器具3</text><text x="90" y="32" font-size="10" fill="#666" text-anchor="middle">(いちばん上流)</text><line x1="112" y1="95" x2="112" y2="18" stroke="#1d9e75" stroke-width="3"/><text x="120" y="18" font-size="12" fill="#1d9e75" font-weight="bold">すぐ下流から立ち上げ○</text><line x1="55" y1="95" x2="55" y2="60" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/><text x="55" y="128" font-size="12" fill="#c0392b" text-anchor="middle">上流側は ✕</text></svg></div>
+<p><strong>ループ通気管はどこから立ち上げる?</strong></p>
+<p>ループ通気方式=横枝管につながる複数の器具をまとめて1本の通気管で守る方式。立ち上げ位置は「<strong>最上流の器具排水管が横枝管に接続した点のすぐ下流</strong>」。</p>
+<p><strong>なぜ下流側なのか</strong><br />
+通気管の仕事は、器具たちが排水したとき管内の空気の逃げ道を作ること。最上流の器具より<strong>上流</strong>から取ったら、そこはまだ誰の排水も通らない場所。守りたい器具群の手前に見張りを立てても意味がない。全器具の排水が合流し始める直後(下流)に空気の出入口を置くのが正解。</p>
+<p>(4)は「すぐ上流から立ち上げる」なので誤り。「上流」と「下流」を入れ替えただけの一文字レベルの引っかけ。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 排水槽の吸込みピットはポンプ吸込部の周囲・下部に200mm以上の間隔(吸い込み効率と渦防止)<br />
+- (2)○ 排水立て管の上部は伸頂通気管として延長し大気開放<br />
+- (3)○ 排水管は流下方向に管径を縮小しない。立て管でも横管でも同じ。細くなったらそこで詰まる</p>
+<p><strong>引っかけの型</strong>:方向の反転。問題文を読むとき「上流/下流」「上/下」に線を引くクセをつけると事故が減る。</p>
+<hr />
+<h2>No.21 屋内消火栓の加圧送水装置 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="15" y="20" width="88" height="32" rx="8" fill="#e1f5ee" stroke="#1d9e75"/><text x="59" y="40" font-size="12" fill="#0f6e56" text-anchor="middle">高架水槽 ○</text><rect x="116" y="20" width="88" height="32" rx="8" fill="#e1f5ee" stroke="#1d9e75"/><text x="160" y="40" font-size="12" fill="#0f6e56" text-anchor="middle">圧力水槽 ○</text><rect x="217" y="20" width="88" height="32" rx="8" fill="#e1f5ee" stroke="#1d9e75"/><text x="261" y="40" font-size="12" fill="#0f6e56" text-anchor="middle">ポンプ ○</text><rect x="80" y="65" width="160" height="32" rx="8" fill="#fdecea" stroke="#c0392b" stroke-dasharray="5 3"/><text x="160" y="85" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">水道直結 ✕ 存在しない</text></svg></div>
+<p><strong>方式は3つだけ。丸暗記でOK</strong></p>
+<ol>
+<li><strong>高架水槽方式</strong>:高い場所の水槽から重力で圧をかける</li>
+<li><strong>圧力水槽方式</strong>:密閉タンクに圧縮空気で圧をかけておく</li>
+<li><strong>ポンプ方式</strong>:ポンプで直接加圧(いちばん一般的)</li>
+</ol>
+<p><strong>なぜ水道直結がないのか</strong><br />
+消火に必要な水圧・水量は水道の圧力では保証できないから。火事のときは消防隊も近隣も一斉に水を使い、水道の圧はアテにならない。命に関わる設備は「自前で加圧」が大原則。</p>
+<p>(2)「水道直結による方式」は存在しないので誤り。</p>
+<p><strong>一般給水との対比で覚える</strong><br />
+普通の給水設備には水道直結方式がある(直結直圧・直結増圧)。だから「水道直結」という言葉自体は実在して、もっともらしく見える。でも消火設備の世界には持ち込めない。「給水はOK、消火はNG」の線引きを覚える。</p>
+<p><strong>つながり</strong>:No.45(消火栓に非常電源が必須)と同じ思想。消防設備は「最悪の状況(停電・断水・水圧低下)でも動く」ことが設計の前提。</p>
+<hr />
+<h2>No.22 ガス設備 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="30" y="35" width="45" height="20" fill="#eee" stroke="#666"/><line x1="80" y1="45" x2="130" y2="45" stroke="#2b6cb0" stroke-width="4"/><polygon points="138,45 127,39 127,51" fill="#2b6cb0"/><text x="80" y="25" font-size="12" fill="#2b6cb0">かるいガス→シュッ</text><rect x="185" y="35" width="45" height="20" fill="#eee" stroke="#666"/><line x1="235" y1="45" x2="260" y2="45" stroke="#a5691b" stroke-width="7"/><polygon points="268,45 258,38 258,52" fill="#a5691b"/><text x="235" y="25" font-size="12" fill="#a5691b">おもいガス→ドロッ</text><text x="160" y="90" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">比重がちがえば出る量もちがう=影響する ○</text></svg></div>
+<p><strong>ガスの比重はノズル噴出量に影響「する」</strong></p>
+<p>ガス機器のノズルから出るガスの量は、ノズル径・ガス圧・そして<strong>ガスの比重</strong>で決まる。軽いガスはシュッと勢いよく出るし、重いガスはドロッと出る。同じノズル・同じ圧力でも、ガスが違えば出る量も熱量も変わる。</p>
+<p><strong>これが実務でどう効くか</strong><br />
+都市ガス(13Aなど)とLPGは比重も熱量も全然違う。だからガス機器は必ず「都市ガス用」「LPG用」に分かれてて、間違ったガスにつなぐと不完全燃焼・異常燃焼で事故になる。引っ越しでコンロのガス種を確認するのはこのため。</p>
+<p>(3)「比重の大小は噴出量に影響しない」は誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ LPGは容器内が高圧なので、調整器(レギュレーター)で燃焼に適した圧力まで減圧してから使う<br />
+- (2)○ LNGは液化の工程で硫黄分や不純物が除去される。クリーンな燃料と言われる理由<br />
+- (4)○ LPGは本来無色無臭。漏れに気付けるようにわざと臭い(付臭剤)を付けてある</p>
+<p><strong>引っかけの型</strong>:「影響しない」の断定。No.12と同じ。</p>
+<hr />
+<h2>No.23 浄化槽の処理対象人員 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><rect x="30" y="20" width="100" height="60" fill="#e6f1fb" stroke="#2b6cb0"/><line x1="30" y1="40" x2="130" y2="40" stroke="#2b6cb0" stroke-dasharray="3 3"/><line x1="30" y1="60" x2="130" y2="60" stroke="#2b6cb0" stroke-dasharray="3 3"/><text x="80" y="100" font-size="12" fill="#2b6cb0" text-anchor="middle">事務所・住宅など</text><text x="80" y="14" font-size="12" fill="#2b6cb0" text-anchor="middle">= 延べ面積で計算</text><rect x="195" y="35" width="22" height="28" rx="5" fill="#eee" stroke="#666"/><rect x="230" y="35" width="22" height="28" rx="5" fill="#eee" stroke="#666"/><rect x="265" y="35" width="22" height="28" rx="5" fill="#eee" stroke="#666"/><text x="240" y="100" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">公衆便所だけ</text><text x="240" y="14" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">= 便器の数で計算 ○</text></svg></div>
+<p><strong>仲間はずれを1個覚えるだけの問題</strong></p>
+<p>浄化槽のサイズを決める「処理対象人員」は、建物用途ごとの算定式で出す。ほとんどの用途は<strong>延べ面積×係数</strong>。</p>
+<ul>
+<li>事務所 → 延べ面積で算定</li>
+<li>集会場 → 延べ面積で算定</li>
+<li>共同住宅 → 延べ面積で算定(n=0.05Aなど)</li>
+<li><strong>公衆便所 → 便器の数で算定</strong></li>
+</ul>
+<p><strong>なぜ公衆便所だけ違うのか</strong><br />
+公園のトイレを想像すると納得できる。建物はちっちゃいのに利用者はめちゃくちゃ多い。延べ面積と利用者数がまったく比例しないから、実際の処理量に直結する「便器の数」で数える。</p>
+<p>(3)公衆便所が「延べ面積によることが適当でないもの」=正解。</p>
+<p><strong>試験テクニック</strong><br />
+この手の「〜によらないものはどれか」問題は、例外の1個だけ覚えておけば残りを知らなくても解ける。コスパ最高の暗記。「公衆便所=便器数」の6文字でこの問題は終わり。</p>
+<hr />
+<h2>No.24 飲料用給水タンク — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="55" y="15" width="26" height="55" fill="#ddd" stroke="#888"/><line x1="55" y1="74" x2="81" y2="74" stroke="#1d9e75" stroke-width="2"/><line x1="59" y1="70" x2="59" y2="78" stroke="#1d9e75" stroke-width="1.2"/><line x1="65" y1="70" x2="65" y2="78" stroke="#1d9e75" stroke-width="1.2"/><line x1="71" y1="70" x2="71" y2="78" stroke="#1d9e75" stroke-width="1.2"/><line x1="77" y1="70" x2="77" y2="78" stroke="#1d9e75" stroke-width="1.2"/><text x="68" y="100" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">防虫網 ○</text><path d="M 215 15 L 215 55 Q 215 80 235 80 Q 255 80 255 55 L 255 40" fill="none" stroke="#c0392b" stroke-width="8"/><text x="235" y="110" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">トラップ ✕</text><text x="235" y="30" font-size="11" fill="#666">水がにげる道を</text><text x="235" y="44" font-size="11" fill="#666">ふさいじゃダメ</text></svg></div>
+<p><strong>オーバーフロー管の正しい姿:防虫網+間接排水</strong></p>
+<p>オーバーフロー管は、タンクの水位が上がりすぎたとき水を逃がす非常口。ここの処理には2つの脅威がある。</p>
+<ol>
+<li><strong>虫や小動物の侵入</strong> → 出口に<strong>防虫網</strong>を付けて防ぐ</li>
+<li><strong>排水管からの逆流・臭気</strong> → 排水管に直結せず、<strong>排水口空間を開けた間接排水</strong>にして物理的に縁を切る</li>
+</ol>
+<p><strong>なぜトラップはダメなのか</strong><br />
+トラップの封水は水が流れてないと蒸発して消える。オーバーフロー管は普段まったく水が流れない管だから、封水はすぐ干上がって役に立たない。しかも詰まりの原因にもなり、いざというとき水を逃がせない=非常口を塞ぐことになる。(4)「トラップを設ける」は誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ FRP製サンドイッチ構造パネルタンク(FRP表面材+発泡体心材)は実在<br />
+- (2)○ タンク上部の気相部は塩素ガスが滞留して腐食しやすい→耐食性の高いステンレスを使う。マニアックだけど正しい<br />
+- (3)○ 鋼製タンク内面はエポキシ樹脂等の樹脂系塗料で防食</p>
+<p><strong>つながり</strong>:No.17の吐水口空間と同じ「飲み水を汚染から守る」思想。虫は網で、逆流は空間で。</p>
+<hr />
+<h2>No.25 保温材 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="20" y="20" width="135" height="70" rx="8" fill="#fdf3d8" stroke="#a5691b"/><path d="M 35 45 Q 45 35 55 45 Q 65 55 75 45" fill="none" stroke="#a5691b" stroke-width="2"/><path d="M 35 60 Q 45 50 55 60 Q 65 70 75 60" fill="none" stroke="#a5691b" stroke-width="2"/><text x="115" y="48" font-size="11" fill="#a5691b">グラスウール</text><text x="115" y="64" font-size="11" fill="#a5691b">ロックウール</text><text x="87" y="107" font-size="12" fill="#a5691b" text-anchor="middle">ワタ系(人造鉱物繊維)</text><rect x="170" y="20" width="130" height="70" rx="8" fill="#e6f1fb" stroke="#2b6cb0"/><circle cx="195" cy="45" r="7" fill="none" stroke="#2b6cb0"/><circle cx="212" cy="60" r="5" fill="none" stroke="#2b6cb0"/><circle cx="198" cy="70" r="4" fill="none" stroke="#2b6cb0"/><text x="255" y="55" font-size="11" fill="#2b6cb0" text-anchor="middle">ポリスチレン</text><text x="255" y="70" font-size="11" fill="#2b6cb0" text-anchor="middle">フォーム</text><text x="235" y="107" font-size="12" fill="#2b6cb0" text-anchor="middle">泡系(発泡プラスチック)</text></svg></div>
+<p><strong>保温材は2つの家系に分かれる</strong></p>
+<p><strong>人造鉱物繊維系(ワタの家系)</strong><br />
+鉱物を溶かして繊維状にしたもの。<br />
+- グラスウール(ガラス繊維)<br />
+- ロックウール(岩石繊維)</p>
+<p><strong>発泡プラスチック系(泡の家系)</strong><br />
+プラスチックを泡立てて固めたもの。<br />
+- ポリスチレンフォーム(発泡スチロールの仲間)<br />
+- ウレタンフォーム</p>
+<p>(4)「ポリスチレンフォームは人造鉱物繊維保温材」は家系の取り違え。誤り。</p>
+<p><strong>耐熱性の序列も一緒に覚える</strong></p>
+<p><strong>ロックウール &gt; グラスウール &gt; ポリスチレンフォーム</strong></p>
+<p>岩は燃えない→ロックウールは耐火性最強→だから防火区画の貫通部に使う(2)(3)。プラスチックは熱に弱い→発泡スチロールにお湯をかけると縮むあの感じ→ポリスチレンは高温NG。素材の出自を考えれば序列は導ける。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ JISにホルムアルデヒド放散量の等級区分あり<br />
+- (2)○ グラスウールはポリスチレンより高温域で使える(上の序列通り)<br />
+- (3)○ ロックウール=防火区画貫通部の定番</p>
+<hr />
+<h2>No.26 配管材料・附属品 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="40" y="35" width="240" height="24" fill="#eee" stroke="#666"/><polygon points="290,47 278,41 278,53" fill="#666"/><rect x="130" y="55" width="26" height="42" transform="rotate(35 143 76)" fill="#ddd" stroke="#888"/><circle cx="168" cy="92" r="7" fill="#8d6e63"/><circle cx="158" cy="98" r="5" fill="#8d6e63"/><text x="200" y="100" font-size="12" fill="#666">ゴミは下にたまる</text><line x1="150" y1="103" x2="150" y2="118" stroke="#1d9e75" stroke-width="2.5"/><polygon points="150,122 144,113 156,113" fill="#1d9e75"/><text x="105" y="120" font-size="13" fill="#1d9e75" text-anchor="end" font-weight="bold">下に引き抜く ○</text><text x="70" y="24" font-size="12" fill="#444">横引き配管</text></svg></div>
+<p><strong>Y形ストレーナーは重力を考えて付ける</strong></p>
+<p>ストレーナー=配管内のゴミを漉し取る網(スクリーン)入りの器具。Y形は網が45度傾いて入ってる。</p>
+<p><strong>掃除のことを考える</strong><br />
+ゴミは重力で下に溜まる。だから横引き配管では、網を<strong>下向き</strong>に取り付けて、<strong>下方に引き抜いて</strong>掃除する。上向きに付けたら、溜まったゴミの下から網を抜くことになって掃除にならない。(1)「上部にスクリーンを引き抜く」は向きが逆。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 銅管は肉厚でK(厚)・L(中)・M(薄)の3タイプ<br />
+- (3)○ <strong>弁の使い分け(超頻出)</strong>:<br />
+  - 中間開度で流量調整OK → <strong>玉形弁・バタフライ弁</strong><br />
+  - 全開/全閉専用 → <strong>ボール弁・仕切弁</strong>(中間開度だと弁体が振動・摩耗する)<br />
+- (4)○ 水道用硬質ポリ塩化ビニル管はVP(通常)とHIVP(耐衝撃)</p>
+<p><strong>覚え方</strong>:調整役の玉形弁は中の流路がS字で「絞る」のが得意。仕切弁・ボール弁は「開けるか閉めるか」の門番。キャラで覚えると混ざらない。</p>
+<hr />
+<h2>No.27 ダクト — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><polygon points="20,45 90,45 150,25 150,80 90,60 20,60" fill="#e6f1fb" stroke="#2b6cb0"/><text x="85" y="98" font-size="13" fill="#2b6cb0" text-anchor="middle" font-weight="bold">拡大は15°以内</text><polygon points="175,25 235,25 300,42 300,62 235,80 175,80" fill="#fdf3d8" stroke="#a5691b"/><text x="240" y="98" font-size="13" fill="#a5691b" text-anchor="middle" font-weight="bold">縮小は30°以内</text><text x="160" y="14" font-size="11" fill="#666" text-anchor="middle">急に広げると空気が渦をまく</text></svg></div>
+<p><strong>断面変化の角度:拡大15度以内・縮小30度以内</strong></p>
+<p>ダクトの太さを変えるとき、急激に変えてはいけない。</p>
+<p><strong>なぜ拡大の方が厳しいのか</strong><br />
+急に広がると、空気は壁面に沿いきれずに剥がれて渦を巻く(剥離)。この渦がエネルギーの無駄食い=圧力損失の急増。一方、縮小方向は流れが自然に絞られるので素直で、基準も緩い。だから<strong>拡大15度・縮小30度</strong>と、広げる側だけ厳しい。</p>
+<p>(2)「拡大・縮小ともに45度以内」はどちらも大幅オーバーで誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ エルボの内側半径は円形ダクトで直径の1/2以上(急カーブ禁止。曲がりでも剥離が起きるから)<br />
+- (3)○ ガイドベーン(案内羽根)=直角エルボの中に付ける整流板。急カーブでも空気を沿わせて圧損低減<br />
+- (4)○ 共板フランジ用ガスケットは弾力性のあるもの(気密確保)</p>
+<p><strong>つながり</strong>:No.10(フィルタの通過速度)、No.52(アスペクト比)と同じ「空気に無理をさせると圧損で返ってくる」の世界。ダクト設計はぜんぶこの思想。</p>
+<hr />
+<h2>No.28 設計図書の記載項目 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><circle cx="75" cy="45" r="24" fill="#e1f5ee" stroke="#1d9e75" stroke-width="2"/><path d="M 75 45 L 75 26 M 75 45 L 91 55 M 75 45 L 59 55" stroke="#1d9e75" stroke-width="3"/><text x="75" y="90" font-size="12" fill="#0f6e56" text-anchor="middle">送風機</text><text x="75" y="106" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">呼び番号 ○</text><rect x="200" y="28" width="60" height="34" rx="8" fill="#eee" stroke="#666"/><text x="230" y="49" font-size="12" fill="#444" text-anchor="middle">ポンプ</text><text x="230" y="90" font-size="12" fill="#666" text-anchor="middle">口径・揚程・水量</text><text x="230" y="106" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">呼び番号 ✕</text></svg></div>
+<p><strong>「呼び番号」は送風機の専用語</strong></p>
+<p>送風機のサイズは「呼び番号(#)」で表す。羽根車の直径150mmを1番として、#2なら300mm…という送風機業界のサイズ表記。</p>
+<p><strong>ポンプの仕様はどう書くか</strong><br />
+口径・揚程(何m持ち上げるか)・吐出し量(毎分何L)・電動機出力。呼び番号という言葉は使わない。(2)「揚水ポンプ—呼び番号」は機器と用語のミスマッチで誤り。</p>
+<p><strong>他の選択肢(機器と記載項目の正しいペア)</strong><br />
+- (1)○ 全熱交換器 — 全熱交換効率(この機械の存在意義の数字)<br />
+- (3)○ ユニット形空調機 — 有効加湿量<br />
+- (4)○ 冷却塔 — 騒音値(屋外設置で近隣クレームになりやすい機器だから、騒音を仕様で縛る)</p>
+<p><strong>覚え方</strong><br />
+「なぜその項目を図面に書くのか」を考えると納得で覚えられる。冷却塔の騒音値なんかは実務のトラブルあるあるがそのまま試験に出てるパターン。</p>
+<hr />
+<h2>No.29 公共工事の施工計画 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><rect x="20" y="20" width="80" height="30" rx="6" fill="#fdecea" stroke="#c0392b" stroke-width="2"/><text x="60" y="34" font-size="10" fill="#c0392b" text-anchor="middle">質問回答書</text><text x="60" y="46" font-size="10" fill="#c0392b" text-anchor="middle">(いちばん強い)</text><rect x="110" y="25" width="70" height="25" rx="6" fill="#fdf3d8" stroke="#a5691b"/><text x="145" y="41" font-size="10" fill="#a5691b" text-anchor="middle">現場説明書</text><rect x="190" y="28" width="60" height="22" rx="6" fill="#eee" stroke="#888"/><text x="220" y="42" font-size="10" fill="#666" text-anchor="middle">特記仕様書</text><rect x="258" y="30" width="46" height="20" rx="6" fill="#eee" stroke="#aaa"/><text x="281" y="43" font-size="10" fill="#888" text-anchor="middle">図面…</text><line x1="290" y1="70" x2="40" y2="70" stroke="#c0392b" stroke-width="2"/><polygon points="32,70 43,64 43,76" fill="#c0392b"/><text x="160" y="90" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">あとから出た書類ほど強い</text><text x="160" y="110" font-size="12" fill="#444" text-anchor="middle">質 > 現 > 特 > 図 > 標</text></svg></div>
+<p><strong>設計図書の優先順位は「あとの書類ほど強い」</strong></p>
+<blockquote>
+<p>質問回答書 &gt; 現場説明書 &gt; 特記仕様書 &gt; 設計図面 &gt; 標準仕様書</p>
+</blockquote>
+<p><strong>理屈で覚える</strong><br />
+標準仕様書は全工事共通のベース。特記仕様書と図面はこの工事専用の指定。現場説明書は入札前の説明。質問回答書は「その説明に対する質疑への回答」=いちばん最後に出た、いちばん具体的な合意。時系列が後の書類ほど最新の意思を反映してるから優先される。</p>
+<p>(4)「現場説明書と質問回答書に相違→現場説明書が優先」は順位が逆で誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 石綿(アスベスト)含有資機材は使用禁止<br />
+- (2)○ 仮設計画は設計図書に特別の定めがなければ受注者の責任で定める(どう施工するかは受注者の裁量)<br />
+- (3)○ 工事写真は後日見えなくなる箇所(埋設・隠ぺい)+設計図書指定箇所を撮影</p>
+<p><strong>つながり</strong>:この優先順位は二次検定(実地)でも聞かれる。「質・現・特・図・標」で今のうちに固めておくと後で楽。</p>
+<hr />
+<h2>No.30 ネットワーク工程表 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 160" width="320"><line x1="36" y1="105" x2="84" y2="105" stroke="#c0392b" stroke-width="3"/><line x1="95" y1="94" x2="95" y2="51" stroke="#c0392b" stroke-width="3" stroke-dasharray="5 3"/><line x1="106" y1="40" x2="149" y2="40" stroke="#c0392b" stroke-width="3"/><line x1="171" y1="40" x2="214" y2="40" stroke="#c0392b" stroke-width="3"/><line x1="225" y1="51" x2="225" y2="94" stroke="#c0392b" stroke-width="3"/><line x1="236" y1="100" x2="285" y2="79" stroke="#c0392b" stroke-width="3"/><line x1="32" y1="96" x2="88" y2="49" stroke="#bbb" stroke-width="1.5"/><line x1="106" y1="105" x2="214" y2="105" stroke="#bbb" stroke-width="1.5"/><line x1="236" y1="45" x2="285" y2="66" stroke="#bbb" stroke-width="1.5"/><circle cx="25" cy="105" r="11" fill="#fff" stroke="#666"/><circle cx="95" cy="105" r="11" fill="#fff" stroke="#666"/><circle cx="95" cy="40" r="11" fill="#fff" stroke="#666"/><circle cx="160" cy="40" r="11" fill="#fff" stroke="#666"/><circle cx="225" cy="40" r="11" fill="#fff" stroke="#666"/><circle cx="225" cy="105" r="11" fill="#fff" stroke="#666"/><circle cx="295" cy="72" r="11" fill="#fff" stroke="#666"/><text x="25" y="109" font-size="10" fill="#444" text-anchor="middle">1</text><text x="95" y="109" font-size="10" fill="#444" text-anchor="middle">2</text><text x="95" y="44" font-size="10" fill="#444" text-anchor="middle">3</text><text x="160" y="44" font-size="10" fill="#444" text-anchor="middle">4</text><text x="225" y="44" font-size="10" fill="#444" text-anchor="middle">5</text><text x="225" y="109" font-size="10" fill="#444" text-anchor="middle">6</text><text x="295" y="76" font-size="10" fill="#444" text-anchor="middle">7</text><text x="60" y="122" font-size="11" fill="#c0392b" text-anchor="middle">B 5日</text><text x="127" y="30" font-size="11" fill="#c0392b" text-anchor="middle">C 3日</text><text x="192" y="30" font-size="11" fill="#c0392b" text-anchor="middle">E 2日</text><text x="240" y="76" font-size="11" fill="#c0392b">F 3日</text><text x="268" y="103" font-size="11" fill="#c0392b">H 3日</text><text x="160" y="150" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">赤いルート=クリティカルパス:5+3+2+3+3=16日</text></svg></div>
+<p><strong>解き方は2つのルールだけ</strong></p>
+<ol>
+<li>左から順に日数を足していく</li>
+<li><strong>矢印が合流する点では「遅い方」を採用</strong>(全部の作業が終わらないと次に進めないから)</li>
+<li>ダミー(点線)も「待ち」の依存関係として計算に入れる</li>
+</ol>
+<p><strong>この問題を実際に計算</strong></p>
+<ul>
+<li>イベント① = 0日</li>
+<li>② = B完了で5日</li>
+<li>③ = A経由なら4日、ダミー経由(Bの後)なら5日 → 遅い方で<strong>5日</strong></li>
+<li>④ = 5+C(3) = 8日</li>
+<li>⑤ = 8+E(2) = 10日</li>
+<li>⑥ = D経由なら5+4=9日、F経由なら10+3=13日 → <strong>13日</strong></li>
+<li>⑦ = G経由なら10+4=14日、H経由なら13+3=16日 → <strong>16日</strong></li>
+</ul>
+<p>クリティカルパス(最長経路)は B→ダミー→C→E→F→H = 5+3+2+3+3 = <strong>16日</strong>。(2)の「15日」が誤り。</p>
+<p><strong>他の選択肢を検証</strong><br />
+- (1)○ Hはイベント⑥から出る作業。⑥に入るDとFの両方が完了しないと開始できない<br />
+- (3)○ Dを2日短縮してもD経由は7日。⑥を決めてるのはF経由の13日のままなので全体は変わらない(Dには余裕=フロートがある)<br />
+- (4)○ Gの最早開始は10日、最遅開始は16−4=12日。2日遅らせても全体に影響しない</p>
+<p><strong>試験テクニック</strong>:計算する前に「クリティカルパスの日数」の選択肢から検証すると速い。合ってなければそれが答え、合ってたら他を見る。</p>
+<hr />
+<h2>No.31 品質管理 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><rect x="20" y="20" width="130" height="55" rx="8" fill="#e1f5ee" stroke="#1d9e75"/><text x="85" y="42" font-size="12" fill="#0f6e56" text-anchor="middle">品質管理をやる</text><text x="85" y="62" font-size="12" fill="#0f6e56" text-anchor="middle">→ やり直しへる</text><text x="85" y="98" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">原価 ↓ 下がる ○</text><rect x="170" y="20" width="130" height="55" rx="8" fill="#fdecea" stroke="#c0392b"/><text x="235" y="42" font-size="12" fill="#c0392b" text-anchor="middle">やらない</text><text x="235" y="62" font-size="12" fill="#c0392b" text-anchor="middle">→ やり直し工事</text><text x="235" y="98" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">原価 ↑ いちばん高い</text></svg></div>
+<p><strong>「品質を上げるとカネがかかる」は直感のワナ</strong></p>
+<p>品質管理をちゃんとやると何が起きるか、順を追うと:</p>
+<ol>
+<li>施工中に不良を早期発見できる</li>
+<li>手直し(やり直し工事)が減る</li>
+<li>やり直しの材料費・人件費・工期遅延が消える</li>
+<li><strong>結果、原価は下がる</strong></li>
+</ol>
+<p>建設で一番高くつくのは「作ったものを壊してもう一回作る」こと。品質管理のコストは、手直し1回の損失に比べたら安い保険。(2)「品質は向上するが、手直しが増加し原価が上がる」は因果が逆で誤り。手直しは増えるんじゃなく減る。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 品質管理の目的=設計図書等で要求された品質を満足するように施工すること<br />
+- (3)○ PDCA(Plan計画→Do実施→Check確認→Action処置)の繰り返し=デミングサークル<br />
+- (4)○ 主要機器の試験・防火区画の貫通処理は<strong>全数検査</strong>。命や防火に関わる箇所は抜き取りじゃダメ</p>
+<p><strong>しゃぼん換算</strong>:日報のチェックをサボって給与計算をミスったら、訂正と信頼回復のコストの方がはるかに高い。あれと同じ構造。</p>
+<hr />
+<h2>No.32 建設工事の安全管理 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="30" y="25" width="70" height="50" fill="#e6f1fb" stroke="#2b6cb0"/><text x="65" y="55" font-size="12" fill="#2b6cb0" text-anchor="middle">A社</text><rect x="220" y="25" width="70" height="50" fill="#fdf3d8" stroke="#a5691b"/><text x="255" y="55" font-size="12" fill="#a5691b" text-anchor="middle">B社</text><line x1="105" y1="50" x2="212" y2="50" stroke="#1d9e75" stroke-width="2.5"/><polygon points="216,50 206,45 206,55" fill="#1d9e75"/><circle cx="150" cy="42" r="7" fill="#f0d9b5" stroke="#888"/><text x="160" y="98" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">この移動中のケガも通勤災害 ○(かけもち保護)</text></svg></div>
+<p><strong>通勤災害は「家⇔職場」だけじゃない</strong></p>
+<p>労災保険の通勤災害がカバーする移動は3パターン:</p>
+<ol>
+<li>住居⇔就業場所(普通の通勤)</li>
+<li><strong>就業場所⇔他の就業場所</strong>(ダブルワークの移動)</li>
+<li>単身赴任先⇔帰省先の住居間</li>
+</ol>
+<p>(1)「就業場所から他の就業場所へ移動する途中の災害は通勤災害に該当しない」は、2番を否定してるので誤り。かけもちで働く人が増えた時代に合わせた保護規定。</p>
+<p><strong>自分事として</strong><br />
+はるみみたいに2つの仕事を持ってる人のための制度そのもの。しゃぼんから現場(またはその逆)への移動中のケガも通勤災害の対象になりうる。覚える気がなくても覚えちゃう問題。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 軟弱地盤での移動式クレーンは鉄板等を敷いて転倒防止。地盤ごと傾いて倒れる事故が実際に多い<br />
+- (3)○ WBGT(暑さ指数)=気温・湿度・輻射熱の組み合わせ。熱中症予防の指標。現場の朝礼で毎日見るやつ<br />
+- (4)○ ツールボックスミーティング=作業開始前に集まって作業・安全の打合せ(KY活動)</p>
+<hr />
+<h2>No.33 機器の据付け — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 150" width="320"><line x1="40" y1="15" x2="280 " y2="15" stroke="#666" stroke-width="2"/><text x="290" y="20" font-size="11" fill="#666">天井</text><rect x="110" y="70" width="100" height="60" fill="#e6f1fb" stroke="#2b6cb0" stroke-width="2"/><text x="160" y="105" font-size="12" fill="#2b6cb0" text-anchor="middle">タンク</text><line x1="160" y1="20" x2="160" y2="65" stroke="#c0392b" stroke-width="2"/><polygon points="160,18 155,28 165,28" fill="#c0392b"/><polygon points="160,67 155,57 165,57" fill="#c0392b"/><text x="170" y="46" font-size="13" fill="#c0392b" font-weight="bold">上は1m以上</text><line x1="60" y1="100" x2="105" y2="100" stroke="#888" stroke-width="1.5"/><text x="58" y="90" font-size="11" fill="#666">横60cm</text><line x1="215" y1="100" x2="260" y2="100" stroke="#888" stroke-width="1.5"/><text x="222" y="90" font-size="11" fill="#666">横60cm</text><text x="160" y="146" font-size="11" fill="#666" text-anchor="middle">人が入って点検するから上がいちばん広い</text></svg></div>
+<p><strong>飲料用タンクは「6面点検」</strong></p>
+<p>飲料用受水タンクは、汚染がないか全周囲(上・下・横4面=6面)を点検できるスペースを空けて据え付ける。</p>
+<ul>
+<li><strong>上部:1,000mm(1m)以上</strong></li>
+<li>側面・下部:600mm(60cm)以上</li>
+</ul>
+<p><strong>なぜ上だけ広いのか</strong><br />
+タンク上部のマンホールから人が中に入って点検・清掃するから。60cmでは人がかがんで作業できない。1mあれば蓋を開けて出入りできる。</p>
+<p>(2)「タンク上部と天井との距離は600mm以上」は、側面用の数字を上部に流用した引っかけで誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 防振基礎には耐震ストッパー。防振ゴムはプルプル動く前提の部品だから、地震のとき機器ごと飛ばないように別途ストッパーで押さえる(No.36の防振継手と同じ「動く部品」の話)<br />
+- (3)○ 機器を据えるコンクリート基礎は水平に仕上げる<br />
+- (4)○ 洗面器のコンクリート壁固定はエキスパンションボルト又は樹脂製プラグ</p>
+<p><strong>引っかけの型</strong>:数字の入れ替え(1000⇔600)。No.15の30⇔15cmと同じ手口。</p>
+<hr />
+<h2>No.34 配管・配管附属品の施工 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><line x1="20" y1="35" x2="150" y2="35" stroke="#666" stroke-width="2"/><line x1="20" y1="58" x2="70" y2="58" stroke="#666" stroke-width="2"/><line x1="70" y1="58" x2="70" y2="66" stroke="#c0392b" stroke-width="2"/><line x1="70" y1="66" x2="150" y2="66" stroke="#666" stroke-width="2"/><circle cx="76" cy="60" r="6" fill="#8d6e63"/><text x="85" y="90" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">段差にひっかかる ✕</text><text x="85" y="106" font-size="11" fill="#666" text-anchor="middle">(溶接式継手)</text><line x1="180" y1="35" x2="305" y2="35" stroke="#666" stroke-width="2"/><line x1="180" y1="60" x2="305" y2="60" stroke="#666" stroke-width="2"/><circle cx="230" cy="53" r="6" fill="#8d6e63"/><line x1="240" y1="53" x2="262" y2="53" stroke="#1d9e75" stroke-width="1.5"/><polygon points="268,53 259,49 259,57" fill="#1d9e75"/><text x="242" y="90" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">ツルツルで流れる ○</text><text x="242" y="106" font-size="11" fill="#666" text-anchor="middle">(ドレネージ継手)</text></svg></div>
+<p><strong>排水管の継手は「段差ゼロ」が命</strong></p>
+<p>排水は重力だけでダラダラ流れる、圧力のない流れ。管の内側にわずかな段差や出っ張りがあると、そこに髪の毛や汚物が引っかかり、雪だるま式に詰まる。</p>
+<p>だから排水系統には<strong>ねじ込み式排水管継手(ドレネージ継手)</strong>を使う。内面がツライチ(段差なし)で、横管接続部には排水勾配まで考慮された排水専用設計。</p>
+<p><strong>溶接式継手はなぜダメか</strong><br />
+鋼製突合せ溶接式管継手は給水・蒸気などの圧力配管用。溶接部の内面に段差やビード(溶接の盛り上がり)ができうるし、そもそも排水に必要な「流れやすさへの配慮」がない。(1)は誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 塩ビライニング鋼管の仕切弁は管端防食ねじ込み形(切断面の鉄がむき出しになる部分の錆び対策)<br />
+- (3)○ 突合せ溶接は開先加工+ルート間隔保持(溶接をちゃんと溶け込ませる基本)<br />
+- (4)○ 耐火二層管の接合=接着接合、ゴム輪接合(伸縮継手用)</p>
+<p><strong>設計思想</strong>:圧力配管は「漏れない」が正義、排水配管は「引っかからない」が正義。使う継手が違うのは正義が違うから。</p>
+<hr />
+<h2>No.35 ダクト・ダクト附属品の施工 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="25" y="35" width="120" height="30" rx="4" fill="#eee" stroke="#666"/><rect x="145" y="32" width="14" height="36" fill="#ddd" stroke="#888"/><rect x="159" y="35" width="130" height="30" rx="4" fill="#eee" stroke="#666"/><circle cx="140" cy="50" r="3" fill="#444"/><circle cx="168" cy="50" r="3" fill="#444"/><rect x="128" y="30" width="52" height="40" rx="4" fill="none" stroke="#1d9e75" stroke-width="4"/><rect x="122" y="24" width="64" height="52" rx="6" fill="none" stroke="#1d9e75" stroke-width="4" opacity="0.5"/><text x="160" y="95" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">シール材 → ビス● → テープ二重巻き ○</text><text x="160" y="16" font-size="11" fill="#666" text-anchor="middle">1回巻きだと空気がもれる ✕</text></svg></div>
+<p><strong>スパイラルダクト差込接合の3点セット</strong></p>
+<ol>
+<li>継手に<strong>シール材</strong>を塗る</li>
+<li>差し込んで<strong>ビス</strong>で固定</li>
+<li>上から<strong>ダクト用テープを二重巻き</strong>(2回巻き)</li>
+</ol>
+<p>(2)は「1重巻き」と言ってるので誤り。1回巻きでは気密が不十分で空気が漏れる。「シール・ビス・テープ二重」を作業手順の呪文として体で覚える。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 防火ダンパーの支持は原則4点吊りだが、<strong>長辺300mm以下の小型は2点吊りでOK</strong>。FDは火災時に確実に閉まる必要があるから支持が厳重<br />
+- (3)○ 厨房排気フードの吊りは4隅+1,500mm以下の間隔。油でどんどん重くなるから支持多め<br />
+- (4)○ 浴室排気ダクトは湿気→結露水が出る前提で、排気ガラリに向けて下がり勾配 or 水抜きを設ける(水の逃げ道を作る)</p>
+<p><strong>現場イメージ</strong>:ダクトの気密が甘いと、設計風量が末端まで届かず「この部屋だけ空調効かない」クレームになる。テープ二重巻きはそのための保険。</p>
+<hr />
+<h2>No.36 保温・塗装 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="20" y="38" width="90" height="24" fill="#eee" stroke="#666"/><rect x="14" y="30" width="102" height="40" fill="none" stroke="#999" stroke-width="4" opacity="0.5"/><rect x="210" y="38" width="90" height="24" fill="#eee" stroke="#666"/><rect x="204" y="30" width="102" height="40" fill="none" stroke="#999" stroke-width="4" opacity="0.5"/><path d="M 115 50 L 125 38 L 135 62 L 145 38 L 155 62 L 165 38 L 175 62 L 185 38 L 195 62 L 205 50" fill="none" stroke="#c0392b" stroke-width="3"/><text x="160" y="26" font-size="12" fill="#c0392b" text-anchor="middle">防振継手(グニャグニャ)</text><text x="160" y="88" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">ここは保温しない ✕</text><text x="63" y="88" font-size="11" fill="#666" text-anchor="middle">配管は保温○</text><text x="257" y="88" font-size="11" fill="#666" text-anchor="middle">配管は保温○</text></svg></div>
+<p><strong>「動くための部品」は保温しない</strong></p>
+<p>防振継手は、ポンプの振動が配管に伝わらないように吸収する、わざとグニャグニャに作られたゴムの部品。これを保温材でガチガチに固めたら?</p>
+<p>→ 動けなくなって振動を吸収できない。本末転倒。</p>
+<p>だから防振継手・伸縮継手・フレキみたいな「動くことが仕事の部品」は原則保温しない。(4)「給水ポンプ回りの防振継手は原則として保温を行う」は誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 保温の厚さ=保温材のみの厚さ。補助材・外装材は含まない(保温性能を出すのは保温材本体だから)<br />
+- (2)○ 相対湿度85%以上では原則塗装しない。塗料が乾かない・密着不良になる<br />
+- (3)○ 冷水配管を吊りバンドで直接支持する場合は合成樹脂製支持受け。金属で直接触れると、そこが熱橋になって結露する</p>
+<p><strong>つながり</strong>:No.33(1)の耐震ストッパーも「動く部品(防振ゴム)への配慮」の話。「この部品は動きたいのか、動いてほしくないのか」で考えると据付け系の問題は整理できる。</p>
+<hr />
+<h2>No.37 渦巻ポンプの試運転調整 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="35" y="25" width="100" height="45" rx="6" fill="#eee" stroke="#666"/><text x="85" y="52" font-size="12" fill="#444" text-anchor="middle">メカニカルシール</text><text x="85" y="95" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">もれない=正常 ○</text><rect x="185" y="25" width="100" height="45" rx="6" fill="#eee" stroke="#666"/><text x="235" y="52" font-size="12" fill="#444" text-anchor="middle">グランドパッキン</text><circle cx="225" cy="80" r="4" fill="#2b6cb0"/><circle cx="240" cy="90" r="4" fill="#2b6cb0"/><text x="235" y="115" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">ポタポタ=正常 ○</text></svg></div>
+<p><strong>軸封装置は2種類。正常の姿が正反対</strong></p>
+<p>ポンプの回転軸が胴体を貫くところは、放っておくと水が漏れる。ここを塞ぐのが軸封装置。</p>
+<p><strong>グランドパッキン</strong> = 紐状のパッキンを軸に巻いて押さえる古典的な方式。完全に締め切ると摩擦熱で焼けるので、<strong>わざと少量ポタポタ漏らして</strong>冷却・潤滑する。滴下してるのが正常。</p>
+<p><strong>メカニカルシール</strong> = バネで密着させる精密な機械式シール。<strong>ほぼ無漏れが正常</strong>。ポタポタ垂れてたらシール面の摩耗=故障のサイン。</p>
+<p>(3)「メカニカルシール部からの水滴の滴下が一定量継続してあることを確認」は、パッキンの正常をメカに当てはめたすり替えで誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 手で回して回転むら(異物噛み・軸曲がり)がないか確認<br />
+- (2)○ 瞬時運転で回転方向確認。三相モーターは結線次第で逆回転する。逆だと水が出ない<br />
+- (4)○ 軸受温度が周囲空気温度より過度に高くないか確認(異常発熱=軸受不良)</p>
+<p><strong>覚え方</strong>:「メカ=ドライ、パッキン=ウェット」。逆に書いてあったら誤り。</p>
+<hr />
+<h2>No.38 風量調整 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><rect x="30" y="25" width="55" height="50" fill="none" stroke="#1d9e75" stroke-width="2"/><line x1="38" y1="35" x2="38" y2="65" stroke="#1d9e75" stroke-width="2"/><line x1="52" y1="35" x2="52" y2="65" stroke="#1d9e75" stroke-width="2"/><line x1="66" y1="35" x2="66" y2="65" stroke="#1d9e75" stroke-width="2"/><line x1="80" y1="35" x2="80" y2="65" stroke="#1d9e75" stroke-width="2"/><text x="57" y="95" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">全開スタート ○</text><line x1="100" y1="50" x2="140" y2="50" stroke="#888" stroke-width="2"/><polygon points="146,50 137,45 137,55" fill="#888"/><text x="185" y="54" font-size="12" fill="#444" text-anchor="middle">多いところを絞る</text><rect x="245" y="25" width="55" height="50" fill="#fdecea" stroke="#c0392b" stroke-width="2"/><line x1="250" y1="35" x2="295" y2="35" stroke="#c0392b" stroke-width="2"/><line x1="250" y1="48" x2="295" y2="48" stroke="#c0392b" stroke-width="2"/><line x1="250" y1="61" x2="295" y2="61" stroke="#c0392b" stroke-width="2"/><text x="272" y="95" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">全閉スタート ✕</text><text x="272" y="110" font-size="10" fill="#666" text-anchor="middle">風が流れず測れない</text></svg></div>
+<p><strong>風量調整は「全開スタート→絞る」</strong></p>
+<p>風量調整(TAB)の手順は、まず給排気口のシャッターや分岐部のダンパーを<strong>すべて全開</strong>にして送風機を回し、各吹出口の風量を測る。設計より多い系統を少しずつ絞って、全体のバランスを取っていく。</p>
+<p><strong>全閉スタートがなぜあり得ないか</strong><br />
+1. 風がどこにも流れない=測定も調整もできない<br />
+2. 送風機が締切運転になり、過熱・サージングの危険</p>
+<p>(3)「シャッターやダンパーを全閉にした後に行う」は常識レベルでおかしい誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 吹出口・吸込口の風量測定は補助ダクトで気流を整えてから測る(乱れた気流では正しく測れない)<br />
+- (2)○ ダクト内の風量=風速を測って断面積を掛ける。測定器はNo.3のピトー管<br />
+- (4)○ 機器の試験成績表・ダクト図・風量計算書を照らし合わせて調整</p>
+<p><strong>つながり</strong>:No.3(ピトー管で動圧→流速)がここで実務に着地する。理論と現場がつながる気持ちいいライン。</p>
+<hr />
+<h2>No.39 労働安全衛生法 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 105" width="320"><rect x="30" y="35" width="120" height="26" fill="#f0c0c0"/><rect x="150" y="35" width="60" height="26" fill="#fdf3d8"/><rect x="210" y="35" width="80" height="26" fill="#d9ead9"/><rect x="30" y="35" width="260" height="26" fill="none" stroke="#666"/><line x1="150" y1="25" x2="150" y2="70" stroke="#c0392b" stroke-width="2.5"/><text x="150" y="18" font-size="13" fill="#c0392b" text-anchor="middle" font-weight="bold">基準18%</text><text x="90" y="80" font-size="12" fill="#c0392b" text-anchor="middle">キケン(15%は×)</text><text x="250" y="80" font-size="12" fill="#1d9e75" text-anchor="middle">ふつうの空気21%</text><text x="160" y="100" font-size="11" fill="#666" text-anchor="middle">← 酸素がすくない　　酸素がおおい →</text></svg></div>
+<p><strong>酸素の数字は命に直結</strong></p>
+<ul>
+<li>通常の大気:約<strong>21%</strong></li>
+<li>酸欠防止の法定基準:<strong>18%以上</strong>を保つよう換気</li>
+<li>16%前後:頭痛・吐き気などの症状</li>
+<li>12%以下:めまい・筋力低下、10%以下は意識喪失〜死亡レベル</li>
+</ul>
+<p>(3)「酸素の濃度を15%以上に保つように換気」は、法定の18%を下回る危険な数字で誤り。15%は「基準クリア」じゃなく「もう症状が出る領域」。</p>
+<p><strong>なぜ管工事でこれが重要か</strong><br />
+ピット・マンホール・タンク内・排水槽は管工事の日常。酸欠事故は「入った本人+助けに入った人」が連鎖的に倒れる二次災害が典型で、毎年死者が出てる。数字の暗記というより、現場に入る前の測定を怠らないための知識。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 作業内容変更時は安全衛生教育を行う<br />
+- (2)○ 移動はしごの幅は30cm以上<br />
+- (4)○ 可燃性ガス・酸素の容器は温度40度以下に保つ</p>
+<p><strong>引っかけの型</strong>:数字の入れ替え(18→15)。ただしこれは間違えると命に関わる数字なので、語呂じゃなく意味で覚えて。</p>
+<hr />
+<h2>No.40 労働基準法 — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><rect x="55" y="15" width="210" height="80" rx="12" fill="#e1f5ee" stroke="#1d9e75" stroke-width="2"/><text x="160" y="34" font-size="13" fill="#0f6e56" text-anchor="middle" font-weight="bold">「賃金」のなかま</text><rect x="70" y="45" width="55" height="26" rx="13" fill="#fff" stroke="#1d9e75"/><text x="97" y="62" font-size="11" fill="#0f6e56" text-anchor="middle">給料</text><rect x="132" y="45" width="55" height="26" rx="13" fill="#fff" stroke="#1d9e75"/><text x="159" y="62" font-size="11" fill="#0f6e56" text-anchor="middle">手当</text><rect x="194" y="45" width="60" height="26" rx="13" fill="#fdf3d8" stroke="#a5691b" stroke-width="2"/><text x="224" y="62" font-size="11" fill="#a5691b" text-anchor="middle" font-weight="bold">賞与も!</text><text x="160" y="110" font-size="12" fill="#444" text-anchor="middle">名前がなんでも、働いた対価はぜんぶ賃金</text></svg></div>
+<p><strong>「賃金」の定義は名前を問わない</strong></p>
+<p>労基法の賃金=「賃金、給料、手当、<strong>賞与その他名称の如何を問わず</strong>、労働の対償として使用者が労働者に支払うすべてのもの」。</p>
+<p>ポイントは「名称の如何を問わず」。ボーナスと呼ぼうが寸志と呼ぼうが、働いた対価として払うものは全部賃金。だから賃金のルール(全額払い・直接払いなど)が適用される。(2)「賞与はこれに含まれない」は条文の真逆で誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 出来高払制でも労働時間に応じた一定額の賃金保障が必要(成果ゼロでも働いた時間分は守る)<br />
+- (3)○ 未成年者の賃金を親権者・後見人が代わって受け取るのは禁止(搾取防止。歴史的経緯のある条文)<br />
+- (4)○ 非常時払い:労働者が疾病等の費用に充てるため請求したら、支払期日前でも既往の労働分は支払う</p>
+<p><strong>自分事として</strong><br />
+しゃぼんでキャストの給与・成績を管理してる立場なら、この「名称を問わず全部賃金」の感覚は実務の土台そのもの。手当の名前を変えても法的性質は変わらない。</p>
+<hr />
+<h2>No.41 建築基準法(用語) — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 110" width="320"><rect x="25" y="20" width="125" height="50" rx="8" fill="#e1f5ee" stroke="#1d9e75"/><text x="87" y="42" font-size="12" fill="#0f6e56" text-anchor="middle">カラオケ・ゲーセン</text><text x="87" y="60" font-size="12" fill="#0f6e56" text-anchor="middle">(娯楽でずっといる)</text><text x="87" y="92" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">居室 ○</text><rect x="172" y="20" width="125" height="50" rx="8" fill="#eee" stroke="#888"/><text x="234" y="42" font-size="12" fill="#555" text-anchor="middle">トイレ・浴室・廊下</text><text x="234" y="60" font-size="12" fill="#555" text-anchor="middle">(一時的にしかいない)</text><text x="234" y="92" font-size="13" fill="#666" text-anchor="middle" font-weight="bold">居室じゃない</text></svg></div>
+<p><strong>居室の定義を分解する</strong></p>
+<blockquote>
+<p>居室=居住・執務・作業・集会・<strong>娯楽</strong>その他これらに類する目的のために<strong>継続的に使用する室</strong></p>
+</blockquote>
+<p>判定は2段階:<br />
+1. 目的が「居・執・作・集・娯」に当てはまるか<br />
+2. <strong>継続的に</strong>使うか</p>
+<p>カラオケルーム、ゲームセンター、映画館の客席…娯楽のために人がずっといる部屋は全部居室。(1)「娯楽のために継続的に使用する室は居室ではない」は定義に真っ向から反して誤り。</p>
+<p><strong>居室じゃないのは?</strong><br />
+トイレ・浴室・洗面所・納戸・廊下・玄関=用は足すけど「一時的にしかいない」場所。継続性で切る。</p>
+<p><strong>なぜ居室かどうかが大事か</strong><br />
+居室と認定されると採光・換気・天井高などの基準が適用される。人がずっといる場所だから環境を法で守る、という思想。しゃぼんの店舗の部屋たちも多くは居室扱いで、換気設備の基準がかかってる。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 避雷針は建築設備<br />
+- (3)○ 金属板・ガラスは不燃材料<br />
+- (4)○ 主要構造部が耐火構造=耐火建築物</p>
+<hr />
+<h2>No.42 建築基準法(配管設備) — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><rect x="55" y="20" width="18" height="75" fill="#e6f1fb" stroke="#2b6cb0" stroke-width="2"/><text x="64" y="110" font-size="12" fill="#2b6cb0" text-anchor="middle">雨水</text><text x="64" y="14" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">単独 ○</text><rect x="160" y="20" width="18" height="75" fill="#e6f1fb" stroke="#2b6cb0"/><rect x="185" y="20" width="18" height="75" fill="#f0d0c0" stroke="#c0392b"/><line x1="150" y1="30" x2="212" y2="88" stroke="#c0392b" stroke-width="3"/><text x="182" y="110" font-size="12" fill="#c0392b" text-anchor="middle">汚水と兼用✕</text><rect x="255" y="20" width="18" height="75" fill="#e6f1fb" stroke="#2b6cb0"/><rect x="280" y="20" width="18" height="75" fill="#eee" stroke="#888"/><line x1="246" y1="30" x2="307" y2="88" stroke="#c0392b" stroke-width="3"/><text x="277" y="110" font-size="12" fill="#c0392b" text-anchor="middle">通気と兼用✕</text></svg></div>
+<p><strong>雨水立て管は一匹狼</strong></p>
+<p>雨水排水立て管は<strong>単独配管</strong>が原則。誰とも兼用しない。</p>
+<p><strong>汚水管と兼用したら</strong>:ゲリラ豪雨で管が雨水で満杯→行き場を失った汚水が逆流して、最悪トイレから噴き出す。<br />
+<strong>通気管と兼用したら</strong>:雨水が流れてる間、通気の通り道が水で塞がる→排水時の空気の逃げ場がなくなり、トラップの封水が吸い出されて破封→下水臭が室内へ。</p>
+<p>どっちと組んでもろくなことがないので、雨水は自分専用の管を持つ。(2)「汚水排水管若しくは通気管と兼用してもよい」は誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 給水立て主管から各階への分岐管には止水弁(階ごとにメンテできるように)<br />
+- (3)○ 水栓の開口部は流し台のあふれ面と垂直距離を保つ=吐水口空間。No.17と同じ逆流防止<br />
+- (4)○ 排水設備の汚水に接する部分は不浸透質の耐水材料</p>
+<p><strong>つながり</strong>:No.20(通気の役目=封水を守る)がわかってると、「通気管と兼用がなぜダメか」が理屈で導ける。</p>
+<hr />
+<h2>No.43 建設業法(主任技術者の要件) — 答え(2)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><rect x="15" y="15" width="140" height="26" rx="13" fill="#e1f5ee" stroke="#1d9e75"/><text x="85" y="32" font-size="11" fill="#0f6e56" text-anchor="middle">2級管工事技士(二次) ○</text><rect x="165" y="15" width="140" height="26" rx="13" fill="#e1f5ee" stroke="#1d9e75"/><text x="235" y="32" font-size="11" fill="#0f6e56" text-anchor="middle">管工事の実務10年 ○</text><rect x="15" y="48" width="140" height="26" rx="13" fill="#e1f5ee" stroke="#1d9e75"/><text x="85" y="65" font-size="11" fill="#0f6e56" text-anchor="middle">建築設備士+1年 ○</text><rect x="165" y="48" width="140" height="26" rx="13" fill="#fdecea" stroke="#c0392b" stroke-width="2"/><text x="235" y="65" font-size="11" fill="#c0392b" text-anchor="middle" font-weight="bold">一級建築士 ✕</text><text x="160" y="100" font-size="12" fill="#c0392b" text-anchor="middle">一級建築士は「建築工事」の資格。管工事には使えない</text></svg></div>
+<p><strong>資格には「担当業種」がある</strong></p>
+<p>主任技術者になれる要件は業種ごとに決まってる。管工事なら:</p>
+<ul>
+<li>2級管工事施工管理技士(第二次検定合格) → ○ ※はるみが今目指してるやつ</li>
+<li>管工事に関し実務経験10年以上 → ○</li>
+<li>建築設備士となった後、管工事1年以上の実務 → ○</li>
+<li>技術士(該当部門) → ○</li>
+</ul>
+<p><strong>一級建築士はなぜダメか</strong><br />
+一級建築士は建築士法の資格で、建設業法上は「建築一式工事」等の技術者要件。設計の最高峰資格ではあるけど、<strong>管工事の施工</strong>の技術者資格ではない。「偉い資格だから何でもできそう」という印象を突いた引っかけ。(2)が該当しない=正解。</p>
+<p><strong>覚え方</strong><br />
+「資格と業種のペア」で見る。電気工事士→電気工事、建築士→建築工事、管工事技士→管工事。畑違いの偉い資格が混ざってたらそれが答え。</p>
+<p><strong>モチベ的つながり</strong>:この試験(第一次)に受かって第二次まで取れば、はるみ自身が(1)の要件で主任技術者になれる。この問題は自分の未来の話。</p>
+<hr />
+<h2>No.44 建設業法(標識) — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 130" width="320"><rect x="70" y="15" width="180" height="95" rx="6" fill="#fff" stroke="#666" stroke-width="2"/><text x="160" y="34" font-size="12" fill="#444" text-anchor="middle" font-weight="bold">建設業の許可票</text><text x="85" y="54" font-size="11" fill="#0f6e56">✓ 商号・代表者の氏名</text><text x="85" y="70" font-size="11" fill="#0f6e56">✓ 一般/特定の別・許可番号</text><text x="85" y="86" font-size="11" fill="#0f6e56">✓ 主任技術者の氏名</text><text x="85" y="102" font-size="11" fill="#c0392b" font-weight="bold">✕ 現場代理人 → のらない!</text><text x="160" y="126" font-size="11" fill="#666" text-anchor="middle">現場代理人は契約上の存在で、標識とは別枠</text></svg></div>
+<p><strong>現場の看板(建設業の許可票)に載せるもの</strong></p>
+<ul>
+<li>商号又は名称</li>
+<li>代表者の氏名</li>
+<li>一般建設業/特定建設業の別</li>
+<li>許可番号・許可年月日・業種</li>
+<li><strong>主任技術者(監理技術者)の氏名</strong></li>
+</ul>
+<p><strong>現場代理人はなぜ載らないか</strong><br />
+現場代理人は「請負契約の履行のために現場に置く、契約上の代理人」。公共工事の契約書(約款)で決まる存在で、建設業法の標識制度とは別の枠組み。法律が標識に求めてるのは「この現場は誰の許可でどの技術者が施工してるか」の公示であって、契約実務の担当者名じゃない。(3)「現場代理人の氏名」は定められていない=正解。</p>
+<p><strong>混同しやすいペア</strong><br />
+- 主任技術者 = 建設業法上の技術者 → <strong>標識に載る</strong><br />
+- 現場代理人 = 契約上の代理人 → <strong>標識に載らない</strong></p>
+<p>同じ人が兼務することも多いから現場感覚だと混ざりやすい。「法律の人は載る、契約の人は載らない」で切る。</p>
+<hr />
+<h2>No.45 消防法(屋内消火栓設備) — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 115" width="320"><rect x="60" y="25" width="60" height="55" rx="6" fill="#fdecea" stroke="#c0392b" stroke-width="2"/><text x="90" y="48" font-size="11" fill="#c0392b" text-anchor="middle">屋内</text><text x="90" y="64" font-size="11" fill="#c0392b" text-anchor="middle">消火栓</text><line x1="128" y1="52" x2="180" y2="52" stroke="#666" stroke-width="2"/><rect x="188" y="30" width="80" height="45" rx="6" fill="#fdf3d8" stroke="#a5691b" stroke-width="2"/><text x="228" y="50" font-size="11" fill="#a5691b" text-anchor="middle">非常電源</text><text x="228" y="66" font-size="10" fill="#a5691b" text-anchor="middle">(蓄電池・発電機)</text><text x="160" y="103" font-size="13" fill="#1d9e75" text-anchor="middle" font-weight="bold">1号も2号も非常電源はセット ○(火事=停電の前提)</text></svg></div>
+<p><strong>消防設備に非常電源はセット</strong></p>
+<p>火事のとき何が起きるかを想像する:火災→電線が焼ける・ブレーカーが落ちる→<strong>停電</strong>。この状況でポンプが止まったら消火栓はただの飾り。だから屋内消火栓設備には、1号・2号を問わず<strong>非常電源(蓄電池設備・自家発電設備など)の附置が必要</strong>。</p>
+<p>(4)「1号消火栓以外の場合は、非常電源の附置は不要」なんて例外はない。誤り。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 消火栓箱の上部に赤色の灯火(位置表示灯)。停電した暗闇・煙の中でも場所がわかるように<br />
+- (2)○ ポンプ始動を明示する表示灯は箱の内部又は直近(ちゃんと起動したか現場で確認できるように)<br />
+- (3)○ 1号消火栓の主配管の立上り管は呼び50mm以上(必要水量を流せる太さ)</p>
+<p><strong>設計思想</strong>:消防設備は「最悪の日に動くこと」がすべて。No.21(水道直結に頼らない)と同じで、火事の日は水道も電気もアテにならない前提で自前の水源・自前の電源を持つ。</p>
+<hr />
+<h2>No.46 フロン排出抑制法 — 答え(3)</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="15" y="20" width="90" height="60" rx="8" fill="#e1f5ee" stroke="#1d9e75"/><text x="60" y="42" font-size="11" fill="#0f6e56" text-anchor="middle" font-weight="bold">持ち主(管理者)</text><text x="60" y="58" font-size="10" fill="#0f6e56" text-anchor="middle">点検・記録・</text><text x="60" y="72" font-size="10" fill="#0f6e56" text-anchor="middle">もれたら修理</text><rect x="115" y="20" width="90" height="60" rx="8" fill="#eee" stroke="#888"/><text x="160" y="42" font-size="11" fill="#555" text-anchor="middle" font-weight="bold">充塡回収業者</text><text x="160" y="60" font-size="10" fill="#555" text-anchor="middle">充塡・回収</text><rect x="215" y="20" width="90" height="60" rx="8" fill="#fdf3d8" stroke="#a5691b" stroke-width="2"/><text x="260" y="42" font-size="11" fill="#a5691b" text-anchor="middle" font-weight="bold">再生業者</text><text x="260" y="60" font-size="10" fill="#a5691b" text-anchor="middle">再生はココの仕事</text><text x="160" y="108" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">「再生」は持ち主の義務じゃない ✕</text></svg></div>
+<p><strong>登場人物と役割分担で整理する</strong></p>
+<p>フロン(エアコンの冷媒)を大気に漏らさないための法律。役割は3者に分かれてる。</p>
+<p><strong>① 管理者(機器の持ち主=ユーザー)</strong><br />
+- 簡易点検の実施(3ヶ月に1回の目視など)<br />
+- 定期点検(一定規模以上の機器)<br />
+- 点検・整備の記録簿の保存<br />
+- 漏えいを確認したら点検・修理</p>
+<p><strong>② 充塡回収業者</strong>:フロンの充塡・回収(登録業者しかできない)<br />
+<strong>③ 再生業者</strong>:回収されたフロンの再生(許可業者)</p>
+<p><strong>問題文の引っかけ</strong><br />
+(3)「フロン類の再生の実施」は③再生業者の仕事。管理者の取組事項として法に定められていない=正解。持ち主は「見張って、記録して、直させる」係で、フロンそのものを触る作業は業者の領分。</p>
+<p><strong>現場イメージ</strong>:店舗や事務所の業務用エアコンの持ち主は全員この「管理者」。しゃぼんの空調も対象で、簡易点検の記録は本来オーナー側の義務。実務でもそのまま使う知識。</p>
+<hr />
+<h2>No.47 建築物省エネ法 — 答え(4)</h2>
+<div class="ill"><svg viewBox="0 0 320 120" width="320"><rect x="15" y="15" width="230" height="75" rx="12" fill="#e1f5ee" stroke="#1d9e75" stroke-width="2"/><text x="130" y="34" font-size="12" fill="#0f6e56" text-anchor="middle" font-weight="bold">省エネ法の対象</text><rect x="28" y="45" width="62" height="24" rx="12" fill="#fff" stroke="#1d9e75"/><text x="59" y="61" font-size="10" fill="#0f6e56" text-anchor="middle">空調・換気</text><rect x="96" y="45" width="44" height="24" rx="12" fill="#fff" stroke="#1d9e75"/><text x="118" y="61" font-size="10" fill="#0f6e56" text-anchor="middle">照明</text><rect x="146" y="45" width="44" height="24" rx="12" fill="#fff" stroke="#1d9e75"/><text x="168" y="61" font-size="10" fill="#0f6e56" text-anchor="middle">給湯</text><rect x="196" y="45" width="42" height="24" rx="12" fill="#fff" stroke="#1d9e75"/><text x="217" y="61" font-size="10" fill="#0f6e56" text-anchor="middle">昇降機</text><rect x="255" y="40" width="55" height="34" rx="8" fill="#fdecea" stroke="#c0392b" stroke-width="2"/><text x="282" y="56" font-size="10" fill="#c0392b" text-anchor="middle">ガス設備</text><text x="282" y="69" font-size="10" fill="#c0392b" text-anchor="middle" font-weight="bold">対象外✕</text><text x="160" y="112" font-size="11" fill="#666" text-anchor="middle">ガスはエネルギーを「はこぶ管」で「つかう設備」じゃない</text></svg></div>
+<p><strong>エネルギー消費性能の対象は「使う設備」</strong></p>
+<p>省エネ法が建物のエネルギー消費として計算対象にするのは:</p>
+<blockquote>
+<p><strong>空調・機械換気 / 照明 / 給湯 / 昇降機</strong>(+事務機器等)</p>
+</blockquote>
+<p>「空・換・照・湯・昇」で暗唱。</p>
+<p><strong>ガス設備はなぜ対象外か</strong><br />
+ガス設備(ガス管・メーター)は、エネルギーを<strong>運ぶインフラ</strong>であって、エネルギーを<strong>消費する設備</strong>じゃない。ガスを使って湯を沸かすなら、それは「給湯設備」の消費としてカウントされる。運び屋と消費者の区別。(4)が規定されていない=正解。</p>
+<p><strong>試験テクニック</strong><br />
+「対象として規定されていないものはどれか」型は、対象リストを1フレーズで暗唱できれば瞬殺。No.23(公衆便所=便器数)、No.44(現場代理人は載らない)と同じ、仲間はずれ1個系のコスパ問題。</p>
+<hr />
+<h2>No.48 廃棄物処理法 — 答え(1)</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="25" y="20" width="40" height="30" rx="4" fill="#e6f1fb" stroke="#2b6cb0"/><text x="45" y="40" font-size="10" fill="#2b6cb0" text-anchor="middle">がれき</text><rect x="25" y="58" width="40" height="30" rx="4" fill="#fdf3d8" stroke="#a5691b"/><text x="45" y="78" font-size="10" fill="#a5691b" text-anchor="middle">廃プラ</text><line x1="70" y1="35" x2="105" y2="35" stroke="#888" stroke-width="1.5"/><polygon points="110,35 102,31 102,39" fill="#888"/><line x1="70" y1="73" x2="105" y2="73" stroke="#888" stroke-width="1.5"/><polygon points="110,73 102,69 102,77" fill="#888"/><rect x="115" y="22" width="55" height="26" rx="3" fill="#fff" stroke="#1d9e75" stroke-width="2"/><text x="142" y="39" font-size="9" fill="#0f6e56" text-anchor="middle">管理票1枚目</text><rect x="115" y="60" width="55" height="26" rx="3" fill="#fff" stroke="#1d9e75" stroke-width="2"/><text x="142" y="77" font-size="9" fill="#0f6e56" text-anchor="middle">管理票2枚目</text><text x="142" y="110" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">種類ごとに1枚 ○</text><rect x="215" y="35" width="85" height="40" rx="4" fill="#fdecea" stroke="#c0392b" stroke-dasharray="5 3"/><text x="257" y="52" font-size="10" fill="#c0392b" text-anchor="middle">ぜんぶまとめて</text><text x="257" y="66" font-size="10" fill="#c0392b" text-anchor="middle">1枚</text><text x="257" y="110" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">一括交付 ✕</text></svg></div>
+<p><strong>マニフェストは「1個ずつ追跡」するための紙</strong></p>
+<p>産業廃棄物管理票(マニフェスト)の目的は、廃棄物が排出→運搬→処分と流れる全行程を追跡して、不法投棄を防ぐこと。だから交付ルールは:</p>
+<blockquote>
+<p><strong>種類ごと・運搬先ごと</strong>に交付</p>
+</blockquote>
+<p>がれきはがれきの1枚、廃プラは廃プラの1枚、運搬先がA処分場とB処分場に分かれるならそれぞれに1枚。まとめてドンでは「どのゴミがどこへ行ったか」を追えなくなり、制度の意味がなくなる。(1)「種類にかかわらず一括して交付できる」は誤り。</p>
+<p><strong>気付きポイント</strong><br />
+(1)「一括交付できる」と(3)「運搬先ごとに交付しなければならない」は正反対のことを言ってる。条文を知らなくても「どちらかが必ずウソ」と絞れる。二択まで来たら、制度の目的(追跡)から考えれば(1)がウソと導ける。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 廃エアコンのPCB使用部品は特別管理一般廃棄物(細かいが正しい)<br />
+- (4)○ 改築で出た衛生陶器(便器等)の破片は産業廃棄物(工事に伴うがれき類)</p>
+<p><strong>現場イメージ</strong>:解体・改修のたびに書くあの複写式の伝票。電子マニフェストも同じルール。</p>
+<hr />
+<h2>No.49 工程表 — 答え(1)と(2) ※2つ選ぶ</h2>
+<div class="ill"><svg viewBox="0 0 320 140" width="320"><text x="85" y="18" font-size="13" fill="#2b6cb0" text-anchor="middle" font-weight="bold">バーチャート</text><rect x="30" y="30" width="60" height="12" fill="#2b6cb0"/><rect x="55" y="48" width="70" height="12" fill="#2b6cb0"/><rect x="90" y="66" width="55" height="12" fill="#2b6cb0"/><line x1="25" y1="88" x2="150" y2="88" stroke="#666"/><text x="87" y="103" font-size="11" fill="#444" text-anchor="middle">横軸=日数(いつやるか)</text><text x="240" y="18" font-size="13" fill="#a5691b" text-anchor="middle" font-weight="bold">ガントチャート</text><rect x="185" y="30" width="100" height="12" fill="#a5691b"/><rect x="185" y="48" width="55" height="12" fill="#a5691b"/><rect x="185" y="66" width="80" height="12" fill="#a5691b"/><line x1="180" y1="88" x2="305" y2="88" stroke="#666"/><text x="243" y="103" font-size="11" fill="#444" text-anchor="middle">横軸=達成度%(何%済みか)</text><text x="160" y="130" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">問題文はこの2つを入れかえてる</text></svg></div>
+<p><strong>バーチャートとガントチャート、説明が丸ごと入れ替わってる</strong></p>
+<p><strong>バーチャート</strong><br />
+- 縦軸:作業名/横軸:<strong>日数(工期)</strong><br />
+- 「基礎工事は4/1〜4/10」と、各作業をいつからいつまでやるかの棒<br />
+- 施工時期・所要日数が明確 → 現場でいちばん使われてるのはこっち</p>
+<p><strong>ガントチャート</strong><br />
+- 縦軸:作業名/横軸:<strong>達成度(%)</strong><br />
+- 「配管工事はいま70%完了」と、進み具合の棒<br />
+- 進行状態はわかるが、日程はわからない</p>
+<p>(1)は「バーチャートの横軸=達成度」(ガントの説明)、(2)は「ガントチャートの横軸=工期で所要日数が明確」(バーの説明)。両方スワップしてるので2つとも誤り=答え。</p>
+<p><strong>他の選択肢</strong><br />
+- (3)○ 曲線式工程表=上方許容限界曲線と下方許容限界曲線に挟まれた形からバナナ曲線<br />
+- (4)○ 総合工程表には官庁申請の時期や主要事項の日程も記載</p>
+<p><strong>覚え方</strong>:「<strong>バー=日数、ガント=達成度</strong>」。この8文字のスワップは本試験でも毎年レベルの頻出。逆に言えば8文字で1問取れる。</p>
+<hr />
+<h2>No.50 機器の据付け — 答え(3)と(4) ※2つ選ぶ</h2>
+<div class="ill"><svg viewBox="0 0 320 150" width="320"><rect x="45" y="15" width="90" height="45" fill="#e6f1fb" stroke="#2b6cb0"/><text x="90" y="35" font-size="12" fill="#2b6cb0" text-anchor="middle">高置タンク</text><line x1="47" y1="50" x2="133" y2="50" stroke="#2b6cb0" stroke-dasharray="4 3"/><text x="140" y="54" font-size="10" fill="#2b6cb0">低水位</text><rect x="195" y="95" width="90" height="40" fill="#eee" stroke="#666"/><text x="240" y="118" font-size="12" fill="#444" text-anchor="middle">冷却塔</text><line x1="175" y1="50" x2="175" y2="95" stroke="#c0392b" stroke-width="2.5"/><line x1="168" y1="50" x2="182" y2="50" stroke="#c0392b" stroke-width="1.5"/><line x1="168" y1="95" x2="182" y2="95" stroke="#c0392b" stroke-width="1.5"/><text x="120" y="78" font-size="13" fill="#c0392b" font-weight="bold" text-anchor="end">3m以上 下!</text><text x="160" y="147" font-size="11" fill="#666" text-anchor="middle">落差=水圧。同じ高さだと水が来ない</text></svg></div>
+<p><strong>(3)冷却塔の補給水口は高置タンクの低水位より3m以上「下」</strong></p>
+<p>冷却塔の補給水はボールタップで自動供給される。ボールタップを動かすにはある程度の水圧が必要で、水圧を生むのは<strong>落差</strong>。高置タンクの低水位と補給水口が同じ高さだったら、落差ゼロ=水圧ゼロで水が一滴も来ない。だから<strong>3m以上下方</strong>に据え付ける。「同じ高さとなるように」は誤り。</p>
+<p>水は高いところから低いところへ、落差の分だけ圧がつく。給水設計の一番の基本がそのまま問題になってる。</p>
+<p><strong>(4)送風機は現場でも心出し調整が必要</strong></p>
+<p>送風機は工場で心出し(軸の芯合わせ)調整されて出荷される。でもトラックで揺られ、クレーンで吊られ、現場で据えられる間に微妙にズレる。ズレたまま回すと振動・騒音・軸受の早期摩耗。だから<strong>現場で再調整が必要</strong>。「現場での調整は不要」は誤り。</p>
+<p>「工場でやってあるから現場では不要」系の選択肢は、回転機器についてはほぼウソと思っていい(No.12・22と同じ断定パターン)。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ ポンプも現場で電動機との軸心確認(送風機と同じ理屈)<br />
+- (2)○ 高さ2m超の昇降タラップには転落防止防護柵(墜落防止の基本)</p>
+<hr />
+<h2>No.51 配管の施工 — 答え(1)と(3) ※2つ選ぶ</h2>
+<div class="ill"><svg viewBox="0 0 320 135" width="320"><rect x="60" y="15" width="80" height="40" rx="6" fill="#e6f1fb" stroke="#2b6cb0"/><text x="100" y="40" font-size="12" fill="#2b6cb0" text-anchor="middle">冷水器</text><line x1="100" y1="58" x2="100" y2="78" stroke="#2b6cb0" stroke-width="3" stroke-dasharray="2 4"/><path d="M 78 90 L 122 90 L 112 115 L 88 115 Z" fill="#eee" stroke="#666"/><line x1="152" y1="58" x2="152" y2="86" stroke="#1d9e75" stroke-width="2"/><line x1="145" y1="58" x2="159" y2="58" stroke="#1d9e75" stroke-width="1.5"/><line x1="145" y1="86" x2="159" y2="86" stroke="#1d9e75" stroke-width="1.5"/><text x="168" y="76" font-size="13" fill="#1d9e75" font-weight="bold">すきまをあける ○</text><text x="168" y="94" font-size="11" fill="#666">(間接排水=つまっても</text><text x="176" y="108" font-size="11" fill="#666">飲み水までもどれない)</text><text x="100" y="131" font-size="11" fill="#666" text-anchor="middle">排水管へ</text></svg></div>
+<p><strong>(1)飲料用冷水器の排水は「間接排水」</strong></p>
+<p>冷水器=飲み水を扱う機器。その排水管を雑排水系統に<strong>直接連結</strong>したら、排水管が詰まったとき汚水が冷水器側へ逆流して飲み水が汚染される。だから排水口空間(すきま)を開けた<strong>間接排水</strong>にして、物理的に縁を切る。「直接連結する」は誤り。</p>
+<p>これはNo.17(吐水口空間)・No.24(オーバーフロー管)と完全に同じ思想。<strong>飲料系の機器の排水はすべて間接排水</strong>、と一般化して覚えると3問まとめて取れる。</p>
+<p><strong>(3)大便器の汚水管は最小75mm</strong></p>
+<p>大便器は固形物が流れる唯一の器具。50mmは洗面器・手洗器レベルの雑排水の管径で、大便器につないだら一発で詰まる。最小<strong>75mm</strong>。数字の入れ替え引っかけだけど、「固形物が通るから太い」と理由で覚えれば数字を忘れても導ける。</p>
+<p><strong>他の選択肢</strong><br />
+- (2)○ 呼び径40以下の鋼管は形鋼振れ止め支持が原則不要(細くて軽い管まで振れ止めしたらキリがない)<br />
+- (4)○ 冷媒用断熱材被覆銅管の接合=フレア接合、差込接合(ろう付け)等</p>
+<hr />
+<h2>No.52 ダクトの施工 — 答え(2)と(4) ※2つ選ぶ</h2>
+<div class="ill"><svg viewBox="0 0 320 125" width="320"><rect x="55" y="20" width="60" height="60" fill="#e6f1fb" stroke="#1d9e75" stroke-width="3"/><text x="85" y="98" font-size="12" fill="#1d9e75" text-anchor="middle" font-weight="bold">正方形に近い ○</text><text x="85" y="113" font-size="11" fill="#666" text-anchor="middle">かべ短い=ロス小</text><rect x="160" y="35" width="130" height="28" fill="#fdecea" stroke="#c0392b" stroke-width="3"/><text x="225" y="98" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="bold">細長い ✕</text><text x="225" y="113" font-size="11" fill="#666" text-anchor="middle">同じ面積でもかべ長い=ロス大</text></svg></div>
+<p><strong>(2)防火ダンパーの温度ヒューズは用途で3段階</strong></p>
+<p>防火ダンパー(FD)は、火災の熱でヒューズが溶けると自動で閉まってダクト経由の延焼を防ぐ。作動温度は:</p>
+<ul>
+<li>一般排気:<strong>72℃</strong></li>
+<li>厨房排気:<strong>120℃</strong></li>
+<li>排煙:<strong>280℃</strong></li>
+</ul>
+<p>なぜ厨房が高いか:厨房は調理で普段から熱気ムンムン。72℃設定だと火事でもないのに炒め物の熱気でダンパーが閉まり、排気が止まって厨房が煙だらけになる。誤作動しないギリギリ上の120℃に設定してある。「ともに72℃」は厨房分が誤り。</p>
+<p>排煙の280℃も同じ理屈で、排煙ダクトは火災の煙(熱い)を通すのが仕事だから、簡単に閉まってはいけない。</p>
+<p><strong>(4)アスペクト比を大きくすると圧損は増える</strong></p>
+<p>アスペクト比=長辺÷短辺。同じ断面積でも、正方形(60×60)と細長い長方形(120×30)では周長(壁の長さ)が違う。細長いほど周長が長い=空気が擦れる壁面が多い=摩擦損失が増える。「圧力損失は変わらない」は誤り。</p>
+<p>だから(3)の「アスペクト比は原則4以下」というルールがある。(3)と(4)は同じ理屈の表裏で、セットで理解すると忘れない。</p>
+<p><strong>他の選択肢</strong><br />
+- (1)○ 隠ぺい部のFDには450mm角以上の点検口(ヒューズ交換・作動確認のため)<br />
+- (3)○ 上記の通り</p>
+<hr />
+<h1>全体まとめ:引っかけの型 5パターン</h1>
+<p>52問を通して、誤答の作り方はほぼこの5つに集約される。</p>
+<p><strong>1. 数字の入れかえ・半分・倍</strong><br />
+15⇔30cm(No.15)、600⇔1000mm(No.33)、25⇔30mm(No.19)、15⇔18%(No.39)、50⇔75mm(No.51)、72⇔120℃(No.52)</p>
+<p><strong>2. 方向・場所の反転</strong><br />
+上流⇔下流(No.20)、管頂⇔管底(No.16)、上方⇔下方(No.17・50)、外壁⇔内壁(No.11)</p>
+<p><strong>3. 比例⇔反比例、増える⇔減る</strong><br />
+No.4(温度差)、No.6(W/C)、No.10(通過速度)、No.31(原価)、No.52(圧損)</p>
+<p><strong>4. 用語・説明のスワップ</strong><br />
+バーチャート⇔ガントチャート(No.49)、メカニカルシール⇔グランドパッキン(No.37)、CO₂⇔CO(No.2)、呼び番号(No.28)、SC⇔2E(No.5)</p>
+<p><strong>5. 「制限がない」「不要」「影響しない」の断定</strong><br />
+No.12(高低差)、No.22(比重)、No.45(非常電源)、No.50(現場調整)</p>
+<p><strong>裏テーマ:逆流防止の思想</strong><br />
+No.17(吐水口空間)・No.24(オーバーフロー管)・No.42(3)(水栓)・No.51(冷水器)は全部「飲み水を汚染から物理的に守る」という同じ一つの思想。個別に覚えず「飲料系=空間を開けて縁を切る」で束ねると強い。</p>
+<p>2回目を解くときは、選択肢を読みながら「これはどの型か?」を考えるクセをつけて。知らない論点でも誤答を嗅ぎ分けられるようになるよ。</p>
+</main>
+</body>
+</html>
