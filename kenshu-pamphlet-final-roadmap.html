@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新入社員技術研修 案内｜A3二つ折りパンフレット</title>
+<style>
+  :root{
+    --blue:#1e5aa8;
+    --blue-l:#2f7fbf;
+    --blue-d:#0f3465;
+    --orange:#e67e22;
+    --yellow:#ffd23f;
+    --slate:#5b6b7c;
+    --ink:#2b3138;
+    --ink-l:#6c7883;
+    --line:#d8dee5;
+    --tint:#eef3f9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,Meiryo,sans-serif;
+    color:var(--ink);background:#8a939c;padding:24px;
+    display:flex;flex-direction:column;align-items:center;gap:24px;
+  }
+
+  .note{
+    max-width:420mm;width:100%;background:#fff;border-left:5px solid var(--orange);
+    padding:14px 18px;font-size:13px;line-height:1.9;
+  }
+  .note b{color:var(--blue);}
+  .note code{background:var(--tint);padding:1px 5px;border-radius:3px;font-size:12px;}
+
+  /* ===== 用紙：A3横 ===== */
+  .sheet{
+    width:420mm;height:297mm;background:#fff;
+    display:flex;position:relative;overflow:hidden;
+    box-shadow:0 6px 26px rgba(0,0,0,.35);
+  }
+  .panel{width:210mm;height:297mm;position:relative;overflow:hidden;}
+  .fold{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed rgba(0,0,0,.3);z-index:60;}
+
+  /* ===== ロゴ ===== */
+  .logo{display:flex;align-items:center;gap:4mm;}
+  .logo .mark{
+    width:15mm;height:15mm;background:var(--orange);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22pt;font-weight:900;border-radius:3mm;line-height:1;
+  }
+  .logo .txt .ja{font-size:12pt;font-weight:800;letter-spacing:.04em;}
+  .logo .txt .en{font-size:7.5pt;font-weight:700;letter-spacing:.24em;color:var(--ink-l);margin-top:1mm;}
+  .cover .logo .txt .ja{color:#fff;}
+  .cover .logo .txt .en{color:#9dc2ea;}
+
+  /* ===== 写真枠 ===== */
+  .photo{
+    background:var(--tint);
+    border:1px dashed #9fb3c8;
+    display:flex;align-items:center;justify-content:center;
+    color:#7d93a8;font-size:8.5pt;font-weight:700;text-align:center;
+    overflow:hidden;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo.illust{border:1px solid var(--line);background:#dbe9f6;padding:0;}
+  .photo.illust svg{width:100%;height:100%;display:block;}
+  .cover-photo.illust{border:1px solid rgba(255,255,255,.3);background:#0d2c56;}
+
+  /* ===== 1. 表紙 ===== */
+  .cover{display:flex;flex-direction:column;padding:16mm 15mm 13mm;color:#fff;}
+  .cover::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(130% 60% at 100% 0%, rgba(47,127,191,.9) 0%, rgba(15,52,101,0) 62%),
+      linear-gradient(170deg,#17508f 0%,#0f3465 70%,#0b2749 100%);
+  }
+  .cover > *{position:relative;z-index:1;}
+  .cover-badge{
+    align-self:flex-start;margin-top:11mm;
+    background:var(--orange);font-size:11.5pt;font-weight:800;letter-spacing:.16em;
+    padding:2mm 6mm;border-radius:1mm;
+  }
+  .cover h1{
+    margin-top:7mm;font-size:46pt;font-weight:900;line-height:1.18;letter-spacing:-.02em;
+  }
+  .cover h1 .y{color:var(--yellow);}
+  .cover-sub{margin-top:8mm;font-size:15pt;font-weight:700;line-height:1.7;color:#dbe7f5;}
+  .cover-sub .em{
+    background:linear-gradient(transparent 62%, rgba(230,126,34,.75) 62%);
+    padding:0 2px;color:#fff;
+  }
+  .cover-photo{height:78mm;margin-top:auto;border:none;background:rgba(255,255,255,.09);color:#a9c4e2;}
+  .cover-foot{
+    margin-top:7mm;display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid rgba(255,255,255,.28);padding-top:5mm;
+    font-size:9.5pt;letter-spacing:.1em;color:#9dc2ea;font-weight:700;
+  }
+  .cover-foot .days{color:var(--yellow);font-size:11pt;}
+
+  /* ===== 2・3. カリキュラム ===== */
+  .cur{display:flex;flex-direction:column;padding:15mm 13mm 13mm;}
+  .cur-h{border-bottom:3px solid var(--blue);padding-bottom:4mm;margin-bottom:6mm;}
+  .cur-h .eyebrow{
+    font-size:9pt;font-weight:800;letter-spacing:.22em;color:var(--orange);
+  }
+  .cur-h h2{font-size:20pt;font-weight:900;margin-top:2mm;letter-spacing:.01em;}
+  .cur-h p{font-size:10pt;color:var(--ink-l);margin-top:2mm;line-height:1.7;}
+
+  .days{display:flex;flex-direction:column;gap:3.5mm;}
+  .day{
+    display:grid;grid-template-columns:16mm 42mm 1fr;gap:4mm;align-items:stretch;
+    border-bottom:1px solid var(--line);padding-bottom:3.5mm;
+  }
+  .day:last-child{border-bottom:none;}
+  .d-no{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .d-no .en{font-size:7pt;font-weight:800;letter-spacing:.16em;color:var(--ink-l);}
+  .d-no .n{font-size:24pt;font-weight:900;line-height:1;color:var(--blue-d);}
+  .d-photo{height:30mm;}
+  .d-body{display:flex;flex-direction:column;justify-content:center;gap:2mm;}
+  .tag{
+    align-self:flex-start;color:#fff;font-size:7.5pt;font-weight:800;letter-spacing:.08em;
+    padding:.8mm 3mm;border-radius:1mm;
+  }
+  .d-body h3{font-size:12pt;font-weight:800;line-height:1.4;}
+  .d-body p{font-size:9pt;color:var(--ink-l);line-height:1.6;}
+
+  .c-intro{background:var(--blue);}
+  .c-tech{background:var(--blue-l);}
+  .c-safe{background:var(--orange);}
+  .c-career{background:var(--slate);}
+
+  .legend{display:flex;gap:4mm;margin-top:5mm;flex-wrap:wrap;}
+  .legend span{display:flex;align-items:center;gap:5px;font-size:8.5pt;font-weight:700;color:var(--ink-l);}
+  .legend i{width:11px;height:11px;border-radius:2px;display:block;}
+
+  .goal{margin-top:auto;background:var(--tint);border-left:4px solid var(--orange);padding:5mm 6mm;}
+  .goal h4{font-size:11pt;font-weight:800;color:var(--blue-d);margin-bottom:3mm;}
+  .goal ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2mm 5mm;}
+  .goal li{font-size:9pt;line-height:1.5;padding-left:6mm;position:relative;font-weight:600;}
+  .goal li::before{content:"✔";position:absolute;left:0;color:var(--orange);font-weight:900;}
+
+  /* ===== 4. 裏表紙 ===== */
+  .back{display:flex;flex-direction:column;padding:15mm 13mm 13mm;}
+  .back-h{background:var(--blue-d);color:#fff;padding:7mm 8mm;margin:-15mm -13mm 8mm;}
+  .back-h .eyebrow{font-size:9pt;font-weight:800;letter-spacing:.22em;color:#9dc2ea;}
+  .back-h h2{font-size:22pt;font-weight:900;margin-top:2mm;}
+  .back-h p{font-size:10pt;color:#c8daf0;margin-top:3mm;line-height:1.7;}
+
+  .courses{display:flex;flex-direction:column;gap:6mm;}
+  .course{border:1px solid var(--line);border-top:4px solid var(--blue);}
+  .course-t{
+    display:flex;align-items:center;gap:4mm;padding:4mm 5mm 3mm;
+  }
+  .course-t .ico{
+    width:11mm;height:11mm;border-radius:50%;background:var(--tint);color:var(--blue-d);
+    display:flex;align-items:center;justify-content:center;font-size:13pt;font-weight:900;flex-shrink:0;
+  }
+  .course-t h3{font-size:14pt;font-weight:900;color:var(--blue-d);}
+  .course-t .sub{font-size:8.5pt;font-weight:700;color:var(--orange);letter-spacing:.1em;margin-top:1mm;}
+  .course-b{padding:0 5mm 5mm 20mm;font-size:9.5pt;line-height:1.75;color:var(--ink-l);}
+  .course.accent{border-top-color:var(--orange);}
+  .course.accent .course-t .ico{background:#fdf1e4;color:var(--orange);}
+
+  .contact{margin-top:auto;border:2px solid var(--blue);}
+  .contact-h{background:var(--blue);color:#fff;font-size:10pt;font-weight:800;letter-spacing:.14em;padding:3mm 6mm;}
+  .contact-b{padding:6mm;display:flex;gap:8mm;align-items:flex-end;}
+  .contact-rows{flex:1;display:grid;gap:3mm;}
+  .contact-rows .row{display:grid;grid-template-columns:20mm 1fr;align-items:center;font-size:10pt;}
+  .contact-rows .k{font-size:8.5pt;font-weight:800;color:var(--blue-d);letter-spacing:.08em;}
+  .contact-rows .v{border-bottom:1px dashed var(--line);padding-bottom:1.5mm;color:var(--ink-l);}
+  .contact-rows .v.fix{color:var(--ink);font-weight:800;border-bottom-style:solid;}
+
+  @page{size:A3 landscape;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;gap:0;display:block;}
+    .note,.fold{display:none;}
+    .sheet{box-shadow:none;page-break-after:always;break-after:page;}
+    .sheet:last-child{page-break-after:auto;break-after:auto;}
+  }
+
+/* ===== 中面：ロードマップ型 ===== */
+
+  :root{
+    --blue:#1e5aa8; --blue-l:#2f7fbf; --blue-d:#0f3465;
+    --orange:#e67e22; --yellow:#ffd23f; --slate:#5b6b7c;
+    --ink:#2b3138; --ink-l:#6c7883; --line:#d8dee5; --tint:#eef3f9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,Meiryo,sans-serif;
+    color:var(--ink);background:#8a939c;padding:24px;
+    display:flex;flex-direction:column;align-items:center;gap:20px;
+  }
+  .note{max-width:420mm;width:100%;background:#fff;border-left:5px solid var(--orange);padding:13px 18px;font-size:13px;line-height:1.9;}
+  .note b{color:var(--blue);}
+  .sheet{width:420mm;height:297mm;background:#fff;display:flex;position:relative;overflow:hidden;box-shadow:0 6px 26px rgba(0,0,0,.35);}
+  .panel{width:210mm;height:297mm;position:relative;overflow:hidden;}
+  .fold{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed rgba(0,0,0,.3);z-index:60;}
+  .illust{overflow:hidden;background:#dbe9f6;}
+  .illust svg{width:100%;height:100%;display:block;}
+  .c-intro{background:var(--blue);} .c-tech{background:var(--blue-l);}
+  .c-safe{background:var(--orange);} .c-career{background:var(--slate);}
+  @page{size:A3 landscape;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;gap:0;display:block;}
+    .note,.fold{display:none;}
+    .sheet{box-shadow:none;}
+  }
+
+  .rm{padding:0;}
+  .rm .hd{position:absolute;top:0;left:0;right:0;padding:12mm 13mm 6mm;z-index:5;background:#fff;}
+  .rm .hd .eb{font-size:8.5pt;font-weight:800;letter-spacing:.22em;color:var(--orange);}
+  .rm .hd h2{font-size:19pt;font-weight:900;margin-top:1.5mm;}
+  .rm .hd p{font-size:9pt;color:var(--ink-l);margin-top:2mm;line-height:1.6;}
+  .road{position:absolute;inset:0;z-index:1;}
+  .stop{
+    position:absolute;width:30mm;height:30mm;border-radius:50%;z-index:4;
+    border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);overflow:hidden;background:#dbe9f6;
+  }
+  .stop svg{width:100%;height:100%;}
+  .pin{
+    position:absolute;width:13mm;height:13mm;border-radius:50%;z-index:5;
+    color:#fff;font-size:10.5pt;font-weight:900;display:flex;align-items:center;justify-content:center;
+    border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);
+  }
+  .lbl{
+    position:absolute;z-index:4;background:#fff;border:1px solid var(--line);
+    border-radius:3mm;padding:3.5mm 4.5mm;box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  .lbl .d{font-size:7.5pt;font-weight:900;letter-spacing:.14em;color:var(--orange);}
+  .lbl h3{font-size:11pt;font-weight:800;line-height:1.4;margin-top:1mm;}
+  .lbl p{font-size:8.5pt;color:var(--ink-l);line-height:1.55;margin-top:1.5mm;}
+  .goal{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:8mm;z-index:5;
+    background:var(--orange);color:#fff;padding:4mm 8mm;border-radius:20mm;text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+  }
+  .goal .s{font-size:8pt;font-weight:800;letter-spacing:.2em;opacity:.85;}
+  .goal .b{font-size:14pt;font-weight:900;margin-top:1mm;}
+  .start{
+    position:absolute;left:50%;transform:translateX(-50%);top:44mm;z-index:5;
+    background:var(--blue-d);color:#fff;font-size:9pt;font-weight:900;letter-spacing:.2em;
+    padding:2mm 6mm;border-radius:20mm;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="note">
+  <b>構成</b>：A3二つ折り4面（①表紙／②③カリキュラム＝ロードマップ型／④裏表紙）。<br>
+  <b>印刷</b>：A3・<b>横</b>・<b>両面（短辺とじ）</b>で2ページ出力 → 真ん中で二つ折り。1枚目の外側が「裏表紙＋表紙」、開くと中面になります。<br>
+  <b>イラスト</b>：全11点SVG。実写に差し替える場合は該当枠の <code>&lt;div class="illust"&gt;…&lt;/div&gt;</code> の中身を <code>&lt;img src="photos/day01.jpg"&gt;</code> に置き換えてください。<br>
+  <b>要確認</b>：裏表紙のW塾の説明文、住所・TEL・担当を上書きしてください。
+</div>
+
+<!-- ============ 1枚目：外面（左=裏表紙／右=表紙） ============ -->
+<div class="sheet">
+  <div class="fold"></div>
+
+  <!-- 4. 裏表紙 -->
+  <div class="panel back">
+    <div class="back-h">
+      <div class="eyebrow">AFTER THE 10 DAYS</div>
+      <h2>研修は、入社後も続きます。</h2>
+      <p>技術研修を終えて現場へ出たあとも、資格取得・スキルアップ・役職者育成まで、<br>段階に応じた教育制度を用意しています。</p>
+    </div>
+
+    <div class="courses">
+      <div class="course">
+        <div class="course-t">
+          <div class="ico">資</div>
+          <div>
+            <h3>資格対策講座</h3>
+            <div class="sub">QUALIFICATION</div>
+          </div>
+        </div>
+        <div class="course-b">
+          施工管理技士をはじめとする国家資格の受験対策講座。出題傾向の解説から演習まで、受験する社員を会社として支援します。
+        </div>
+      </div>
+
+      <div class="course accent">
+        <div class="course-t">
+          <div class="ico">W</div>
+          <div>
+            <h3>W（ワールド）塾</h3>
+            <div class="sub">SKILL UP</div>
+          </div>
+        </div>
+        <div class="course-b">
+          現場経験を積んだ社員が、実務でつまずきやすいポイントを学び直す社内塾。技術力の底上げを継続的に行います。
+        </div>
+      </div>
+
+      <div class="course">
+        <div class="course-t">
+          <div class="ico">キ</div>
+          <div>
+            <h3>キャリアアップ研修</h3>
+            <div class="sub">CAREER</div>
+          </div>
+        </div>
+        <div class="course-b">
+          経験年数や役割に応じたステップアップ研修。次のポジションで求められる知識とマネジメントを学びます。
+        </div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="contact-h">お問い合わせ</div>
+      <div class="contact-b">
+        <div class="logo">
+          <div class="mark">W</div>
+          <div class="txt">
+            <div class="ja">株式会社<br>ワールドコーポレーション</div>
+          </div>
+        </div>
+        <div class="contact-rows">
+          <div class="row"><span class="k">所在地</span><span class="v">（住所を記入）</span></div>
+          <div class="row"><span class="k">TEL</span><span class="v">（電話番号を記入）</span></div>
+          <div class="row"><span class="k">担当</span><span class="v">（部署・担当者を記入）</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. 表紙 -->
+  <div class="panel cover">
+    <div class="logo">
+      <div class="mark">W</div>
+      <div class="txt">
+        <div class="ja">株式会社ワールドコーポレーション</div>
+        <div class="en">WORLD CORPORATION</div>
+      </div>
+    </div>
+
+    <div class="cover-badge">新入社員技術研修</div>
+
+    <h1>やる気を、<br><span class="y">技術に変える。</span></h1>
+
+    <div class="cover-sub">
+      10日間で、<span class="em">現場で通用する基礎</span>を叩き込む。<br>
+      やる気に満ちた人材を育て、現場へ送り出します。
+    </div>
+
+    <div class="cover-photo photo illust">
+      <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="建設現場と研修生のイラスト">
+        <rect width="400" height="150" fill="#0d2c56"/>
+        <circle cx="335" cy="34" r="20" fill="#2f7fbf" opacity=".35"/>
+        <!-- クレーン -->
+        <g stroke="#3d8ac9" stroke-width="3" fill="none" opacity=".85">
+          <path d="M60 130 L60 24"/>
+          <path d="M28 24 L124 24"/>
+          <path d="M60 24 L60 8 L104 24"/>
+          <path d="M100 24 L100 52"/>
+        </g>
+        <rect x="92" y="52" width="16" height="12" fill="#e67e22"/>
+        <!-- 建物 -->
+        <g fill="#164a8c">
+          <rect x="150" y="58" width="52" height="72"/>
+          <rect x="210" y="76" width="44" height="54"/>
+          <rect x="262" y="44" width="58" height="86"/>
+        </g>
+        <g fill="#2f7fbf" opacity=".75">
+          <rect x="158" y="66" width="10" height="10"/><rect x="176" y="66" width="10" height="10"/>
+          <rect x="158" y="86" width="10" height="10"/><rect x="176" y="86" width="10" height="10"/>
+          <rect x="158" y="106" width="10" height="10"/><rect x="176" y="106" width="10" height="10"/>
+          <rect x="218" y="86" width="10" height="10"/><rect x="234" y="86" width="10" height="10"/>
+          <rect x="218" y="106" width="10" height="10"/><rect x="234" y="106" width="10" height="10"/>
+          <rect x="272" y="54" width="12" height="12"/><rect x="294" y="54" width="12" height="12"/>
+          <rect x="272" y="76" width="12" height="12"/><rect x="294" y="76" width="12" height="12"/>
+          <rect x="272" y="98" width="12" height="12"/><rect x="294" y="98" width="12" height="12"/>
+        </g>
+        <!-- 足場 -->
+        <g stroke="#3d8ac9" stroke-width="2" opacity=".6">
+          <path d="M262 44 L262 130 M320 44 L320 130 M262 70 L320 70 M262 100 L320 100"/>
+        </g>
+        <!-- 研修生3人 -->
+        <g>
+          <g transform="translate(30,78)">
+            <path d="M0 52 L0 26 Q0 14 12 14 L20 14 Q32 14 32 26 L32 52 Z" fill="#ffffff"/>
+            <circle cx="16" cy="6" r="8" fill="#f2d3b8"/>
+            <path d="M5 5 Q16 -6 27 5 Z" fill="#ffd23f"/>
+            <rect x="4" y="4" width="24" height="3" rx="1.5" fill="#ffd23f"/>
+            <rect x="0" y="40" width="32" height="12" fill="#2f7fbf"/>
+          </g>
+          <g transform="translate(74,84)">
+            <path d="M0 46 L0 24 Q0 12 11 12 L18 12 Q29 12 29 24 L29 46 Z" fill="#ffffff"/>
+            <circle cx="14.5" cy="5" r="7.5" fill="#f2d3b8"/>
+            <path d="M4 4 Q14.5 -6 25 4 Z" fill="#e67e22"/>
+            <rect x="3" y="3" width="23" height="3" rx="1.5" fill="#e67e22"/>
+            <rect x="0" y="35" width="29" height="11" fill="#2f7fbf"/>
+          </g>
+          <g transform="translate(114,88)">
+            <path d="M0 42 L0 22 Q0 11 10 11 L17 11 Q27 11 27 22 L27 42 Z" fill="#ffffff"/>
+            <circle cx="13.5" cy="4" r="7" fill="#f2d3b8"/>
+            <path d="M4 3 Q13.5 -6 23 3 Z" fill="#ffd23f"/>
+            <rect x="3" y="2" width="21" height="3" rx="1.5" fill="#ffd23f"/>
+            <rect x="0" y="32" width="27" height="10" fill="#2f7fbf"/>
+          </g>
+        </g>
+        <rect y="130" width="400" height="20" fill="#08203f"/>
+        <path d="M0 130 L400 130" stroke="#e67e22" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="cover-foot">
+      <span>NEW EMPLOYEE TECHNICAL TRAINING</span>
+      <span class="days">10 DAYS PROGRAM</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2枚目：中面（ロードマップ型） ============ -->
+<div class="sheet"><div class="fold"></div><div class="panel rm"><div class="hd"><div class="eb">CURRICULUM　DAY 01 - 05</div><h2>10日間のロードマップ</h2><p>入社したその日から、現場デビューまでの道のり。</p></div><svg class="road" viewBox="0 0 210 297" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M56 62 L56 96 C56 118 152 116 152 138 C152 160 56 158 56 180 C56 202 152 200 152 222 C152 244 56 242 56 264 L56 297"
+        stroke="#c6d7e8" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M56 62 L56 96 C56 118 152 116 152 138 C152 160 56 158 56 180 C56 202 152 200 152 222 C152 244 56 242 56 264 L56 297"
+        stroke="#ffffff" stroke-width="1.6" fill="none" stroke-dasharray="5 5"/>
+</svg><div class="start">START</div><div class="stop illust" style="left:41mm;top:81mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="会社説明のイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="18" y="20" width="112" height="76" rx="3" fill="#ffffff" stroke="#1e5aa8" stroke-width="3"/>
+<rect x="34" y="62" width="14" height="22" fill="#2f7fbf"/>
+<rect x="54" y="52" width="14" height="32" fill="#2f7fbf"/>
+<rect x="74" y="42" width="14" height="42" fill="#e67e22"/>
+<rect x="94" y="34" width="14" height="50" fill="#1e5aa8"/>
+<path d="M30 84 L118 84" stroke="#b9c6d3" stroke-width="2"/>
+<path d="M74 96 L74 108 M56 108 L92 108" stroke="#1e5aa8" stroke-width="3" stroke-linecap="round"/>
+<path d="M150 112 L150 86 Q150 74 164 74 Q178 74 178 86 L178 112 Z" fill="#1e5aa8"/>
+<circle cx="164" cy="60" r="13" fill="#f2d3b8"/>
+<path d="M149 58 Q164 38 179 58 Z" fill="#e67e22"/>
+<rect x="146" y="56" width="36" height="5" rx="2.5" fill="#e67e22"/>
+<path d="M152 84 L130 68" stroke="#f2d3b8" stroke-width="7" stroke-linecap="round"/>
+<rect y="112" width="200" height="28" fill="#c6d7e8"/></svg></div><div class="pin c-intro" style="left:65mm;top:103mm">01</div><div class="lbl" style="left:78mm;width:120mm;top:79mm"><div class="d">DAY 01</div><h3>会社説明・業界説明</h3><p>会社と業界の全体像をつかむ</p></div><div class="stop illust" style="left:137mm;top:123mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="社員の心構えのイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<circle cx="100" cy="70" r="50" fill="#c9dcef"/>
+<path d="M50 126 L50 102 Q50 86 76 82 L124 82 Q150 86 150 102 L150 126 Z" fill="#1e5aa8"/>
+<path d="M86 82 L100 100 L114 82 Z" fill="#ffffff"/>
+<path d="M100 100 L93 120 L100 128 L107 120 Z" fill="#e67e22"/>
+<circle cx="100" cy="58" r="21" fill="#f2d3b8"/>
+<path d="M76 56 Q100 24 124 56 Z" fill="#e67e22"/>
+<rect x="72" y="54" width="56" height="7" rx="3.5" fill="#e67e22"/>
+<circle cx="92" cy="56" r="2.4" fill="#2b3138"/><circle cx="108" cy="56" r="2.4" fill="#2b3138"/>
+</svg></div><div class="pin c-intro" style="left:161mm;top:145mm">02</div><div class="lbl" style="left:12mm;width:120mm;top:121mm"><div class="d">DAY 02</div><h3>ワールド社員としての心構え</h3><p>社会人・技術者としての基本姿勢</p></div><div class="stop illust" style="left:41mm;top:165mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="施工管理の書類とバーチャートのイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="26" y="18" width="94" height="104" rx="4" fill="#ffffff" stroke="#1e5aa8" stroke-width="3"/>
+<rect x="58" y="10" width="30" height="13" rx="3" fill="#5b6b7c"/>
+<rect x="38" y="38" width="11" height="11" rx="2" fill="#2f7fbf"/><rect x="56" y="41" width="48" height="6" rx="3" fill="#c6d7e8"/>
+<rect x="38" y="56" width="11" height="11" rx="2" fill="#2f7fbf"/><rect x="56" y="59" width="40" height="6" rx="3" fill="#c6d7e8"/>
+<rect x="38" y="74" width="11" height="11" rx="2" fill="#e67e22"/><rect x="56" y="77" width="46" height="6" rx="3" fill="#c6d7e8"/>
+<rect x="38" y="96" width="40" height="7" rx="3.5" fill="#2f7fbf"/>
+<rect x="56" y="107" width="48" height="7" rx="3.5" fill="#e67e22"/>
+<g transform="rotate(28 150 70)">
+<rect x="142" y="26" width="14" height="66" fill="#ffd23f"/>
+<rect x="142" y="26" width="14" height="12" fill="#1e5aa8"/>
+<path d="M142 92 L149 106 L156 92 Z" fill="#f2d3b8"/>
+<path d="M146 99 L149 106 L152 99 Z" fill="#2b3138"/>
+</g>
+</svg></div><div class="pin c-tech" style="left:65mm;top:187mm">03</div><div class="lbl" style="left:78mm;width:120mm;top:163mm"><div class="d">DAY 03</div><h3>施工管理教養</h3><p>工程・品質・原価・安全の考え方</p></div><div class="stop illust" style="left:137mm;top:207mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="プラント設備のイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="24" y="52" width="46" height="60" rx="4" fill="#2f7fbf"/>
+<ellipse cx="47" cy="52" rx="23" ry="8" fill="#5aa0dd"/>
+<rect x="24" y="72" width="46" height="5" fill="#1e5aa8" opacity=".5"/>
+<rect x="92" y="34" width="36" height="78" rx="4" fill="#1e5aa8"/>
+<ellipse cx="110" cy="34" rx="18" ry="7" fill="#3d8ac9"/>
+<rect x="92" y="60" width="36" height="5" fill="#0f3465" opacity=".5"/>
+<rect x="150" y="18" width="28" height="94" fill="#5b6b7c"/>
+<rect x="150" y="40" width="28" height="6" fill="#8b98a6"/><rect x="150" y="70" width="28" height="6" fill="#8b98a6"/>
+<path d="M70 92 L92 92" stroke="#e67e22" stroke-width="7"/>
+<path d="M128 78 L150 78" stroke="#e67e22" stroke-width="7"/>
+<circle cx="81" cy="92" r="8" fill="#e67e22"/><circle cx="81" cy="92" r="3.5" fill="#dbe9f6"/>
+<rect y="112" width="200" height="28" fill="#c6d7e8"/></svg></div><div class="pin c-tech" style="left:161mm;top:229mm">04</div><div class="lbl" style="left:12mm;width:120mm;top:205mm"><div class="d">DAY 04</div><h3>プラント研修</h3><p>プラント現場の基礎知識</p></div><div class="stop illust" style="left:41mm;top:249mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="フルハーネスと安全帯のイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="0" y="12" width="200" height="13" fill="#5b6b7c"/>
+<rect x="0" y="25" width="200" height="4" fill="#3f4b57"/>
+<path d="M112 29 Q146 46 128 66" stroke="#e67e22" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<rect x="120" y="62" width="12" height="10" rx="3" fill="#5b6b7c"/>
+<path d="M74 112 L74 76 Q74 62 100 62 Q126 62 126 76 L126 112 Z" fill="#1e5aa8"/>
+<circle cx="100" cy="44" r="15" fill="#f2d3b8"/>
+<path d="M83 42 Q100 20 117 42 Z" fill="#ffd23f"/>
+<rect x="80" y="40" width="40" height="6" rx="3" fill="#ffd23f"/>
+<path d="M82 70 L118 104 M118 70 L82 104" stroke="#ffd23f" stroke-width="6" stroke-linecap="round"/>
+<rect x="76" y="96" width="48" height="10" rx="2" fill="#ffd23f"/>
+<rect x="94" y="96" width="12" height="10" rx="2" fill="#c0561a"/>
+<rect y="112" width="200" height="28" fill="#c6d7e8"/></svg></div><div class="pin c-safe" style="left:65mm;top:271mm">05</div><div class="lbl" style="left:78mm;width:120mm;top:247mm"><div class="d">DAY 05</div><h3>フルハーネス・安全サイクル・KY・朝礼</h3><p>現場の安全ルールを実技で習得</p></div></div><div class="panel rm"><div class="hd"><div class="eb">CURRICULUM　DAY 06 - 10</div><h2>実習を重ねて、現場へ</h2><p>手を動かす研修が中心。最後は配属先での動き方まで。</p></div><svg class="road" viewBox="0 0 210 297" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M56 0 L56 96 C56 118 152 116 152 138 C152 160 56 158 56 180 C56 202 152 200 152 222 C152 244 56 242 56 264 L56 272"
+        stroke="#c6d7e8" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M56 0 L56 96 C56 118 152 116 152 138 C152 160 56 158 56 180 C56 202 152 200 152 222 C152 244 56 242 56 264 L56 272"
+        stroke="#ffffff" stroke-width="1.6" fill="none" stroke-dasharray="5 5"/>
+</svg><div class="stop illust" style="left:41mm;top:81mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="レベル測量の実習イラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<path d="M62 58 L38 114 M62 58 L86 114 M62 58 L62 114" stroke="#5b6b7c" stroke-width="5" stroke-linecap="round"/>
+<rect x="42" y="42" width="42" height="15" rx="4" fill="#1e5aa8"/>
+<rect x="80" y="45" width="16" height="9" rx="2" fill="#2f7fbf"/>
+<circle cx="52" cy="49" r="4" fill="#ffd23f"/>
+<path d="M96 50 L146 50" stroke="#e67e22" stroke-width="2.5" stroke-dasharray="6 5"/>
+<rect x="146" y="18" width="14" height="96" fill="#ffffff" stroke="#1e5aa8" stroke-width="2"/>
+<rect x="146" y="28" width="14" height="11" fill="#e67e22"/>
+<rect x="146" y="50" width="14" height="11" fill="#1e5aa8"/>
+<rect x="146" y="72" width="14" height="11" fill="#e67e22"/>
+<rect x="146" y="94" width="14" height="11" fill="#1e5aa8"/>
+<rect y="112" width="200" height="28" fill="#c6d7e8"/></svg></div><div class="pin c-tech" style="left:65mm;top:103mm">06</div><div class="lbl" style="left:78mm;width:120mm;top:79mm"><div class="d">DAY 06</div><h3>土木研修・測量実習（レベル）・災害事例</h3><p>レベル測量と再発防止の視点</p></div><div class="stop illust" style="left:137mm;top:123mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CADで図面を描くイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="22" y="20" width="152" height="88" rx="5" fill="#1e5aa8"/>
+<rect x="29" y="27" width="138" height="74" fill="#ffffff"/>
+<g stroke="#2f7fbf" stroke-width="2.5" fill="none">
+<rect x="42" y="40" width="58" height="48"/>
+<rect x="100" y="40" width="54" height="26"/>
+<path d="M100 66 L154 66"/>
+</g>
+<path d="M100 40 L100 88" stroke="#2f7fbf" stroke-width="2.5"/>
+<path d="M64 88 A12 12 0 0 1 76 76" stroke="#e67e22" stroke-width="2" fill="none"/>
+<path d="M42 96 L100 96" stroke="#e67e22" stroke-width="1.6"/>
+<path d="M42 92 L42 100 M100 92 L100 100" stroke="#e67e22" stroke-width="1.6"/>
+<path d="M98 108 L98 118 M76 118 L120 118" stroke="#1e5aa8" stroke-width="5" stroke-linecap="round"/>
+<ellipse cx="152" cy="120" rx="9" ry="12" fill="#5b6b7c"/>
+<path d="M152 110 L152 118" stroke="#dbe9f6" stroke-width="2"/>
+</svg></div><div class="pin c-tech" style="left:161mm;top:145mm">07</div><div class="lbl" style="left:12mm;width:120mm;top:121mm"><div class="d">DAY 07</div><h3>建築図面・CAD（基本操作）</h3><p>図面が読め、CADが触れる</p></div><div class="stop illust" style="left:41mm;top:165mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="工事写真の撮影と黒板のイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="14" y="56" width="72" height="52" rx="3" fill="#27604a"/>
+<rect x="18" y="60" width="64" height="44" rx="2" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+<path d="M18 74 L82 74 M18 88 L82 88 M50 60 L50 104" stroke="#ffffff" stroke-width="1.2" opacity=".8"/>
+<rect x="24" y="64" width="20" height="5" rx="2.5" fill="#ffffff" opacity=".9"/>
+<rect x="56" y="78" width="20" height="5" rx="2.5" fill="#ffffff" opacity=".9"/>
+<rect x="24" y="92" width="16" height="5" rx="2.5" fill="#ffffff" opacity=".9"/>
+<rect x="98" y="44" width="84" height="56" rx="7" fill="#1e5aa8"/>
+<rect x="116" y="34" width="28" height="12" rx="3" fill="#1e5aa8"/>
+<circle cx="140" cy="72" r="20" fill="#0f3465"/>
+<circle cx="140" cy="72" r="12" fill="#2f7fbf"/>
+<circle cx="134" cy="66" r="4.5" fill="#ffffff" opacity=".85"/>
+<rect x="162" y="54" width="12" height="8" rx="2" fill="#ffd23f"/>
+<rect y="112" width="200" height="28" fill="#c6d7e8"/></svg></div><div class="pin c-tech" style="left:65mm;top:187mm">08</div><div class="lbl" style="left:78mm;width:120mm;top:163mm"><div class="d">DAY 08</div><h3>建築設備研修・工事写真の撮影と整理</h3><p>設備の基礎と工事写真の撮り方</p></div><div class="stop illust" style="left:137mm;top:207mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="資格証書のイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="36" y="18" width="108" height="92" rx="3" fill="#ffffff" stroke="#1e5aa8" stroke-width="3"/>
+<rect x="52" y="34" width="76" height="8" rx="4" fill="#1e5aa8"/>
+<rect x="52" y="54" width="62" height="5" rx="2.5" fill="#c6d7e8"/>
+<rect x="52" y="66" width="70" height="5" rx="2.5" fill="#c6d7e8"/>
+<rect x="52" y="78" width="48" height="5" rx="2.5" fill="#c6d7e8"/>
+<path d="M118 102 L118 126 L128 117 L138 126 L138 102 Z" fill="#c0561a"/>
+<circle cx="128" cy="98" r="17" fill="#e67e22"/>
+<circle cx="128" cy="98" r="11" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M122 98 L127 103 L135 93" stroke="#ffffff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div><div class="pin c-career" style="left:161mm;top:229mm">09</div><div class="lbl" style="left:12mm;width:120mm;top:205mm"><div class="d">DAY 09</div><h3>資格（施工管理技士）について</h3><p>資格取得までの道筋を知る</p></div><div class="stop illust" style="left:41mm;top:249mm"><svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="現場ゲートと配属のイラスト"><rect width="200" height="140" fill="#dbe9f6"/>
+<rect x="18" y="30" width="14" height="82" fill="#5b6b7c"/>
+<rect x="168" y="30" width="14" height="82" fill="#5b6b7c"/>
+<rect x="18" y="24" width="164" height="20" rx="2" fill="#1e5aa8"/>
+<rect x="54" y="31" width="92" height="6" rx="3" fill="#ffffff" opacity=".85"/>
+<path d="M56 74 L108 74 L108 62 L136 84 L108 106 L108 94 L56 94 Z" fill="#e67e22"/>
+<path d="M32 56 L168 56" stroke="#e67e22" stroke-width="4" stroke-dasharray="12 8"/>
+<rect y="112" width="200" height="28" fill="#c6d7e8"/></svg></div><div class="pin c-career" style="left:65mm;top:271mm">10</div><div class="lbl" style="left:78mm;width:120mm;top:247mm"><div class="d">DAY 10</div><h3>配属時の注意事項</h3><p>現場入場のルールと報連相</p></div><div class="goal"><div class="s">GOAL</div><div class="b">現場デビュー</div></div></div></div>
+
+</body>
+</html>
